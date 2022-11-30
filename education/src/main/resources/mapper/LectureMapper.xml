@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mobius.education.mapper.LectureMapper">
+    <select id="selectAll" resultType="lectureVO">
+        SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+        FROM
+        (
+            SELECT ROWNUM R, LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+            FROM
+            (
+                SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+                FROM TBL_LECTURE L
+                ORDER BY LECTURE_NUMBER DESC
+            ) D2
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ) WHERE R > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="getTotal" resultType="_int">
+        SELECT COUNT(LECTURE_NUMBER) FROM TBL_LECTURE
+    </select>
+
+    <insert id="insert">
+        <selectKey keyProperty="lectureNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_LECTURE.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_LECTURE(LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE,LECTURE_STATUS)
+        VALUES (#{lectureNumber}, #{lectureTitle}, #{lectureCategory}, #{lectureContent}, #{lectureDate}, #{lectureMaximumNumber}, #{lectureTime}, #{lecturePlace},#{lectureStatus})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM TBL_LECTURE
+        WHERE LECTURE_NUMBER = #{lectureNumber}
+    </delete>
+
+    <update id="update">
+        UPDATE TBL_LECTURE
+        SET LECTURE_TITLE = #{lectureTitle}, LECTURE_CATEGORY = #{lectureCategory}, LECTURE_CONTENT = #{lectureContent}, LECTURE_DATE = #{lectureDate},  LECTURE_MAXIMUM_NUMBER = #{lectureMaximumNumber},  LECTURE_TIME = #{lectureTime},  LECTURE_PLACE = #{lecturePlace}, LECTURE_STATUS = #{lectureStatus}
+        WHERE LECTURE_NUMBER = #{lectureNumber}
+    </update>
+
+    <select id="select" resultType="lectureDTO">
+        SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, TO_CHAR(LECTURE_DATE ,'YYYY/MM/DD'), LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+        FROM TBL_LECTURE
+        WHERE LECTURE_NUMBER = #{lectureNumber}
+    </select>
+
+    <select id="lectureSelectAll" resultType="lectureVO">
+        SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+        FROM
+        (
+            SELECT ROWNUM R, LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+            FROM
+            (
+                SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+                FROM TBL_LECTURE L
+                WHERE LECTURE_STATUS = '진행완료'
+                ORDER BY LECTURE_NUMBER DESC
+            ) D2
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ) WHERE R > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="lectureGetTotal" resultType="_int">
+        SELECT COUNT(LECTURE_NUMBER) FROM TBL_LECTURE
+        WHERE LECTURE_STATUS = '진행완료'
+    </select>
+
+    <select id="ongoingSelectAll" resultType="lectureVO">
+        SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+        FROM
+        (
+            SELECT ROWNUM R, LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+            FROM
+            (
+                SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+                FROM TBL_LECTURE L
+                WHERE LECTURE_STATUS = '진행중'
+                ORDER BY LECTURE_NUMBER DESC
+            ) D2
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ) WHERE R > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="ongoingGetTotal" resultType="_int">
+        SELECT COUNT(LECTURE_NUMBER) FROM TBL_LECTURE
+        WHERE LECTURE_STATUS = '진행중'
+    </select>
+
+    <select id="expectedSelectAll" resultType="lectureVO">
+        SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+        FROM
+        (
+            SELECT ROWNUM R, LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+            FROM
+            (
+                SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+                FROM TBL_LECTURE L
+                WHERE LECTURE_STATUS = '진행예정'
+                ORDER BY LECTURE_NUMBER DESC
+            ) D2
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ) WHERE R > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="expectedGetTotal" resultType="_int">
+        SELECT COUNT(LECTURE_NUMBER) FROM TBL_LECTURE
+        WHERE LECTURE_STATUS = '진행예정'
+    </select>
+
+</mapper>

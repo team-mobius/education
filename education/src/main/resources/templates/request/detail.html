@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/fixed/header2.css" />
+    <link rel="stylesheet" href="/css/fixed/footer.css" />
+    <link rel="stylesheet" href="/css/request/reset.css" />
+    <link rel="stylesheet" href="/css/request/detail.css" />
+</head>
+<body>
+<header th:replace="/fixed/header2.html :: body"></header>
+        <main>
+            <!-- 게시글 -->
+            <section class="post_area">
+                <!-- 사이드 -->
+                <div class="post_side_area">
+                    <!-- 뒤로 가기 -->
+                    <div class="side_left_area">
+                        <a class="back_button">
+                            <div class="back_img"></div>
+                        </a>
+                    </div>
+                    <!-- 가운데 비워두기 -->
+                    <div class="side_middle_area"></div>
+                    <!-- 좋아요 -->
+                    <div class="side_right_area">
+                        <div class="like_box">
+                            <button class="like_button">
+                                <div class="heart_img"></div>
+                                <div class="like_count">15</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 컨텐츠 -->
+                <div class="post_content_area">
+                    <div class="post_container">
+                        <div class="post_header">
+                            <div class="post_title">웹 강의 열어주세요!</div>
+                            <div class="post_info">
+                                <span class="post_writer">myewon</span>
+                                <span class="post_dot">·</span>
+                                <span class="post_date">2022.11.18</span>
+                            </div>
+                        </div>
+                        <div class="post_body">
+                            <div class="post_content">
+                                <div class="content_text">
+                                    Lorem ipsum dolor sit amet consectetur,
+                                    adipisicing elit. Magni, sunt. Adipisci
+                                    voluptatibus temporibus corporis soluta
+                                    facere nostrum at reiciendis voluptates
+                                    nesciunt voluptate tenetur numquam,
+                                    dignissimos vero voluptas fuga atque. Eos.
+                                    Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Quae atque cupiditate
+                                    nulla in maiores ipsum eligendi rerum porro
+                                    quos cum? Minima accusantium voluptatum
+                                    aspernatur itaque possimus ipsa doloremque
+                                    ab consequuntur. Lorem ipsum dolor sit, amet
+                                    consectetur adipisicing elit. Debitis
+                                    explicabo eligendi doloribus expedita
+                                    distinctio ipsa cumque perferendis aut
+                                    inventore, ea alias necessitatibus dolor,
+                                    temporibus numquam blanditiis perspiciatis,
+                                    accusantium nihil. Sit! Lorem ipsum dolor,
+                                    sit amet consectetur adipisicing elit.
+                                    Dolorum suscipit exercitationem quae dolores
+                                    atque asperiores corrupti blanditiis? Nihil
+                                    dolorem consequatur deserunt maiores optio
+                                    accusamus nisi, fugiat accusantium, possimus
+                                    nemo sunt.
+                                </div>
+                            </div>
+                            <div class="post_category">
+                                <a class="category_box" href="">
+                                    <p class="category_text">개발·프로그래밍</p>
+                                    <p class="move_to_lecture">
+                                        모집중인 강의
+                                        보러가기&nbsp;&nbsp;&nbsp;>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- 댓글 달기 -->
+            <div class="comment">
+                <section class="write_reply_area">
+                    <div class="write_reply_container">
+                        <!-- 댓글 헤더 -->
+                        <div class="write_reply_header">
+                            <span>😀</span>
+                            <span class="writer">myewon</span>
+                            <span>님, 답글을 남겨보세요!</span>
+                        </div>
+                        <!-- 댓글 작성 칸 -->
+                        <div class="write_reply_box">
+                            <form action="">
+                                <textarea cols="30" rows="5"></textarea>
+                            </form>
+                        </div>
+                        <!-- 댓글 버튼 -->
+                        <div class="reply_write_button_area">
+                            <div class="reply_write_button_space">
+                                <button class="reply_write_button">
+                                    답변 등록
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 댓글목록 -->
+                <section class="reply_area">
+                    <div class="reply_count_area">
+                        <div class="reply_count_container">
+                            <span>총</span>
+                            <span class="repky_count">3</span>
+                            <span>개의 댓글이 달렸습니다.</span>
+                        </div>
+                    </div>
+                    <!-- 첫번째 댓글 -->
+                    <div class="reply_read_container">
+                        <!-- 댓글 헤더 -->
+                        <div class="reply_read_header">
+                            <div class="reply_writer">뫼비우스</div>
+                            <div class="reply_date">2022.11.18</div>
+                            <div class="reply_button_area">
+                                <button class="modify_button">수정</button>
+                                <button class="remove_button">삭제</button>
+                            </div>
+                        </div>
+                        <!-- 댓글 내용 -->
+                        <div class="reply_content">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Impedit quod ipsum reprehenderit voluptatem
+                            voluptatum placeat iste vitae, fugit cumque porro
+                            earum dicta a optio at ex, ullam temporibus
+                            asperiores consequatur.
+                        </div>
+                    </div>
+                    <!-- 두번째 댓글 -->
+                    <div class="reply_read_container">
+                        <!-- 댓글 헤더 -->
+                        <div class="reply_read_header">
+                            <div class="reply_writer">뫼비우스</div>
+                            <div class="reply_date">2022.11.18</div>
+                            <div class="reply_button_area">
+                                <button class="modify_button">수정</button>
+                                <button class="remove_button">삭제</button>
+                            </div>
+                        </div>
+                        <!-- 댓글 내용 -->
+                        <div class="reply_content">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Impedit quod ipsum reprehenderit voluptatem
+                            voluptatum placeat iste vitae, fugit cumque porro
+                            earum dicta a optio at ex, ullam temporibus
+                            asperiores consequatur.
+                        </div>
+                    </div>
+                    <!-- 세번째 댓글 -->
+                    <div class="reply_read_container">
+                        <!-- 댓글 헤더 -->
+                        <div class="reply_read_header">
+                            <div class="reply_writer">인프런</div>
+                            <div class="reply_date">2022.11.18</div>
+                        </div>
+                        <!-- 댓글 내용 -->
+                        <div class="reply_content">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Impedit quod ipsum reprehenderit voluptatem
+                            voluptatum placeat iste vitae, fugit cumque porro
+                            earum dicta a optio at ex, ullam temporibus
+                            asperiores consequatur.
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <footer th:replace="/fixed/footer.html :: #footer"></footer>
+    </body>
+</html>

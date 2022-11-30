@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mainpage</title>
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/mainpage/index.css">
+    <link rel="stylesheet" href="/css/fixed/reset.css">
+</head>
+<body>
+<header th:replace="/fixed/header2.html" :: body></header>
+
+   <main id="main">
+    <section class="banner">
+        <div class="container">
+            <div class="banner_box">
+        <div class="slide_banner">
+             <div class="banner_box">
+                <img src="https://cdn.inflearn.com/public/main_sliders/68a15e47-7f40-444c-af73-60ab1acb8b3f/%5B%EB%B8%8C%EB%9E%9C%EB%93%9C%5D%EC%B1%84%EC%9A%A9%EC%9D%B4%EB%AF%B8%EC%A7%80%26%EA%B4%91%EA%B3%A0%EB%A6%AC%EB%89%B4%EC%96%BC_main_521.gif">
+            </div>
+            <div class="banner_box">
+                <div class="bannerTxt1">
+                    <h1 class="banner_title">궁금한 것은 뭐든 물어보세요!👀 </h1>
+                        <p class="text1" style="color: #000000;">
+                            1대1 문의로 궁금한 것은 뭐든 질문하세요!
+                        </p>
+                    </div>
+                <img src="https://cdn.inflearn.com/public/main_sliders/5207c5ee-e72f-4fc1-aad0-6122d2a55956/%5B%E1%84%86%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%E1%84%92%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%85%E1%85%A9%5D%E1%84%85%E1%85%A9%E1%84%83%E1%85%B3%E1%84%86%E1%85%A2%E1%86%B8%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%86%E1%85%AE%E1%86%AB_main_521.gif">
+            </div> 
+            <div class="banner_box">
+                <div class="bannerTxt1" style="color: #fff; font-size: 20px; " >
+                    <h1 class="banner_title">
+                        배우고 싶은 항목을 요청하세요! 🥴 </h1>
+                        <p class="text1" style="color: #fff;">
+                            중국어가 배우고 싶어요! 
+                            <br>
+                            일본어가 배우고 싶어요!
+                        </p>
+                    </div>
+                <img src="https://cdn.inflearn.com/public/main_sliders/9aa42a51-bbde-4853-b8a9-598d35d73e78/%5B%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3%5D%E1%84%82%E1%85%A1%E1%84%82%E1%85%B3%E1%86%AB%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A9%E1%84%83%E1%85%A1_main_521.webp">
+            </div> 
+             <div class="banner_box">
+                <div class="bannerTxt1">
+                    <h1 class="banner_title">
+                        쾌적하고 넓은 강의장! 🌟 </h1>
+                        <p class="text1" style="color: #000000;">
+                            넓은 공간으로 쾌적한 환경에서 배워볼까?
+                            <br>
+                            더 많은 강의장 구경하기 😗
+                        </p>
+                    </div>
+                <img src="https://cdn.inflearn.com/public/main_sliders/daeb512b-5950-4c5d-a50e-bbde0443a276/newsletter-infmation-56-main-521.png">
+            </div>
+            <div class="banner_box">
+                <div class="bannerTxt1">
+                    <h1 class="banner_title">무슨 수업 들을지 고민이라면?
+                        <br>
+                        현직자 Top 50 먼저 보기 👀 </h1>
+                        <p class="text1" style="color: #000000;">
+                            입문부터 실전까지! 믿고보는 실무자 Pick!
+                        </p>
+                    </div>
+                <img src="https://cdn.inflearn.com/public/main_sliders/7f3b415a-7267-49fc-9c68-9926b8c5f600/%5B22%E1%84%90%E1%85%A2%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B5%E1%86%BC%5Db2b_top50_main_521.gif">
+            </div> 
+        </div>
+        </div>
+        <div class="pagination_container">
+            <div class="container">
+                <div class="pagination_controller">
+                </div>
+                <div class="divider"></div>
+            </div>
+        </section>
+        <div class="swiper_pagination_wrapper">
+            <div class="container">
+            <div class="swiper_pagination">
+                <span class="pagination_bullet" id="btn_bullet">Top 50 👑</span>
+                <span class="pagination_bullet active" id="btn_bullet">왕초보 모여라 😎</span>
+                <span class="pagination_bullet" id="btn_bullet">1대1 문의 🧞</span>
+                <span class="pagination_bullet"  id="btn_bullet">강의 요청 🎁</span>
+                <span class="pagination_bullet place" id="btn_bullet">강의장 맛보기 🌱</span>
+            </div>
+            <div class="bottomSolid">
+            </div>
+        </div>
+        </div>
+        </div>
+
+    <section class="search">
+        <div class="container">
+            <div class="content">
+                <h1 class="title">성장기회의 평등을 추구합니다</h1>
+                <div class="search_wrapper">
+                    <form id="" name="">
+                    <input class="search_input" type="text" placeholder="배우고 싶은 지식을 입력해보세요.">
+                    <button class="button searchBtn">
+                        <span class="icon">
+                            <img src="img/search.png"> 
+                        </span>
+                    </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="openClass">
+        <div class="container">
+            <div class="mainList">
+                <div class="openClassHeader">
+                    <a href="">
+                        <h1 class="title classTitle">
+                            무료강의? 오히려 좋아 ✨
+                            <span class="icon">
+
+                            </span>
+                        </h1>
+                    </a>
+                    <p class="subtext">
+                        무료 강의로 다양한 배움을 시작해 보세요.
+                    </p>
+                </div>
+                <div class="openClassList">
+                    <div class="classCard">
+                        <a href="">
+                            <div class="cardImage">
+                                <img src="https://cdn.inflearn.com/public/courses/329442/cover/9b564bc1-433b-4a85-a2f2-147bf198bdc3/329442-eng.png">
+                                <div class="cardContent">
+                                    <div class="classTitle">
+                                        시작해보세요! 당신의 첫 지식공유
+                                    </div>
+                                    <div class="instructor" id="">2023/11/15</div>
+                                    <div class="instructor" id="">강남문화센터 5층</div>
+                                    <div class="price" id="">이종호강사</div>
+                                    <div class="tags">
+                                        <span class="tag" style="background-color: hsl(321,63%,90%);">IT</span>
+                                        <span class="tag" style="background-color: hsl(182,75%,94%);">새강의</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="classCard">
+                        <a href="">
+                            <div class="cardImage">
+                                <img src="https://cdn.inflearn.com/public/courses/324952/course_cover/6d039c4b-8463-4dda-80c8-fac86506131f/cw-hiragana.png">
+                                <div class="cardContent">
+                                    <div class="classTitle">
+                                        안녕, 일본어는 처음이지? 누구나 쉽게 배우는 기초 일본어!
+                                    </div>
+                                    <div class="instructor" id="">2023/01/15</div>
+                                    <div class="instructor" id="">강남문화센터 5층</div>
+                                    <div class="price" id="">김정표강사</div>
+                                    <div class="tags">
+                                        <span class="tag" style="background-color: hsl(321,63%,90%);">외국어</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="classCard">
+                        <a href="">
+                            <div class="cardImage">
+                                <img src="https://cdn.inflearn.com/public/course-326281-cover/9486a764-df5f-4654-a512-79f35f498730">
+                                <div class="cardContent">
+                                    <div class="classTitle">
+                                        웃으면서 배우는 생활일본어
+                                    </div>
+                                    <div class="instructor" id="">2023/11/15</div>
+                                    <div class="instructor" id="">강남문화센터 5층</div>
+                                    <div class="price" id="">김혜원강사</div>
+                                    <div class="tags">
+                                        <span class="tag" style="background-color: hsl(321,63%,90%);">외국어</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="classCard">
+                        <a href="">
+                            <div class="cardImage">
+                                <img src="https://cdn.inflearn.com/public/courses/328999/cover/79e6611a-e32f-42c1-8a9e-374c41b3c1cf/328999-eng.png">
+                                <div class="cardContent">
+                                    <div class="classTitle">
+                                        원어민 수준 찍는 영어회화 공부방법
+                                    </div>
+                                    <div class="instructor" id="">2023/11/15</div>
+                                    <div class="instructor" id="">강남문화센터 5층</div>
+                                    <div class="price" id="">박세리강사</div>
+                                    <div class="tags">
+                                        <span class="tag" style="background-color: hsl(321,63%,90%);">외국어</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="openClassList">
+                    <div class="classCard">
+                        <a href="">
+                            <div class="cardImage">
+                                <img src="https://www.ddazua.com/pluginfile.php/3839/local_courselist/thumbnailimg/173/%EC%8D%B8%EB%84%A4%EC%9D%BC_%EC%97%84%EB%A7%88%EB%84%A4%EB%B0%98%EC%B0%AC%EA%B0%80%EA%B2%8C_%EC%8B%9C%EC%A6%8C2.jpg">
+                                <div class="cardContent">
+                                    <div class="classTitle">
+                                        누구나 쉽게 배우는 한식 반찬 만들기!
+                                    </div>
+                                    <div class="instructor" id="">2023/11/15</div>
+                                    <div class="instructor" id="">강남문화센터 5층</div>
+                                    <div class="price" id="">김동근강사</div>
+                                    <div class="tags">
+                                        <span class="tag" style="background-color: hsl(321,63%,90%);">요리</span>
+                                        <span class="tag" style="background-color: hsl(182,75%,94%);">새강의</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="classCard">
+                        <a href="">
+                            <div class="cardImage">
+                                <img src="https://cdn.inflearn.com/public/courses/327809/cover/6efc77ed-9f98-4626-8404-a359c23daeb2/327809-eng.png">
+                                <div class="cardContent">
+                                    <div class="classTitle">
+                                        스마트폰 사진 연구소 대표의 인생 사진 찍기
+                                    </div>
+                                    <div class="instructor" id="">2023/10/09</div>
+                                    <div class="instructor" id="">강남문화센터 5층</div>
+                                    <div class="price" id="">박은지강사</div>
+                                    <div class="tags">
+                                        <span class="tag" style="background-color: hsl(321,63%,90%);">취미</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="classCard">
+                        <a href="">
+                            <div class="cardImage">
+                                <img src="https://cdn.inflearn.com/public/courses/327788/cover/699d503d-f231-41ce-812a-3e661db529a3/327788-eng.png">
+                                <div class="cardContent">
+                                    <div class="classTitle">
+                                        아나운서 김주우의 말습관 트레이닝 - 중요한 것은 교감
+                                    </div>
+                                    <div class="instructor" id="">2023/11/15</div>
+                                    <div class="instructor" id="">강남문화센터 5층</div>
+                                    <div class="price" id="">이종호강사</div>
+                                    <div class="tags">
+                                        <span class="tag" style="background-color: hsl(321,63%,90%);">생활</span>
+                                        <span class="tag" style="background-color: hsl(182,75%,94%);">새강의</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="classCard">
+                        <a href="">
+                            <div class="cardImage">
+                                <img src="https://cdn.inflearn.com/public/courses/324941/course_cover/a8153884-2434-4e0d-a6af-edeb9f2d267d/rookiss-rpg-4-1.jpg">
+                                <div class="cardContent">
+                                    <div class="classTitle">
+                                        [누구나 쉽게 접근하는 게임만들기] Part4: C#과 유니트로 만드는 개발 시리즈
+                                    </div>
+                                    <div class="instructor" id="">2023/11/15</div>
+                                    <div class="instructor" id="">강남문화센터 5층</div>
+                                    <div class="price" id="">이종호강사</div>
+                                    <div class="tags">
+                                        <span class="tag" style="background-color: hsl(321,63%,90%);">IT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="classRoom">
+        <div class="container">
+            <div class="classRoomList">
+                <div class="roomHeader">
+                    <a href="">
+                        <h1 class="title roomTitle">
+                        편안한 공간과 집중력을 향상시킬수 있는 공간 🏃🏻‍♀️
+                        </h1>
+                    </a>
+                    <p class="subtext">
+                        아무것도 몰라도 따라오다 보면 전문가가 될 수 있어요!
+                    </p>
+                </div>
+                <div class="content rContent">
+                    <div class="roomContent">
+                        <a href="">
+                            <span class="image">
+                                <img src="https://www.koreaisacademy.com/renewal2021/img/academy/interior/dg/academy_interior11.jpg">
+                            </span>
+                            <div class="roomTxt">
+                            <div class="roomTitle roomTit">
+                                강남문화센터 5F
+                            </div>
+                            <div class="roomText">
+                                쾌적한 환경에서 보다 집중할 수 있고 넓은 강의장으로 
+                                많은 수강생의 참여가 가능합니다.
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="roomContent">
+                        <a href="">
+                            <span class="image">
+                                <img src="https://www.koreaisacademy.com/renewal2021/img/academy/interior/gn2/academy_interior06.jpg">
+                            </span>
+                            <div class="roomTxt">
+                            <div class="roomTitle roomTit">
+                                서초동주민센터 대강당
+                            </div>
+                            <div class="roomText">
+                                주요학과에 전임강사진을 배치하여 교육완성도를 높이고
+                                철저한 책임관리를 통해 교육만족도를 높이고 있습니다.
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="roomContent">
+                        <a href="">
+                            <span class="image">
+                                <img src="https://www.koreaisacademy.com/renewal2021/img/academy/interior/dg/academy_interior01_1.jpg">
+                            </span>
+                            <div class="roomTxt">
+                            <div class="roomTitle roomTit">
+                                넉넉한 공간! 깔끔한 공간!
+                            </div>
+                            <div class="roomText">
+                                취업지원센터를 운영해 이력서교정, 모의면접 등 
+                                취업에 핵심 기술을 전달합니다.
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="content rContent">
+                    <div class="roomContent">
+                        <a href="">
+                            <span class="image">
+                                <img src="https://www.koreaisacademy.com/renewal2021/img/academy/interior/gn2/academy_interior06.jpg">
+                            </span>
+                            <div class="roomTxt">
+                            <div class="roomTitle roomTit">
+                                넉넉한 공간! 깔끔한 공간!
+                            </div>
+                            <div class="roomText">
+                                쾌적한 환경에서 보다 집중할 수 있고 넓은 강의장으로 
+                                많은 수강생의 참여가 가능합니다.
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="roomContent">
+                        <a href="">
+                            <span class="image">
+                                <img src="https://www.koreaisacademy.com/renewal2021/img/academy/interior/gn2/academy_interior04.jpg">
+                            </span>
+                            <div class="roomTxt">
+                            <div class="roomTitle roomTit">
+                                넉넉한 공간! 깔끔한 공간!
+                            </div>
+                            <div class="roomText">
+                                주요학과에 전임강사진을 배치하여 교육완성도를 높이고
+                                철저한 책임관리를 통해 교육만족도를 높이고 있습니다.
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="roomContent">
+                        <a href="">
+                            <span class="image">
+                                <img src="https://www.koreaisacademy.com/renewal2021/img/academy/interior/dg/academy_interior18.jpg">
+                            </span>
+                            <div class="roomTxt">
+                            <div class="roomTitle roomTit">
+                                넉넉한 공간! 깔끔한 공간!
+                            </div>
+                            <div class="roomText">
+                                취업지원센터를 운영해 이력서교정, 모의면접 등 
+                                취업에 핵심 기술을 전달합니다.
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="request">
+        <div class="container">
+            <div class="header">
+                <h1 class="requestTitle">
+                    다양한 강좌를 신청하세요.
+                </h1>
+                <div class="sub_text">
+                    배우고 싶은 분야를 자유롭게 신청해보세요.
+                </div>
+            </div>
+            <div class="content">
+                <div class="request_content">
+                    <div class="box">
+                        <h2 class="subtitle">
+                            미술이 배우고 싶어요!
+                        </h2>
+                        <div class="text">
+                            저희 어머니랑 함께 미술을 배워보고 싶어요.
+                            저희 어머니랑 함께 미술을 배워보고 싶어요.
+                            저희 어머니랑 함께 미술을 배워보고 싶어요.
+                        </div>
+                        <a href="" class="requestList">
+                            <span>강좌요청 상세보기</span>
+                        </a>
+                    </div>
+                    <div class="box">
+                        <h2 class="subtitle">
+                            스프링이 배우고 싶어요!
+                        </h2>
+                        <div class="text">
+                            스프링이 배우고 싶어요!!
+                            스프링이 배우고 싶어요!!
+                            스프링이 배우고 싶어요!!
+                            스프링이 배우고 싶어요!!
+                        </div>
+                        <a href="" class="requestList">
+                            <span>강좌요청 상세보기</span>
+                        </a>
+                    </div>
+                    <div class="box">
+                        <h2 class="subtitle">
+                            미술이 배우고 싶어요!
+                        </h2>
+                        <div class="text">
+                            저희 어머니랑 함께 미술을 배워보고 싶어요.
+                            저희 어머니랑 함께 미술을 배워보고 싶어요.
+                            저희 어머니랑 함께 미술을 배워보고 싶어요.
+                            저희 어머니랑 함께 미술을 배워보고 싶어요.
+                        </div>
+                        <a href="" class="requestList">
+                            <span>강좌요청 상세보기</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   </main>
+   <footer id="footer">
+    <div class="wrapper">
+        <div class="footerTop">
+            <div class="menuList">
+                <div class="listTitle">
+                    강의목록
+                </div>
+                <div class="menuSublist">
+                    <a href="" >IT</a>
+                    <a href="" >외국어</a>
+                    <a href="" >강의추천</a>
+                </div>
+            </div>
+            <div class="menuList">
+                <div class="listTitle">
+                    공지사항
+                </div>
+                <div class="menuSublist">
+                    <a href="" >강의장 소개</a>
+                    <a href="" >수강생 문의</a>
+                    <a href="" >수강평 모아보기</a>
+                </div>
+            </div>
+            <div class="menuList">
+                <div class="listTitle">
+                    1대 1 문의
+                </div>
+                <div class="menuSublist">
+                    <a href="" >문의하기</a>
+                    <a href="" >문의답변</a>
+                    <a href="" >자주묻는 질문</a>
+                </div>
+            </div>
+            <div class="menuList">
+                <div class="listTitle">
+                    고객센터
+                </div>
+                <div class="menuSublist">
+                    <a href="" >공지사항</a>
+                    <a href="" >자주묻는 질문</a>
+                    <a href="" >저작권 신고센터</a>
+                    <a href="" >수료증 확인</a>
+                    <a href="" >강의 · 기능요청</a>
+                </div>
+            </div>
+            <div class="menuList">
+                <div class="listTitle">
+                    강의장
+                </div>
+                <div class="menuSublist">
+                    <a href="" >강의장 둘러보기</a>
+                    <a href="" >강의장 문의</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="footer_bottom_left">
+                <div class="footer_info_top">
+                    <span class="footerLogo">
+                        <a href="">
+                            <img src="img/logo.png">
+                        </a>
+                    </span>
+                    <span>
+                        |
+                        <a href="" style="color: #bdbdbd; margin-left: 10px; margin-right: 10px;">개인정보취급방침</a>
+                    </span>
+                    <span>
+                        |
+                        <a href="" style="color: #bdbdbd; margin-left: 10px;">이용약관</a>
+                    </span>
+                </div>
+                <div class="footer_info_bottom">
+                    <div class="info_dropdown">
+                        <span> (주)인프랩 | </span>
+                        <span> 대표자: 이형주 | </span>
+                        <span> 사업자번호: 499-81-00612 </span>
+                        <br>
+                        <span>통신판매업: 2018-성남분당B-0062 | </span>
+                        <span>개인정보보호책임자: 이동욱 |  </span>
+                        <span>이메일: info@inflearn.com  </span>
+                        <br>
+                        <span>주소: 경기도 성남시 분당구 대왕판교로 660 유스페이스 1A동 405호</span>
+                    </div>
+                        ©INFLAB. ALL RIGHTS RESERVED
+                </div>
+            </div>
+            <div class="footer_bottom_right">
+                <a href="">
+                    <img src="https://www.shouse.garden/images/common/u_in_m.png">
+                </a>
+                <a href="">
+                    <img src="https://www.shouse.garden/images/common/u_fb_m.png">
+                </a>
+                <a href="">
+                    <img src="https://www.shouse.garden/images/common/u_kc_m.png">
+                </a>
+                <a href="">
+                    <img src="https://www.shouse.garden/images/common/u_ap_m.png">
+                </a>
+                <a href="">
+                    <img src="https://www.shouse.garden/images/common/u_yt_m.png">
+                </a>
+            </div>
+        </div>
+    </div>
+   </footer>
+<!--<footer th:replace="/fixed/footer.html" :: body></footer>-->
+
+</body>
+<script src="/js/mainpage/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:inline="javascript">
+
+</script>
+</html>

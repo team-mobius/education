@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "Pretendard-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    color: #000a12;
+    text-rendering: optimizeSpeed;
+    text-size-adjust: 100%;
+    background-color: #fff;
+    font-family: "Pretendard-Regular";
+}
+
+/* 로고 */
+div.log_img_container {
+    text-align: center;
+}
+div.log_img_container img {
+    display: inline-block;
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+/* 줄 */
+div.first_line {
+    width: 100%;
+    border-top: 3px solid #dee2e6;
+}
+
+div.join_wrapper {
+    padding-top: 30px;
+    margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
+}
+
+div.titles {
+    margin-bottom: 30px;
+}
+/* 전체 타이틀 메세지 */
+div.join_title {
+    width: 100%;
+    font-size: 26px;
+    font-weight: 1000;
+    height: 39px;
+}
+
+/* 훠원가입 form  */
+form.join_form {
+    width: 100%;
+}
+div.join_title {
+    text-align: center;
+}
+div.input_style {
+    margin-bottom: 16px;
+}
+div.input_style :nth-child(1) {
+    font-size: 16px;
+    color: rgb(33, 37, 42);
+    letter-spacing: -0.3px;
+}
+div.input_style input {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 10px 12px 10px 12px;
+    font-size: 15px;
+    line-height: 1.47;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+/* 비밀번호 규칭 */
+div.password_rule_wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    top: -22px;
+}
+li.rules {
+    font-size: 12px;
+    color: #a1aaba;
+}
+
+/* 개인 강사 글씨 수정 */
+div.belong_title span {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+div.input_style input:focus {
+    outline: solid 1px #00b594;
+}
+/* placeholder style */
+::placeholder {
+    color: #dee2e6;
+    letter-spacing: 2px;
+}
+div.button_container {
+    text-align: center;
+}
+
+/* 버튼 style */
+form.join_form input[type="button"] {
+    box-sizing: border-box;
+    margin: 16px 0 14px 0;
+    border-radius: 4px;
+    background-color: #00b594;
+    padding: 0 16px;
+    width: 100%;
+    height: 48px;
+    line-height: 1.47;
+    font-size: 15px;
+    letter-spacing: -0.3px;
+    border: 1px solid;
+    color: #fff;
+    font: inherit;
+}
+
+/* 비밀번호 보이기 위한 눈알 이미지  */
+div.password_show_wrapper {
+    position: relative;
+}
+svg {
+    position: absolute;
+    top: 26.5px;
+    left: 365px;
+    cursor: pointer;
+}
+
+/* 정책 부분 글 */
+div.check_all {
+    box-sizing: border-box;
+    height: 40px;
+}
+div.line {
+    border-top: 1px solid #dee2e6;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 22px;
+}
+div.policy_detail {
+    height: 40px;
+    font-size: 15px;
+}
+div.arrow_container {
+    float: right;
+}
+img.arrow {
+    width: 20px;
+    height: 20px;
+}
+div.check_all span {
+    margin: 0 4px 0 4px;
+}
+div.policy_detail span {
+    margin: 0 4px 0 4px;
+}
+/* checkbox style 주기 */
+input[type="checkbox"] {
+    display: none;
+}
+input[type="checkbox"] + label.checkbox_style {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 5px;
+    cursor: pointer;
+    border: 3px solid #dee2e6;
+    border-radius: 2px;
+}
+input[type="checkbox"]:checked + label.checkbox_style::after {
+    content: "✔";
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    position: absolute;
+    left: -1.25px;
+    top: -3px;
+    background-color: #00b594;
+    color: #fff;
+}
+
+/* 로그인 하러 가기 */
+div.go_to_login_wrapper {
+    margin: 20px 0 20px 0;
+}
+div.go_to_login_container {
+    text-align: center;
+}
+div.mesage {
+    color: #a68ea5;
+}
+div.mesage span {
+    color: #000a12;
+    font-weight: 1000;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* footer style */
+div.last_line {
+    border-bottom: 2px solid #dee2e6;
+    margin: 10px;
+    background-color: #dee2e6;
+}
+div.footer_mesage_container {
+    text-align: center;
+    font-size: 12px;
+}

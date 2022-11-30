@@ -1,0 +1,171 @@
+@charset "UTF-8";
+@import "reset.css";
+@font-face {
+    font-family: "Pretendard-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+body {
+    color: #000a12;
+    text-rendering: optimizeSpeed;
+    text-size-adjust: 100%;
+    background-color: #fff;
+    font-family: "Pretendard-Regular";
+}
+div.first_line {
+    margin-top: 10px;
+    border-top: 2px solid #dee2e6;
+}
+/* main 시작 */
+main.mypage_main {
+    display: flex;
+    width: 1147px;
+    margin: 0 auto;
+}
+div.navi_wrapper {
+    width: 18%;
+    box-sizing: border-box;
+}
+ul.show_navi_detail {
+    padding-top: 24px;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: rgb(33, 37, 42);
+}
+ul.show_navi_detail li {
+    box-sizing: border-box;
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 6px;
+    padding-left: 12px;
+    font-size: 15px;
+}
+/* 선택 section 마다 section의 li 의 스타일이 날라진다 */
+li.section4 {
+    background-color: #f2f4f6;
+    font-weight: 1000;
+    color: #000a12;
+}
+
+/* mypage 내용  */
+
+/* mypage tilte */
+div.mypage_detail {
+    box-sizing: border-box;
+    width: 80%;
+    height: 1080px;
+    border-left: 2px solid #dee2e6;
+    padding-left: 24px;
+    padding-top: 30px;
+}
+div.mypage_title {
+    box-sizing: border-box;
+    font-size: 24px;
+    font-weight: 1000;
+    margin-bottom: 32px;
+}
+
+/* 후기가 보여지는 부분 */
+.count-class {
+    font-size: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.44;
+    letter-spacing: normal;
+    font-weight: 500;
+    color: rgb(33, 37, 42);
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+.class-list-container {
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+}
+.class-list-container div {
+    text-align: left;
+}
+.list-class-title,
+.list-class-place {
+    width: 30%;
+}
+.list-class-time {
+    width: 15%;
+}
+.list-class-start-date,
+.list-class-end-date {
+    width: 12.5%;
+}
+.title-part {
+    color: #a1aab2;
+    font-size: 15px;
+    /* padding: 12px 8px 13px; */
+    padding-left: 8px;
+    background-color: #f8f9fa;
+}
+.list-content {
+    /* padding: 12px 8px 13px; */
+    padding-left: 12px;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+/* 목록에 아무것도 없을때 예시 */
+.no-data-show-container {
+    padding-top: 40px;
+}
+.no-data-show-container div {
+    text-align: center;
+    margin-top: 10px;
+}
+.big-title {
+    font-size: 16px;
+    color: #353a40;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: normal;
+    font-weight: bold;
+}
+.middle-title {
+    font-size: 14px;
+    color: #878e98;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    font-weight: normal;
+}
+button.go-to-apply-class {
+    color: #00ccaa;
+    font-size: 15px;
+    background-color: #e9fbf8;
+    padding: 11px 14px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 6px;
+}
+.page-button-wrapper {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.button-container {
+    text-align: center;
+}
+.page-button {
+    font: inherit;
+    background-color: #fff;
+    border: none;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰작성</title>
+
+    <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/review/myReview.css">
+</head>
+</head>
+<body>
+<header th:replace="/fixed/header2.html" :: body></header>
+
+    <section class="review">
+        <form class="">
+            <div class="container">
+            <div class="myReview">
+                <div class="reviewTitle">
+                    <span>내가 수강한 강의 리뷰를 남겨주세요!</span>
+                </div>
+                <div class="className">
+                    <div class="nameTitle">
+                        <h3 id="#">[2022 기초코딩] 누구나 쉽게 배우는 자바수업!</h3>
+                    </div>
+                    <div class="classTeacher">
+                        <p>한동석 강사님</p>
+                    </div>
+                </div>
+                <div class="reviewContent">
+                    <div class="txt_input">
+                    <textarea type="text" id="" placeholder=" - 수강후기를 작성해주세요.&#13;&#10; - 서로 예의를 지키며 존중하는 문화를 만들어가요.&#13;&#10; - 잠깐! 서비스 운영 관련 문의는 1:1 문의하기를 이용해주세요."></textarea>
+                    </div>
+                    <div class="review_btn">
+                    <button type="button" class="btn_cancel btn-open-popup" value="취소">취소
+                    <button type="button" class="btn_input" value="등록">등록
+                    </div>
+                </div>
+            </div>
+            </div>
+        </form>
+        <div class="modal">
+            <div class="cancel_page">
+                <div class="cancel_title">
+                    <h2>작성 취소</h2>
+                </div>
+                <div class="cancel_txt">
+                    <div class="text_root">
+                        앗! 작성중인 글이 있어요. 정말 이동하시겠어요?
+                    </div>
+                    <div class="cancel_btn">
+                        <button type="button" class="back_btn">
+                            <a href="myReview.html">
+                            <span>취소</span>
+                            </a>
+                        </button>
+                        <button type="button" class="out_btn">
+                            <a href="review.html">  <!-- 마이페이지 강좌리스트로 이동 -->
+                            <span style="color: #fff;">나가기</span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="/js/review/myReview.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</html>

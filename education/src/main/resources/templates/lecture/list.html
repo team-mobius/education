@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>lecture</title>
+    <link rel="stylesheet" href="/css/lecture/list.css">
+    <link rel="stylesheet" href="/css/fixed/footer.css">
+</head>
+<body>
+<header th:replace="/fixed/header2.html" :: body></header>
+
+<main class="main">
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <aside class="side_left">
+                <nav class="menu_box">
+                    <div class="meu"><div class="menu">전체 강의 </div></div>
+                    <div class="meu"><div class="menu">개발·프로그래밍</div></div>
+                    <div class="meu"><div class="menu">보안·네트워크</div></div>
+                    <div class="meu"><div class="menu">데이터 사이언스</div></div>
+                    <div class="meu"><div class="menu">게임 개발</div></div>
+                    <div class="meu"><div class="menu">크리에이티브</div></div>
+                    <div class="meu"><div class="menu">직무·마케팅</div></div>
+                    <div class="meu"><div class="menu">학문·외국어</div></div>
+                    <div class="meu"><div class="menu">커리어</div></div>
+                    <div class="meu"><div class="menu">교양</div></div>
+                </nav>
+            </aside>
+            <div class="columns_body">
+                <header class="column_header">
+                    <div class="search">
+                        <input type="text" enterkeyhint="go" class="input" placeholder="  강의 검색하기">
+                        <button type="button" class="button" style="background: #1dc078; color: #fff; ">검색</button>
+                    </div>
+                </header>
+                <main class="columns_main">
+                    <div class="search_option">
+                        <div class="sort">
+                            <select class="select" name="order_select">
+                                <option value="seq" selected> 추천순 </option>
+                                <option value="popular"> 인기순 </option>
+                                <option value="recent"> 최신순 </option>
+                                <option value="rating"> 평점순 </option>
+                                <option value="famous"> 좋아요순</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="container">
+                        <div id="list">
+                            <th:block th:each="list:${lists}">
+                            <a class="goDetail" th:object="${list}" th:href="*{lectureNumber}">
+                                <div class="menus_explanation">
+                                    <img class="list_img" src="https://cdn.inflearn.com/public/courses/326674/cover/4657d793-56a4-42f3-9d44-dc88d125a49e">
+                                    <div class="card_content" th:text="*{lectureTitle}"></div>
+                                    <div class="name" th:text="*{lectureCategory}"></div>
+                                    <div class="tags">
+                                        <span class="tag" style="background-color: hs1(321,63%,90%);" th:text="*{lectureDate}"></span>
+                                    </div>
+                                </div>
+                            </a>
+                            </th:block>
+                        </div>
+
+                        <div th:object="${pagination}" style="margin-top: 40px; margin-right: 240px; font-weight: bold; font-size: 16px;">
+                            <div style="text-align: center;">
+                                <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
+                                <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                                    <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+                                    <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+                                </th:block>
+                                <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>></code></a>
+                            </div>
+                            <form th:action="@{/lecture/list}" th:object="${criteria}" name="pageForm">
+                                <input type="hidden" th:field="*{page}">
+                                <input type="hidden" th:field="*{amount}">
+                            </form>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+<script src="/js/basic/jquery.min.js"></script>
+<script src="/js/basic/jquery.dropotron.min.js"></script>
+<script src="/js/basic/browser.min.js"></script>
+<script src="/js/basic/breakpoints.min.js"></script>
+<script src="/js/basic/util.js"></script>
+<script src="/js/basic/main.js"></script>
+<script th:inline="javascript">
+    let boardNumber = [[${boardNumber}]];
+    let $pages = $("a.changePage");
+    const $goDetail = $("a.goDetail");
+
+    $pages.on("click", function(e){
+        e.preventDefault();
+        $(document.pageForm.page).val($(this).attr("href"));
+        document.pageForm.submit();
+    });
+
+    $goDetail.on("click", function(e){
+        e.preventDefault();
+        location.href = "/lecture/detail" + queryString + "&boardNumber=" + $(this).attr("href");
+    });
+</script>
+</html>

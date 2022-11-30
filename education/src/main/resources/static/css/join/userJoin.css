@@ -1,0 +1,162 @@
+@charset "UTF-8";
+@font-face {
+    font-family: "Pretendard-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    color: #000a12;
+    text-rendering: optimizeSpeed;
+    text-size-adjust: 100%;
+    background-color: #fff;
+    font-family: "Pretendard-Regular";
+}
+
+div.join_wrapper {
+    padding-top: 100px;
+    margin: 0 auto;
+    width: 320px;
+}
+
+div.titles {
+    margin-bottom: 30px;
+}
+/* 전체 타이틀 메세지 */
+div.join_title {
+    font-size: 26px;
+    font-weight: 1000;
+    height: 39px;
+}
+
+/* 슬라이드 mesage */
+#join_title_detail {
+    width: 320px;
+    height: 25.6px;
+    position: relative;
+    overflow: hidden;
+}
+.slides {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1600px;
+    display: flex;
+}
+.slides div {
+    min-width: 320px;
+    height: 25.6px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* 훠원가입 form  */
+div.join_title {
+    text-align: center;
+}
+div.input_style {
+    margin-bottom: 16px;
+}
+div.input_style :nth-child(1) {
+    font-size: 14px;
+    color: #3e4042;
+    letter-spacing: -0.3px;
+}
+div.input_style input {
+    width: 320px;
+    /* height: 48px; */
+    margin-top: 8px;
+    padding: 10px 12px 10px 12px;
+    font-size: 15px;
+    line-height: 1.47;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background-color: #fff;
+}
+div.input_style input:focus {
+    outline: solid 1px #00c471;
+}
+/* placeholder style */
+::placeholder {
+    color: #dee2e6;
+}
+div.button_container {
+    text-align: center;
+}
+
+/* 버튼 style */
+form.join_form input[type="button"] {
+    margin: 16px 0 14px 0;
+    border-radius: 4px;
+    background-color: #00c471;
+    padding: 0 16px;
+    width: 346px;
+    height: 48px;
+    line-height: 1.47;
+    font-size: 15px;
+    letter-spacing: -0.3px;
+    border: 1px solid;
+    color: #fff;
+    font: inherit;
+}
+
+/* 비밀번호 보이기 위한 눈알 이미지  */
+div.password_show_wrapper {
+    position: relative;
+}
+svg {
+    position: absolute;
+    top: 21.5px;
+    left: 320px;
+    cursor: pointer;
+}
+/* 정책 부분 글 */
+
+div.policy_text_area {
+    line-height: 1.5;
+    width: 340px;
+    letter-spacing: -0.3px;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    color: #858a8d;
+}
+div.policy_text_area span {
+    color: #1964d5;
+}
+
+/* 추가 체크박스 */
+div.check_container {
+    text-align: center;
+    margin: 4px;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 4px;
+    color: #858a8d;
+}
+input[id="mesage"] {
+    position: relative;
+    top: 1.5px;
+}
+
+/* 간편 로그인 */
+div.footer_container {
+    margin-top: 30px;
+}
+fieldset.other_platform_login {
+    text-align: center;
+    border-top: 1px solid #abb0b5;
+    width: 346px;
+}
+fieldset.other_platform_login legend {
+    font-weight: 400;
+    margin-bottom: 16px;
+    padding: 0 8px;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.3px;
+    color: #abb0b5;
+}

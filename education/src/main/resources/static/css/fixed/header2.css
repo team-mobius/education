@@ -1,0 +1,267 @@
+body {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, Helvetica Neue, Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, sans-serif;
+}
+/* ---------------
+       header
+   --------------- */
+#header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.navbar_left {
+  display: flex;
+  align-items: center;
+}
+.navbar_menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 1 auto;
+  margin-right: 0;
+  height: 64px;
+}
+.button {
+  margin-bottom: unset;
+  border: 1px solid #dbdbdb;
+  padding: 8px;
+  background: #fff;
+  color: #363636;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+a.button.joinBtn {
+  background: #ff7867;
+  color: #fff;
+}
+.navbar_item {
+  margin: 15px 20px;
+}
+.navbar_item a {
+  color: #4a4a4a;
+}
+.headerLogo img {
+  width: 100px;
+  height: 20px;
+}
+.navbar_item.mypageBtn {
+  display: flex;
+  align-items: center;
+}
+span.mypageIcon {
+  margin-right: 20px;
+}
+.top_header {
+  display: flex;
+}
+.top_logo img {
+  width: 20px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+.top_content {
+  margin-left: 10px;
+  font-weight: 600;
+}
+.top_header {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+
+/* ------------------
+    a 태그 남는 효과 무시
+------------------*/
+a {
+  text-decoration: none;
+  color: rgb(33, 37, 42);
+}
+
+/* ----------
+    login modal
+    ---------*/
+
+.tabs li {
+  box-sizing: border-box;
+  padding: 15px;
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.tab-content {
+  display: none;
+  padding: 15px;
+}
+.tab-content.current {
+  display: inherit;
+}
+div.tabs div.current {
+  border-top: 2px solid #dee2e6;
+}
+
+/* ----------------
+    modal 창 전체 style
+--------------*/
+div.login-modal-close-container {
+  text-align: right;
+  font-size: 14px;
+  color: #0084f4;
+}
+div.logo-container {
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 1000;
+  color: #00c471;
+}
+div.tabs {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+}
+div.user-login {
+  width: 50%;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  cursor: pointer;
+}
+div.teacher-login {
+  width: 50%;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  cursor: pointer;
+}
+.modal-login-button{
+  width: 100%;
+  height: 40px;
+  border-radius: 6px;
+  border: none;
+  background-color: #00c471;
+  font: inherit;
+  color: #fff;
+  font-weight: 800;
+  padding: 0 12px;
+  line-height: 1.43;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+}
+
+div.user-login-extra-service {
+  padding-top: 12px;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 15px;
+}
+div.user-login-extra-service div {
+  margin-left: 5px;
+}
+/* user-login style */
+form.user-login-form input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  padding: 13px 12px;
+  margin-bottom: 12px;
+  line-height: 1.47;
+  font-size: 15px;
+  border: 1px solid #dee2e6;
+  letter-spacing: -0.3px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+form.user-login-form input[type="password"] {
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  padding: 13px 12px;
+  margin-bottom: 12px;
+  line-height: 1.47;
+  font-size: 15px;
+  border: 1px solid #dee2e6;
+  letter-spacing: -0.3px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* -------------------------
+    간편 로그인 style
+-----------------------------*/
+fieldset.easy-login {
+  border: none;
+  border-top: 2px solid #dee2e6;
+  padding-top: 12px;
+}
+legend {
+  text-align: center;
+}
+div.easy-login-button-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  padding: 5px 10px 5px 53px;
+}
+
+fieldset button {
+  width: 44px;
+  height: 44px;
+  font: 13px;
+  padding: 1px 6px;
+  background-color: #fae500;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
+  cursor: pointer;
+}
+button.google-login {
+  background-color: #f8f8f8;
+}
+button.github-login {
+  background-color: #3c4043;
+}
+
+/* modal 창 띄우기 */
+div.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-modal .bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.login-modal-wrapper {
+  position: absolute;
+  background-color: #fff;
+  width: 360px;
+  height: fit-content;
+  padding: 15px;
+  padding-bottom: 30px;
+  border-radius: 6px;
+}
+div.login-hidden {
+  display: none;
+}

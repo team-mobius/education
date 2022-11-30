@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/fixed/header2.css" />
+    <link rel="stylesheet" href="/css/fixed/footer.css" />
+    <link rel="stylesheet" href="/css/request/reset.css" />
+    <link rel="stylesheet" href="/css/request/ask.css" />
+</head>
+<body>
+<header th:replace="/fixed/header2.html :: body"></header>
+    <main>
+        <div class="body_area">
+            <!-- 헤더 -->
+            <div class="body_header">
+                <h2 class="body_header_text">강의 요청</h2>
+            </div>
+            <!-- 작성 -->
+            <div class="write_area">
+                <form class="ask_form" method="post" th:action="@{/request/ask}" id="askForm" th:object="${request}">
+                    <div class="field">
+                    <input th:field="*{requestTitle}" class="ask_title" type="text" placeholder="제목을 입력하세요">
+                    </div>
+                    <div class="field">
+                    <select class="ask_category" name="category">
+                        <option value='' selected>-- 선택 --</option>
+                        <option value="개발·프로그래밍">개발·프로그래밍</option>
+                        <option value="보안·네트워크">보안·네트워크</option>
+                        <option value="데이터 사이언스">데이터 사이언스</option>
+                        <option value="기타">기타</option>
+                    </select>
+                    </div>
+                    <div class="write_content_area field">
+                        <textarea th:field="*{requestContent}" class="ask_content" cols="82" rows="22"></textarea>
+                    </div>
+                    <!-- 버튼 -->
+                    <div class="button_area actions">
+                        <div class="buttons">
+                            <button class="cancel_button">취소</button>
+                            <button class="write_button" type="submit">작성</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </main>
+    <footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+</html>

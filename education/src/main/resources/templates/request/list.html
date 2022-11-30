@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:li="http://www.thymeleaf.org">
+<head>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/fixed/header2.css" />
+    <link rel="stylesheet" href="/css/fixed/footer.css" />
+    <link rel="stylesheet" href="/css/request/reset.css" />
+    <link rel="stylesheet" href="/css/request/list.css" />
+</head>
+    <body>
+    <header th:replace="/fixed/header2.html :: body"></header>
+        <main>
+            <!-- 메인에 있는 헤더 -->
+            <section class="request_header">
+                <div class="request_header_container">
+                    <h2 class="request_header_title">강의 요청</h2>
+                    <p class="request_header_content">
+                        원하는 강의를 요청해 보세요! 어떤 강의를 요청하고
+                        싶으신가요?
+                    </p>
+                </div>
+            </section>
+            <!-- 메인 바디 -->
+            <section class="request_body">
+                <div class="body_area">
+                    <div class="columns">
+                        <!-- 좌측 카테고리 -->
+                        <div class="category_nav">
+                            <ul class="category_list">
+                                <h6 class="category_list_title">카테고리</h6>
+                                <li class="category_list_content">
+                                    <a>
+                                        <span>전체</span>
+                                    </a>
+                                </li>
+                                <li class="category_list_content">
+                                    <a>
+                                        <span>개발·프로그래밍</span>
+                                    </a>
+                                </li>
+                                <li class="category_list_content">
+                                    <a>
+                                        <span>보안·네트워크</span>
+                                    </a>
+                                </li>
+                                <li class="category_list_content">
+                                    <a>
+                                        <span>데이터 사이언스</span>
+                                    </a>
+                                </li>
+                                <li class="category_list_content">
+                                    <a>
+                                        <span>보안·네트워크</span>
+                                    </a>
+                                </li>
+                                <li class="category_list_content">
+                                    <a>
+                                        <span>보안·네트워크</span>
+                                    </a>
+                                </li>
+                                <li class="category_list_content">
+                                    <a>
+                                        <span>보안·네트워크</span>
+                                    </a>
+                                </li>
+                                <li class="category_list_content">
+                                    <a>
+                                        <span>보안·네트워크</span>
+                                    </a>
+                                </li>
+                                <li class="category_list_content">
+                                    <a>
+                                        <span>보안·네트워크</span>
+                                    </a>
+                                </li>
+                                <li class="category_list_content">
+                                    <a>
+                                        <span>보안·네트워크</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 가운데 -->
+                        <div class="post_area">
+                            <!-- 검색 -->
+                            <div class="search_area">
+                                <div class="search_container">
+                                    <div class="search_box">
+                                        <div class="search_img"></div>
+                                        <!-- 입력칸 -->
+                                        <form class="search_form">
+                                            <input
+                                                class="search_text"
+                                                type="text"
+                                                placeholder="원하는 강의를 검색해보세요!"
+                                            />
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- 검색 버튼 -->
+                                <div class="button_area">
+                                    <a href="">
+                                        <button class="search_button">
+                                            검색
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- 게시글 리스트 -->
+                            <div class="post_list_area">
+                                <!-- 정렬 & 글쓰기 버튼 -->
+                                <div class="sort_area">
+                                    <ul class="sort_list">
+                                        <li class="sort_content">• 최신순</li>
+                                        <li class="sort_content">• 좋아요순</li>
+                                    </ul>
+                                    <button class="write_button write">
+                                        <span class="write_img"></span>
+                                        <span>글쓰기</span>
+                                    </button>
+                                </div>
+                                <!-- 목록 -->
+                                <div class="list_area">
+                                    <ul class="list_container">
+                                        <!-- requestList -->
+                                        <li:block class="list_box" th:each="request:${requests}">
+                                            <a href="">
+                                                <div class="list_info" th:object="${request}">
+                                                    <div class="list_left_info">
+                                                        <div class="list_title">
+                                                            <h3 class="title_text requestTitle" th:text="*{requestTitle}"></h3>
+                                                        </div>
+                                                        <p class="list_content requestContent" th:text="*{requestContent}"></p>
+                                                        <div class="list_info_footer">
+                                                            <span>myewon</span>
+                                                            <span>·</span>
+                                                            <span class="requestRegisterDate" th:text="*{requestRegisterDate}"></span>
+                                                            <span>·</span>
+                                                            <span class="requestCategory" th:text="*{requestCategory}">개발·프로그래밍</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="list_right_info">
+                                                        <div class="reply_area">
+                                                            <span class="reply_count">0</span>
+                                                            <span class="reply_text">댓글</span>
+                                                        </div>
+                                                        <div class="like_area">
+                                                            <span class="like_img"></span>
+                                                            <span class="like_count">3</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li:bl>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 우측 -->
+                        <div class="right_side_area">
+                            <div class="ranking_area">
+                                <h2 class="popular_title">주간 인기글</h2>
+                                <ul class="ranking_contaianer">
+                                    <li class="ranking_box">
+                                        <a href="">
+                                            <p class="ranking_box_title">
+                                                웹 강의 열어주세요! 너무
+                                                듣고싶어요!sjdfskdlfkskdklsf
+                                            </p>
+                                            <div class="ranking_box_writer">
+                                                myewon
+                                            </div>
+                                    </li>
+                                    <li class="ranking_box">
+                                        <a href="">
+                                            <p class="ranking_box_title">
+                                                웹 강의 열어주세요!
+                                            </p>
+                                            <div class="ranking_box_writer">
+                                                myewon
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="ranking_box">
+                                        <a href="">
+                                            <p class="ranking_box_title">
+                                                웹 강의 열어주세요!
+                                            </p>
+                                            <div class="ranking_box_writer">
+                                                myewon
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="ranking_box">
+                                        <a href="">
+                                            <p class="ranking_box_title">
+                                                웹 강의 열어주세요!sdfsdfsllslsjksjlsljsjlkdnfskjdjfsk
+                                            </p>
+                                            <div class="ranking_box_writer">
+                                                myewon
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="ranking_box">
+                                        <a href="">
+                                            <p class="ranking_box_title">
+                                                웹 강의 열어주세요!
+                                            </p>
+                                            <div class="ranking_box_writer">
+                                                myewon
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer th:replace="/fixed/footer.html :: #footer"></footer>
+    </body>
+<script src="/js/request/list.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:inline="javascript"></script>
+<script>
+    $("button.write").on("click", function (e) {
+        e.preventDefault();
+        location.href="/request/ask";
+    })
+</script>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>수강중인 강의</title>
+    <link rel="stylesheet" href="/css/userMypage/userLecture.css">
+  </head>
+  <body>
+  <header th:replace="/fixed/header2.html" :: body></header>
+    <div class="App">
+      <div class="wrap">
+        <aside class="left-menu">
+          <nav class="nav">
+            <ul class="ul-one">
+              <li class="li-one li">
+                <a href="">
+                  <span class="dash">대시보드</span>
+                </a>
+              </li>
+              <li class="li-two li">
+                <a href="">
+                  <span class="profile">프로필</span>
+                </a>
+              </li>
+              <li class="li-three li">
+                <a href="">
+                  <span class="notice">알림</span>
+                </a>
+              </li>
+            </ul>
+            <p class="lecture-management">수강 관리</p>
+            <ul class="ul-two">
+              <li class="lecture-one li">
+                <a href="">
+                  <span class="lecture-ing">수강 중인 강좌</span>
+                </a>
+              </li>
+              <li class="lecture-two li">
+                <a href="">
+                  <span class="lecture-end">수강 완료 강좌</span>
+                </a>
+              </li>
+              <li class="lecture-two li">
+                <a href="">
+                  <span class="lecture-review">수강 후기</span>
+                </a>
+              </li>
+            </ul>
+            <p class="inquiry">문의</p>
+            <ul class="ul-three">
+              <li class="">
+                <a href="">
+                  <span class="inquiry-history">문의 내역</span>
+                </a>
+              </li>
+              <li class="">
+                <a href="">
+                  <span class="inquiry-history">1:1 문의</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+        <div class="lecture">
+          <section class="nav-lecture">
+            <ul class="lecture-nav-content">
+              <li class="nav-first"><a href="" class="ll">수강중</a></li>
+              <li class="nav-second"><a href="">수강 후기</a></li>
+            </ul>
+          </section>
+          <div class="control-container">
+            <div class="control-wrapper">
+              <div class="">
+                <label class="label">정렬 기준</label>
+                <div class="select">
+                  <select>
+                    <option value="abc">제목순</option>
+                    <option value="recent">최근 공부</option>
+                    <option value="create">최근 수강신청</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="search">
+              <div class="search-control">
+                <input class="search-input" type="text" placeholder="강의명 또는 강사 이름으로 검색" />
+              </div>
+              <div class="search-control">
+                <a class="search-button">검색</a>
+              </div>
+            </div>
+          </div>
+          <div class="play-lecture">
+            <div class="play-lecture-list">
+              <div class="play-">
+                <a href="">
+                  <div class="lecture-img">
+                    <img src="https://cdn.inflearn.com/public/courses/329442/cover/9b564bc1-433b-4a85-a2f2-147bf198bdc3/329442-eng.png" alt="" />
+                  </div>
+                  <div class="lecture-content">
+                    <div class="lecture-title">
+                      <div class="go-lecture">
+                        <div class="title-explanation">시작해보세요 ! 당신의 첫 지식공유</div>
+                        <a href="" class="go-button-first">▶</a>
+                      </div>
+                    </div>
+                    <div class="lecture-deadline">남은 기한 : 무제한</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!---->
+            <div class="play-lecture">
+              <div class="play-lecture-list">
+                <div class="play-">
+                  <a href="">
+                    <div class="lecture-img">
+                      <img src="https://cdn.inflearn.com/public/courses/325470/course_cover/4c0be9b7-79b6-4ba4-8e32-cd773577d964/nadocoding-python-game-eng.png" alt="" />
+                    </div>
+                    <div class="lecture-content">
+                      <div class="lecture-title">
+                        <div class="go-lecture">
+                          <div class="title-explanation">파이썬 무료강의(활용편 1) 추억의 오락실 게임 만들기(3시간)</div>
+                          <a href="" class="go-button">▶</a>
+                        </div>
+                        <div class="lecture-deadline">남은 기한 : 무제한</div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!---->
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+        <div class="wrapper">
+          <div class="footerTop">
+            <div class="menuList">
+              <div class="listTitle">강의목록</div>
+              <div class="menuSublist">
+                <a href="">IT</a>
+                <a href="">외국어</a>
+                <a href="">강의추천</a>
+              </div>
+            </div>
+            <div class="menuList">
+              <div class="listTitle">공지사항</div>
+              <div class="menuSublist">
+                <a href="">강의장 소개</a>
+                <a href="">수강생 문의</a>
+                <a href="">수강평 모아보기</a>
+              </div>
+            </div>
+            <div class="menuList">
+              <div class="listTitle">1대 1 문의</div>
+              <div class="menuSublist">
+                <a href="">문의하기</a>
+                <a href="">문의답변</a>
+                <a href="">자주묻는 질문</a>
+              </div>
+            </div>
+            <div class="menuList">
+              <div class="listTitle">고객센터</div>
+              <div class="menuSublist">
+                <a href="">공지사항</a>
+                <a href="">자주묻는 질문</a>
+                <a href="">저작권 신고센터</a>
+                <a href="">수료증 확인</a>
+                <a href="">강의 · 기능요청</a>
+              </div>
+            </div>
+            <div class="menuList">
+              <div class="listTitle">강의장</div>
+              <div class="menuSublist">
+                <a href="">강의장 둘러보기</a>
+                <a href="">강의장 문의</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer_bottom">
+            <div class="footer_bottom_left">
+              <div class="footer_info_top">
+                <span class="footerLogo">
+                  <a href="">
+                    <img src="img/logo.png" />
+                  </a>
+                </span>
+                <span>
+                  |
+                  <a href="" style="color: #bdbdbd; margin-left: 10px; margin-right: 10px">개인정보취급방침</a>
+                </span>
+                <span>
+                  |
+                  <a href="" style="color: #bdbdbd; margin-left: 10px">이용약관</a>
+                </span>
+              </div>
+              <div class="footer_info_bottom">
+                <div class="info_dropdown">
+                  <span> (주)인프랩 | </span>
+                  <span> 대표자: 이형주 | </span>
+                  <span> 사업자번호: 499-81-00612 </span>
+                  <br />
+                  <span>통신판매업: 2018-성남분당B-0062 | </span>
+                  <span>개인정보보호책임자: 이동욱 | </span>
+                  <span>이메일: info@inflearn.com </span>
+                  <br />
+                  <span>주소: 경기도 성남시 분당구 대왕판교로 660 유스페이스 1A동 405호</span>
+                </div>
+                ©INFLAB. ALL RIGHTS RESERVED
+              </div>
+            </div>
+            <div class="footer_bottom_right">
+              <a href="">
+                <img src="https://www.shouse.garden/images/common/u_in_m.png" />
+              </a>
+              <a href="">
+                <img src="https://www.shouse.garden/images/common/u_fb_m.png" />
+              </a>
+              <a href="">
+                <img src="https://www.shouse.garden/images/common/u_kc_m.png" />
+              </a>
+              <a href="">
+                <img src="https://www.shouse.garden/images/common/u_ap_m.png" />
+              </a>
+              <a href="">
+                <img src="https://www.shouse.garden/images/common/u_yt_m.png" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

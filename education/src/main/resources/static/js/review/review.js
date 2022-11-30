@@ -1,0 +1,3 @@
+function onDisplay(){
+    $('#noneDiv').show();
+}

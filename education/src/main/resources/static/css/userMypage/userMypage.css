@@ -1,0 +1,268 @@
+@font-face {
+    font-family: "Pretendard-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+    font-weight: 200;
+    font-style: normal;
+}
+body {
+    font-family: "Pretendard-Regular";
+}
+
+/*----- App -----*/
+
+.wrap {
+    display: flex;
+    flex: 110px;
+    padding: 32px;
+    margin: 0px auto;
+    max-width: 1200px;
+}
+.left-menu {
+    width: 16.6667%;
+    padding-right: 10px;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+li {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.li-three {
+    margin-bottom: 25px;
+}
+.inquiry {
+    color: gray;
+    font-size: 13px;
+    margin-top: 21px;
+}
+li > a {
+    color: black;
+}
+.li-one {
+    background-color: rgb(229, 249, 241);
+    color: rgb(0, 196, 113);
+    border-radius: 3px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+}
+.dash {
+    background-color: rgb(229, 249, 241);
+    color: rgb(0, 196, 113);
+    margin-left: 15px;
+}
+li > span {
+    margin-left: 15px;
+}
+.lecture-management {
+    font-size: 12px;
+    color: gray;
+}
+.profile {
+    margin-left: 15px;
+    font-size: 13px;
+}
+.notice {
+    margin-left: 15px;
+    font-size: 13px;
+}
+.lecture-ing {
+    margin-left: 15px;
+    font-size: 13px;
+}
+.lecture-end {
+    margin-left: 15px;
+    font-size: 13px;
+}
+.inquiry {
+    margin-left: 15px;
+    font-size: 13px;
+}
+.main-content {
+    width: 70%;
+    margin-left: 25px;
+}
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    gap: 24px;
+}
+.content-a {
+    text-decoration: none;
+    display: flex;
+    font-size: 20px;
+    color: black;
+}
+.content-up {
+    margin-left: 15px;
+    font-size: 13px;
+}
+.nick-name {
+    font-weight: 700;
+}
+.content-md {
+    width: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 155px;
+    border: 1px solid rgb(222, 226, 230);
+    border-radius: 8px;
+    margin-right: 35px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.content-header {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    gap: 0px;
+}
+.content-text {
+}
+.bow-left {
+    font-weight: 900;
+}
+.text-one {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    font-size: 13px;
+}
+.text-first {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.text-second {
+    display: flex;
+    margin-right: 10px;
+    font-size: 13px;
+    align-items: flex-end;
+}
+.text-third {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 27px;
+    color: gray;
+}
+.text-ro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.lecture-number {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.second- {
+    font-weight: 600;
+    color: gray;
+}
+.text-root {
+    font-size: 35px;
+    margin: 0;
+}
+.text-roots {
+    color: rgb(173, 181, 189);
+    font-weight: 900;
+}
+.study-go {
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 40px;
+    color: black;
+}
+.study-go > a {
+    color: black;
+}
+/*----- App -----*/
+
+/*
+------
+footer
+------
+*/
+footer#footer {
+    background: #303740;
+    padding: 0;
+}
+.footerTop {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1152px;
+    justify-content: space-between;
+    border-bottom: 1px solid #444;
+    padding: 32px 20px;
+}
+.menuSublist {
+    display: flex;
+    flex-direction: column;
+}
+.menuList {
+    font-weight: 700;
+    color: #eee;
+    font-size: 14px;
+    padding: 16px 0;
+    line-height: 1.43;
+}
+.menuSublist a {
+    color: #bdbdbd;
+    font-size: 14px;
+    line-height: 1.43;
+    margin-bottom: 7px;
+    font-weight: 400;
+}
+.footer_bottom {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 32px 20px;
+}
+.footer_bottom_left {
+    color: #bdbdbd;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+.listTitle {
+    margin-bottom: 15px;
+}
+.info_dropdown {
+    max-height: 54px;
+    margin-bottom: 8px;
+}
+.footer_info_top {
+    margin-bottom: 10px;
+}
+.footer_bottom_right {
+    display: flex;
+    align-items: center;
+}
+.footer_bottom_right img {
+    border: 1px solid #bdbdbd;
+    border-radius: 50%;
+    margin: 10px;
+    width: 40px;
+}
+.footerLogo img {
+    width: 80px;
+    height: 15px;
+    margin-right: 10px;
+}

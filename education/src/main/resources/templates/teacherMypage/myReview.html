@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/fixed/header2.css" />
+    <link rel="stylesheet" href="/css/fixed/footer.css" />
+    <link rel="stylesheet" href="/css/teacherMypage/myReview.css" />
+</head>
+<body>
+<header th:replace="/fixed/header2.html :: body"></header>
+
+<div class="first_line"></div>
+<main class="mypage_main">
+    <!-- navi  -->
+    <div class="navi_wrapper">
+        <div class="navi_container">
+            <ul class="show_navi_detail">
+                <a th:href="@{/teacherMypage/mypage}"><li class="section1">MY 홈</li></a>
+                <a th:href="@{/teacherMypage/temporary}"><li class="section2">작성중인 지원서</li></a>
+                <a th:href="@{/teacherMypage/myLecture}"><li class="section3">나의 강의 현황</li></a>
+                <a th:href="@{/teacherMypage/myReview}"><li class="section4">나의 후기</li></a>
+                <a th:href="@{/teacherMypage/myInfo}"><li class="section5">개인정보 설정</li></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- mypage 보여질 내용 -->
+    <div class="mypage_detail">
+        <div class="detail_container">
+            <!-- mypage title -->
+            <div class="mypage_title_container section_style">
+                <div class="mypage_title">나의 후기</div>
+            </div>
+
+            <!-- 세부 내용 시작 -->
+            <div class="show-class-detail-container">
+                <div class="show-class-detail-title">
+                    <div class="count-class">총 2개</div>
+                </div>
+
+                <div class="class-list-container">
+                    <div class="list-class-title title-part">강의명</div>
+                    <div class="list-class-place title-part">제목</div>
+                    <div class="list-class-time title-part">작성자</div>
+                    <div class="list-class-start-date title-part">작성 날짜</div>
+                    <div class="list-class-end-date title-part">조회수</div>
+                    <div class="list-class-personnel title-part"></div>
+                </div>
+
+                <div class="class-list-container">
+                    <div class="list-class-title list-content">타자 3000타 너두 할 수있어</div>
+                    <div class="list-class-place list-content">강의 듣고 타자가 너무 빨라졌어요</div>
+                    <div class="list-class-time list-content">이종호</div>
+                    <div class="list-class-start-date list-content">2022/12/01</div>
+                    <div class="list-class-end-date list-content">15</div>
+                    <div class="list-class-personnel list-content"></div>
+                </div>
+
+                <div class="class-list-container">
+                    <div class="list-class-title list-content">타자 3000타 너두 할 수있어</div>
+                    <div class="list-class-place list-content">강의 듣고 타자가 너무 빨라졌어요</div>
+                    <div class="list-class-time list-content">이종호</div>
+                    <div class="list-class-start-date list-content">2022/12/01</div>
+                    <div class="list-class-end-date list-content">15</div>
+                    <div class="list-class-personnel list-content"></div>
+                </div>
+
+                <div class="page-button-wrapper">
+                    <div class="button-container"><button type="button" class="page-button">1</button></div>
+                    <div class="button-container"><button type="button" class="page-button">2</button></div>
+                    <div class="button-container"><button type="button" class="page-button">3</button></div>
+                </div>
+
+                <!-- 아무것도 없을 때 예시 -->
+                <div class="no-data-show-container">
+                    <div class="big-title">나의 후기가 없습니다.</div>
+                    <div class="middle-title">열심히 강의를 제공해 주세요.</div>
+                    <div class="button-container">
+                        <button type="button" class="go-to-apply-class">강의 신청하러 가기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/fixed/header2.css" />
+    <link rel="stylesheet" href="/css/fixed/footer.css" />
+    <link rel="stylesheet" href="/css/teacherMypage/myLecture.css" />
+</head>
+<body>
+<header th:replace="/fixed/header2.html :: body"></header>
+
+<div class="first_line"></div>
+<main class="mypage_main">
+    <!-- navi  -->
+    <div class="navi_wrapper">
+        <div class="navi_container">
+            <ul class="show_navi_detail">
+                <a th:href="@{/teacherMypage/mypage}"><li class="section1">MY 홈</li></a>
+                <a th:href="@{/teacherMypage/temporary}"><li class="section2">작성중인 지원서</li></a>
+                <a th:href="@{/teacherMypage/myLecture}"><li class="section3">나의 강의 현황</li></a>
+                <a th:href="@{/teacherMypage/myReview}"><li class="section4">나의 후기</li></a>
+                <a th:href="@{/teacherMypage/myInfo}"><li class="section5">개인정보 설정</li></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- mypage 보여질 내용 -->
+    <div class="mypage_detail">
+        <div class="detail_container">
+            <!-- 마이페이지 세부내용 타이틀 -->
+            <div class="mypage_title_container section_style">
+                <div class="mypage_title">나의 강의 현황</div>
+            </div>
+
+            <!-- 마이페이지 세부내용 part1 -->
+            <div class="part1-box-container">
+                <a th:href="@{/teacherMypage/myLecture}"
+                ><div class="box done-class">
+                    <div class="box-title">완료 강의</div>
+                    <div class="count" th:text=${countFinished}></div>
+                </div>
+                </a>
+                <a th:href="@{/teacherMypage/ongoing}"
+                ><div class="box on-going-class">
+                    <div class="box-title">진행 중인 강의</div>
+                    <div class="count" th:text=${countOngoing}></div>
+                </div>
+                </a>
+                <a th:href="@{/teacherMypage/expected}"
+                ><div class="box expected-class">
+                    <div class="box-title">진행 예정 강의</div>
+                    <div class="count" th:text=${countExpected}></div>
+                </div>
+                </a>
+            </div>
+
+            <!-- 세부 내용 시작 -->
+            <div class="show-class-detail-container">
+                <div class="show-class-detail-title">
+                    <div class="count-class">
+                        <span>총&nbsp;</span>
+                        <span th:text=${countFinished}></span>
+                        <span>개</span>
+                    </div>
+                </div>
+
+                <div class="class-list-container">
+                    <div class="list-class-title title-part">강의명</div>
+                    <div class="list-class-place title-part">장소</div>
+                    <div class="list-class-time title-part">시간</div>
+                    <div class="list-class-start-date title-part">날짜</div>
+                    <div class="list-class-end-date title-part">참여 인원</div>
+                </div>
+
+                <th:block th:if="${countFinished != 0}" th:each="lecture:${lectures}">
+                    <div class="class-list-container" th:object="${lecture}">
+                        <div class="list-class-title list-content" th:text="*{lectureTitle}"></div>
+                        <div class="list-class-place list-content" th:text="*{lectureCategory}"></div>
+                        <div class="list-class-time list-content" th:text="*{lectureTime}"></div>
+                        <div class="list-class-start-date list-content" th:text="*{lectureDate}"></div>
+                        <div class="list-class-end-date list-content">
+                            <span th:text="*{lectureApplyNumber}"></span>
+                            <span>/</span>
+                            <span th:text="*{lectureMaximumNumber}"></span>
+                        </div>
+                    </div>
+                </th:block>
+
+                <!-- 아무것도 없을 때 예시 -->
+                <th:block th:if="${countFinished == 0}">
+                    <div class="no-data-show-container">
+                        <div class="big-title">완료한 강의가 없습니다.</div>
+                        <div class="middle-title">다양한 강의를 제공해 주세요.</div>
+                        <div class="button-container">
+                            <a th:href="@{/teacherMypage/apply}">
+                                <button type="button" class="go-to-apply-class">강의 신청하러 가기</button>
+                            </a>
+                        </div>
+                    </div>
+                </th:block>
+
+            </div>
+            <div th:object="${pagination}" style="margin-top: 40px; margin-right: 40px;">
+                <div style="text-align: center">
+                    <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
+                    <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                        <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+                        <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+                    </th:block>
+                    <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>></code></a>
+                </div>
+                <form th:action="@{/teacherMypage/myLecture}" th:object="${criteria}" name="pageForm">
+                    <input type="hidden" th:field="*{page}">
+                    <input type="hidden" th:field="*{amount}">
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+<script src="/js/basic/jquery.min.js"></script>
+<script src="/js/basic/jquery.dropotron.min.js"></script>
+<script src="/js/basic/browser.min.js"></script>
+<script src="/js/basic/breakpoints.min.js"></script>
+<script src="/js/basic/util.js"></script>
+<script src="/js/basic/main.js"></script>
+<script th:inline="javascript">
+    let $pages = $("a.changePage");
+
+    $pages.on("click", function(e){
+        e.preventDefault();
+        $(document.pageForm.page).val($(this).attr("href"));
+        document.pageForm.submit();
+    });
+
+</script>
+</html>
