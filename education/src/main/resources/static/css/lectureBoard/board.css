@@ -1,0 +1,100 @@
+@font-face {
+    font-family: "Pretendard-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+body {
+    font-family: "Pretendard-Regular";
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+button {
+    cursor: pointer;
+}
+h1 {
+    text-align: center;
+}
+h3 {
+    margin-left: 10px;
+}
+.board_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th {
+    text-align: center;
+    border-top: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    height: 40px;
+    color: #5c5c5cfc;
+}
+td {
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    height: 40px;
+    color: #898989;
+    font-weight: 500;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.board_num, .board_view, .board_like {
+    width: 45px;
+}
+.board_day, .board_writer {
+    width: 60px;
+}
+td.board_title {
+    text-align: left;
+}
+.board_btn {
+    float: right;
+    margin-top: 15px;
+}
+.board_btn button {
+    color: #fff;
+    background: #1dc078;
+    padding: 15px;
+    border: 1px solid #fff;
+    width: 80px;
+    height: 30px;
+    font-weight: 500;
+    border-radius: 15px;
+    font-family: Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input.search_w {
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 15px;
+    width: 200px;
+    position: relative;
+}
+button.search_b {
+    border: 0;
+    background: no-repeat;
+    position: absolute;
+    margin-left: -32px;
+    margin-top: 5px;
+}
+button.search_b img {
+    width: 18px;
+}
+.board_main {
+    margin-top: 60px;
+    margin-bottom: 150px;
+    width: 85%;
+    margin-left: 100px;
+}

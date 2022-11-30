@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.mobius.education.domain.vo.UserVO" alias="userVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.TeacherVO" alias="teacherVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.PlaceVO" alias="placeVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.LectureVO" alias="lectureVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.LectureDTO" alias="lectureDTO"/>
+        <typeAlias type="com.mobius.education.domain.vo.ReviewVO" alias="reviewVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.LectureFileVO" alias="lectureFileVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.RequestVO" alias="requestVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.ApplyLectureVO" alias="applyLectureVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.NoticeVO" alias="noticeVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.PlaceFileVO" alias="placeFileVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.ReservePlaceVO" alias="reservePlaceVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.LectureThumbnailVO" alias="lectureThumbnailVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.LectureNoticeVO" alias="lectureNoticeVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.RequestHeartVO" alias="requestHeartVO"/>
+        <typeAlias type="com.mobius.education.domain.vo.RequestCommentVO" alias="requestCommentVO"/>
+    </typeAliases>
+</configuration>

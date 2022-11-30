@@ -1,0 +1,160 @@
+body {
+    font-family: Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+}
+
+
+/* classReview */
+section#review {
+    margin-bottom: 100px;
+}
+.classBg {
+    background: #002333;
+}
+.className {
+    font-size: 32px;
+    margin-top: 40px;
+    display: flex;
+}
+.className a {
+    color: #fff;
+    margin-top: 50px;
+    line-height: 1.6;
+}
+.classImg img {
+    width: 500px;
+    padding: 40px;
+}
+.className span {
+    font-size: 25px;
+    font-weight: normal;
+}
+.reviewMain h6 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 23px;
+    overflow: hidden;
+}
+ul.review_list {
+    list-style: none;
+    padding: 0;
+    margin-top: 50px;
+}
+.tp {
+    margin-bottom: 10px;
+    line-height: 1;
+}
+strong {
+    font-size: 16px;
+    color: #222;
+    margin-right: 5px;
+}
+span.tm {
+    color: #aaa;
+    font-size: 13px;
+    vertical-align: middle;
+}
+.txt {
+    background: #f1f3f5;
+    padding: 20px;
+    font-size: 15px;
+    font-weight: 300;
+    color: #222;
+    border-radius: 5px;
+    line-height: 1.6;
+}
+.moreView {
+    border: 1px solid #bdbdbd;
+    text-align: center;
+    height: 40px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+p.class_txt {
+    font-size: 20px;
+    line-height: 1.9;
+    width: 90%;
+    margin-top: 10px;
+}
+p.class_teacher {
+    margin: 0;
+    font-size: 17px;
+}
+
+/* 
+------
+footer
+------
+*/
+footer#footer {
+    background: #303740;
+    padding: 0;
+}
+.footerTop {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1152px;
+    justify-content: space-between;
+    border-bottom: 1px solid #444;
+    padding: 32px 20px;
+}
+.menuSublist {
+    display: flex;
+    flex-direction: column;
+}
+.menuList {
+    font-weight: 700;
+    color: #eee;
+    font-size: 14px;
+    padding: 16px 0;
+    line-height: 1.43;
+}
+.menuSublist a {
+    color: #bdbdbd;
+    font-size: 14px;
+    line-height: 1.43;
+    margin-bottom: 7px;
+    font-weight: 400;
+}
+.footer_bottom {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 32px 20px;
+}
+.footer_bottom_left {
+    color: #bdbdbd;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+.listTitle {
+    margin-bottom: 15px;
+}
+.info_dropdown {
+    max-height: 54px;
+    margin-bottom: 8px;
+}
+.footer_info_top {
+    margin-bottom: 10px;
+}
+.footer_bottom_right {
+    display: flex;
+    align-items: center;
+}
+.footer_bottom_right img{
+    border: 1px solid #bdbdbd;
+    border-radius: 50%;
+    margin: 10px;
+    width: 40px;
+}
+.footerLogo img {
+    width: 80px;
+    height: 15px;
+    margin-right: 10px;
+}

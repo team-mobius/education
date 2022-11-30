@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/fixed/header2.css" />
+    <link rel="stylesheet" href="/css/fixed/footer.css" />
+    <link rel="stylesheet" href="/css/teacherMypage/mypage.css" />
+</head>
+<body>
+
+<header th:replace="/fixed/header2.html :: body"></header>
+
+<div class="first_line"></div>
+<main class="mypage_main">
+    <!-- navi  -->
+    <div class="navi_wrapper">
+        <div class="navi_container">
+            <ul class="show_navi_detail">
+                <a th:href="@{/teacherMypage/mypage}"><li class="section1">MY 홈</li></a>
+                <a th:href="@{/teacherMypage/temporary}"><li class="section2">작성중인 지원서</li></a>
+                <a th:href="@{/teacherMypage/myLecture}"><li class="section3">나의 강의 현황</li></a>
+                <a th:href="@{/teacherMypage/myReview}"><li class="section4">나의 후기</li></a>
+                <a th:href="@{/teacherMypage/myInfo}"><li class="section5">개인정보 설정</li></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- mypage 보여질 내용 -->
+    <div class="mypage_detail">
+        <div class="detail_container">
+            <div class="mypage_title_container section_style">
+                <div class="mypage_title">MY 홈</div>
+            </div>
+
+            <!-- 두번째 section 현재 강의 현황  -->
+            <div class="mypage_part2_container section_style">
+                <div class="mypage_part2_title_container">
+                    <div class="mypage_part2_title">현재 나의 강의 현황</div>
+                    <button class="show_detail_part2">
+                        <a th:href="@{/teacherMypage/myLecture}">전체보기 &gt;</a>
+                    </button>
+
+                </div>
+                <div class="mypage_part2_detail_container">
+                    <div class="mypage_part2_detail">
+                        <a th:href="@{/teacherMypage/expected}">
+                            <div class="to_be_in_progress_class show_box">
+                                <div class="inside_title">진행예정 강좌</div>
+                                <div class="count_class" th:text=${countExpected}></div>
+                            </div>
+                        </a>
+                        <a th:href="@{/teacherMypage/myLecture}">
+                            <div class="ongoing_class show_box">
+                                <div class="inside_title">진행완료 강좌</div>
+                                <div class="count_class" th:text=${countFinished}></div>
+                            </div>
+                        </a>
+                        <a th:href="@{/teacherMypage/ongoing}">
+                            <div class="done_class show_box">
+                                <div class="inside_title">진행중인 강좌</div>
+                                <div class="count_class" th:text=${countOngoing}></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 첫번째 section 강의 지원 -->
+            <div class="mypage_part1_container section_style">
+                <div class="mypage_part1_title_container">
+                    <div class="mypage_part1_title">작성중인 지원서</div>
+                    <button class="show_detail_part1">
+                        <a th:href="@{/teacherMypage/temporary}">전체보기 &gt;</a>
+                    </button>
+                </div>
+                <div class="mypage_part1_detail_container">
+                    <div class="mypage_part1_detail">
+                        <div class="no_apply_mesage">작성중인 지원서가 없어요</div>
+                        <div class="no_apply_mesage">관심있는 공고에 지원해 보세요.</div>
+                        <div class="go_to_apply">
+                            <button type="button">
+                                <a style="color: #00ccaa;" th:href="@{/teacherMypage/apply}">강의 등록하러 가기</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 세번째 section -->
+            <div class="mypage_part3_container section_style">
+                <div class="mypage_part3_title_container">
+                    <div class="mypage_part3_title">나의 후기</div>
+                    <button class="show_detail_part3">
+                        <a th:href="@{/teacherMypage/myReview}">전체보기 &gt;</a>
+                    </button>
+                </div>
+                <div class="mypage_part3_detail_container">
+                    <div class="mypage_part3_detail">
+                        <div class="no_comment_mesage">현재 나의 후기가 없어요</div>
+                        <div class="comment_mesage">
+                            <span class="comment_list_title">강의제목</span>
+                            <span class="comment_list_writer">작성자</span>
+                            <span class="comment_list_date">작성 날짜</span>
+                        </div>
+                        <a>
+                            <div class="comment_mesage">
+                                <span class="comment_title">[2022 코딩 입문] 누구나 쉽게 배우는 JAVA!</span>
+                                <span class="comment_writer">김혜원</span>
+                                <span class="comment_date">2022/11/28</span>
+                            </div>
+                        </a>
+                        <a>
+                            <div class="comment_mesage">
+                                <span class="comment_title">[2022 코딩 입문] 누구나 쉽게 배우는 JAVA!</span>
+                                <span class="comment_writer">김혜원</span>
+                                <span class="comment_date">2022/11/28</span>
+                            </div>
+                        </a>
+                        <a>
+                            <div class="comment_mesage">
+                                <span class="comment_title">[2022 코딩 입문] 누구나 쉽게 배우는 JAVA!</span>
+                                <span class="comment_writer">김혜원</span>
+                                <span class="comment_date">2022/11/28</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+<script th:inline="javascript">
+
+</script>
+</html>

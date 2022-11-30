@@ -1,0 +1,349 @@
+@charset "UTF-8";
+@import "reset.css";
+@font-face {
+    font-family: "Pretendard-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+body {
+    color: #000a12;
+    text-rendering: optimizeSpeed;
+    text-size-adjust: 100%;
+    background-color: #f2f4f6;
+    font-family: "Pretendard-Regular";
+}
+
+/* ------------------
+  강의 등록 시작
+  --------------*/
+
+main {
+    width: 1080px;
+    margin: 0 auto;
+}
+/* 강의 등록 title */
+.lecture-title-container {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+}
+.register-title {
+    font-size: 24px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.42;
+    letter-spacing: -0.3px;
+    white-space: pre-line;
+    word-break: break-all;
+    margin: 0px;
+    color: rgb(33, 37, 42);
+}
+
+/* tab menu style */
+.tab-menu-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 100px);
+    background-color: #fff;
+    padding-top: 11px;
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.tab-menu-container div {
+    box-sizing: border-box;
+    font-size: 15px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    font-weight: 500;
+    margin: 0px;
+    color: rgb(135, 142, 152);
+    /* margin: 0 24px 0 0; */
+    padding: 0 0 6px;
+    text-align: center;
+}
+.tabs {
+    cursor: pointer;
+}
+
+/* tab-1 내용 시작 */
+.tab-1-wrapper {
+    background-color: #fff;
+    padding-top: 32px;
+}
+.tab-1-container {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.tab-title-container {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #a1aab2;
+    border-radius: 6px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.first-title {
+    font-size: 15px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    font-weight: normal;
+    white-space: pre-line;
+    word-break: break-all;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    color: rgb(234, 236, 238);
+}
+.second-title {
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.4;
+    letter-spacing: -0.3px;
+    white-space: pre-line;
+    word-break: break-all;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    color: rgb(255, 255, 255);
+}
+
+/* 유의사항 메세지 */
+.notice-message-container {
+    padding-top: 16px;
+    padding-bottom: 56px;
+}
+.notice-message {
+    background-color: #fff8e1;
+    font-size: 15px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    font-weight: 500;
+    color: rgb(188, 98, 16);
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+/* 이름 핸드폰 번호 입력 */
+.name-phone-number-container {
+    box-sizing: border-box;
+    display: flex;
+    padding-bottom: 20px;
+}
+.name-input-container,
+.phone-number-input-container {
+    width: 50%;
+}
+
+.input-title {
+    font-size: 15px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    font-weight: normal;
+    color: rgb(33, 37, 42);
+    word-break: break-all;
+    cursor: default;
+    user-select: none;
+    padding-bottom: 6px;
+}
+
+input.type1 {
+    width: 90%;
+    border-radius: 6px;
+    align-items: center;
+    padding: 0px 16px;
+    height: 2.933rem;
+    border: 1px solid rgb(234, 236, 238);
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    cursor: text;
+    font: inherit;
+}
+
+/* 이메일 입력 */
+.email-input-container {
+    box-sizing: border-box;
+    width: 100%;
+    padding-bottom: 20px;
+}
+input.type2 {
+    width: 95%;
+    border-radius: 6px;
+    align-items: center;
+    padding: 0px 16px;
+    height: 2.933rem;
+    border: 1px solid rgb(234, 236, 238);
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    cursor: text;
+}
+.address-input-container {
+    box-sizing: border-box;
+    padding-bottom: 20px;
+}
+.address1-address2-container {
+    display: flex;
+}
+s .name-input-container,
+.phone-number-input-container {
+    width: 50%;
+}
+
+/* -----------------
+  강의직군 입력
+  ----------------- */
+.lecture-category-input-container {
+    box-sizing: border-box;
+    padding-bottom: 20px;
+}
+select {
+    width: 98.5%;
+    border-radius: 6px;
+    align-items: center;
+    padding: 0px 16px;
+    height: 2.933rem;
+    border: 1px solid rgb(234, 236, 238);
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    cursor: text;
+    font: inherit;
+}
+/* -----------
+  tab-2
+  -------------*/
+.tab-2-wrapper {
+    margin-top: 30px;
+}
+.tab-2-container {
+    padding-left: 24px;
+    padding-right: 24px;
+    background-color: #ffffff;
+    padding-top: 32px;
+}
+/* 강의 제목 */
+.lecture-title-input-container {
+    padding-bottom: 20px;
+}
+/* 강의 상세 내용 */
+textarea {
+    width: 95%;
+    resize: none;
+    border-radius: 6px;
+    padding: 0px 16px;
+    border: 1px solid rgb(234, 236, 238);
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    cursor: text;
+    font: inherit;
+}
+.lecture-detail-input-container {
+    padding-bottom: 20px;
+}
+
+/* 강의 썸네일  */
+.lecture-detail-img-input-container {
+    padding-bottom: 20px;
+}
+#detail-img-file {
+}
+
+.file-upload {
+    border: 2px solid #dee2e6;
+    width: 20%;
+    box-sizing: border-box;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* 강의 상세 정보 파일 입력 */
+#thumbnail-img-file {
+}
+
+.lecture-thumbnail-img-input-container {
+    padding-bottom: 20px;
+}
+/* ----------
+  tab-3
+------------*/
+.tab-3-wrapper {
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+.tab-3-container {
+    padding-left: 24px;
+    padding-right: 24px;
+    background-color: #ffffff;
+    padding-top: 32px;
+}
+
+/* 강의 날짜 */
+.lecture-date-input-container {
+    padding-bottom: 20px;
+}
+/* 강의 시간  */
+.lecture-time-input-container {
+    padding-bottom: 20px;
+}
+/* -------------
+  강의 장소 선택
+  -------------*/
+.lecture-place-input-container {
+    padding-bottom: 20px;
+}
+/* ---------------
+  버튼 스타일
+---------------*/
+.button-wrapper {
+    position: fixed;
+    width: 1080px;
+    bottom: 0;
+}
+.button-container {
+    background-color: #fff;
+    text-align: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.temporary-storage-btn {
+    font-weight: bold;
+    width: 9.333rem;
+    height: 2.933rem;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid rgb(234, 236, 238);
+    background-color: rgb(255, 255, 255);
+    color: rgb(33, 37, 42);
+    padding: 11px 14px;
+    font-size: 15px;
+    font: inherit;
+}
+.submit-btn {
+    font-weight: bold;
+    width: 9.333rem;
+    height: 2.933rem;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background-color: rgb(0, 204, 170);
+    color: rgb(255, 255, 255);
+    padding: 11px 14px;
+    font: inherit;
+}

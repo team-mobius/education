@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/fixed/header2.css" />
+    <link rel="stylesheet" href="/css/fixed/footer.css" />
+    <link rel="stylesheet" href="/css/teacherMypage/applyLecture.css" />
+    <style>
+        .uploadResult ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .uploadResult ul li {
+            position: relative;
+        }
+
+        .uploadResult ul li span {
+            display: block;
+            position: absolute;
+            right: 10px;
+            top: -25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="/fixed/header2.html :: body"></header>
+
+<!-- ----------
+        강의 등록 페이지
+    -------------->
+<main class="lecture-register">
+    <div class="lecture-register-wrapper">
+        <div class="lectuer-register-container">
+            <!-- 강의 등록 페이지 title -->
+            <div class="register-title-container">
+                <div class="register-title">강의 등록</div>
+            </div>
+
+            <form method="post" th:action="@{/teacherMypage/apply}" id="applyForm" th:object="${apply}" enctype="multipart/form-data" class="lecture-input-form">
+                <!-- -----------
+                    tab-2 시작
+                  ------------->
+                <div class="tab-2-wrapper">
+                    <div class="tab-2-container">
+                        <!-- tab-2 title -->
+                        <div class="tab-title-container">
+                            <div class="first-title">강의는 이런 내용 입니다!</div>
+                            <div class="second-title">강의 정보</div>
+                        </div>
+
+                        <!-- 유의사항 메세지 -->
+                        <div class="notice-message-container">
+                            <div class="notice-message">필수사항 입니다!! 꼭 입력해 주세요!</div>
+                        </div>
+
+                        <!-- 강의 제목 -->
+                        <div class="lecture-title-input-container">
+                            <div class="input-title">강의 제목</div>
+                            <input th:field="*{lectureTitle}" type="text" class="type2" placeholder="강의 제목" />
+                        </div>
+
+                        <!-- 강의 카테고리 -->
+                        <div class="lecture-category-input-container">
+                            <div class="input-title">카테고리</div>
+                            <select th:field="*{lectureCategory}" name="lecture-category">
+                                <option value="언어">언어</option>
+                                <option value="IT">IT</option>
+                                <option value="체육">체육</option>
+                                <option value="수학">수학</option>
+                                <option value="과학">과학</option>
+                                <option value="기타">기타</option>
+                            </select>
+                        </div>
+
+                        <!-- 수강 인원 -->
+                        <div class="lecture-title-input-container">
+                            <div class="input-title">수강 인원</div>
+                            <input th:field="*{lectureMaximumNumber}" type="number" class="type2" placeholder="수강 인원 (숫자만 입력해주세요.)" />
+                        </div>
+
+                        <!-- 강의 상세 내용 -->
+                        <div class="lecture-detail-input-container">
+                            <div class="input-title">강의 상세 내용</div>
+                            <textarea th:field="*{lectureContent}" cols="100" rows="10"> </textarea>
+                        </div>
+
+                        <!-- 강의 썸네일 img 파일 등록 -->
+                        <div class="lecture-detail-img-input-container">
+                            <div class="input-title">강의 썸네일</div>
+                            <input type="file" id="thumbnail-img-file" name="thumb" />
+<!--                            <input type="file" id="detail-img-file" />-->
+<!--                            <label for="detail-img-file">-->
+<!--                                <div class="file-upload">파일 업로드 하기</div>-->
+<!--                            </label>-->
+                        </div>
+
+                        <!-- 강의 상세 img 파일 등록 -->
+                        <div class="lecture-thumbnail-img-input-container">
+                            <div class="input-title">강의 상세 내용</div>
+                            <input type="file" id="detail-img-file" name="upload" multiple/>
+<!--                            <input type="file" id="thumbnail-img-file" />-->
+<!--                            <label for="thumbnail-img-file">-->
+<!--                                <div class="file-upload">파일 업로드 하기</div>-->
+<!--                            </label>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-3-wrapper">
+                    <div class="tab-3-container">
+                        <!-- tab-3 title -->
+                        <div class="tab-title-container">
+                            <div class="first-title">강의는 이 곳에서 진행 됩니다!</div>
+                            <div class="second-title">강의 장소 및 시간</div>
+                        </div>
+
+                        <!-- 유의사항 메세지 -->
+                        <div class="notice-message-container">
+                            <div class="notice-message">원하는 강의장과 시간을 선택해주세요!</div>
+                        </div>
+
+                        <!-- 강의 날짜 입력 -->
+                        <div class="lecture-date-input-container">
+                            <div class="input-title">강의 날짜</div>
+                            <input th:field="*{lectureDate}" type="date" class="type2" />
+                        </div>
+
+                        <!-- 강의 장소 선택 -->
+                        <div class="lecture-place-input-container">
+                            <div class="input-title">강의 장소</div>
+                            <select th:field="*{lecturePlace}" class="lecture-place-list" name="lecture-place-list">
+<!--                                <th:block th:each="place:${places}" th:object="${place}">-->
+<!--                                        <option th:value="*{placeName}" th:text="*{placeName}"></option>-->
+<!--                                </th:block>-->
+                                <option value="뫼비우스문화센터 5F A강연장">뫼비우스문화센터 5F A강연장</option>
+                                <option value="뫼비우스문화센터 5F B강연장">뫼비우스문화센터 5F B강연장</option>
+                                <option value="뫼비우스문화센터 5F C강연장">뫼비우스문화센터 5F C강연장</option>
+                                <option value="뫼비우스문화센터 5F D강연장">뫼비우스문화센터 5F D강연장</option>
+                                <option value="뫼비우스문화센터 5F E강연장">뫼비우스문화센터 5F E강연장</option>
+                                <option value="뫼비우스문화센터 5F F강연장">뫼비우스문화센터 5F F강연장</option>
+                            </select>
+                        </div>
+
+                        <!-- 강의 시간 입력 -->
+                        <div class="lecture-time-input-container">
+                            <div class="input-title">강의 시간</div>
+                            <select th:field="*{lectureTime}" name="lecture-time-list">
+                                <option value="Time A (9:00~12:00)">Time A (9:00~12:00)</option>
+                                <option value="Time B (13:00~17:00)">Time B (13:00~17:00)</option>
+                                <option value="Time C (19:00~22:00)">Time C (19:00~22:00)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-wrapper">
+                    <div class="button-container">
+                        <input type="button" class="temporary-storage-btn" value="임시저장" />
+                        <input type="submit" class="submit-btn" value="제출하기" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+<script src="/js/basic/jquery.min.js"></script>
+<script src="/js/basic/jquery.dropotron.min.js"></script>
+<script src="/js/basic/browser.min.js"></script>
+<script src="/js/basic/breakpoints.min.js"></script>
+<script src="/js/basic/util.js"></script>
+<script src="/js/basic/main.js"></script>
+<script th:inline="javascript">
+    $("input.temporary-storage-btn").on("click", function(e){
+        e.preventDefault();
+        location.href = "/teacherMypage/temporary";
+    });
+</script>
+</html>

@@ -1,0 +1,97 @@
+@charset "UTF-8";
+@import "reset.css";
+
+.body_area {
+    width: 752px;
+    padding: 0 16px;
+    margin: 0 auto;
+    margin-bottom: 120px;
+}
+
+.body_header {
+    border-bottom: 2px solid rgb(222, 226, 230);
+    height: 46px;
+    margin-bottom: 50px;
+}
+
+.body_header_text {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 14px  16px;
+}
+
+.ask_form {
+    position: relative;
+}
+
+.ask_title {
+    height: 39px;
+    width: 100%;
+    border: 0;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.ask_category {
+    height: 26px;
+    width: 230px;
+    border: 0;
+    border-bottom: 1px solid rgb(222, 226, 230);
+    font-size: 16px;
+}
+
+.write_content_area {
+    width: 720px;
+    height: 480px;
+    margin: 20px 0;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+}
+
+textarea {
+    resize: none;
+}
+
+.ask_content {
+    margin: 16px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    border: 0;
+
+}
+
+.button_area {
+    height: 42px;
+    margin: 0 auto;
+    padding: 16px 0;
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+}
+
+button {
+    padding: 0px 22px;
+    width: auto;
+    height: 46px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cancel_button {
+    margin-right: 8px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(206, 212, 218);
+    border-radius: 8px;
+}
+
+.write_button {
+    border: 1px solid transparent;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 196, 113);
+    border-radius: 8px;
+}

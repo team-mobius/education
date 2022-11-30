@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+  </head>
+  <link rel="stylesheet" href="/css/fixed/reset.css">
+  <link rel="stylesheet" href="/css/join/userJoin.css" />
+  <body>
+  <header th:replace="/fixed/header2.html" :: body></header>
+    <main class="main">
+      <div class="join_wrapper">
+        <!-- 사용자 회원 가입 -->
+        <div class="user_join_container tab-content current" id="user_join_container">
+          <form action="" class="join_form">
+            <div class="titles">
+              <div class="join_title">
+                <h2>사용자 회원가입</h2>
+              </div>
+              <!-- slide tiltle -->
+              <div class="join_title_detail" id="join_title_detail">
+                <div class="slides">
+                  <div>성장에 목마를 땐, 뫼비우스</div>
+                  <div>나의 온라인 사수, 뫼비우스</div>
+                  <div>뫼비우스에서 가치를 높이세요</div>
+                  <div>뫼비우스에서 성장의 기회를 얻으세요</div>
+                  <div>나의 성장을 돕는 뫼비우스</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- userId input -->
+            <div class="email_input_container input_style">
+              <div class="email_title">이메일</div>
+              <input type="text" placeholder="example@inflab.com" />
+              <span id="emailCheckResult"></span>
+            </div>
+
+            <!-- userPw input -->
+            <div class="password_input_container input_style">
+              <div class="password_title">비밀번호</div>
+              <div class="password_show_wrapper">
+                <input type="password" placeholder="******" />
+                <span class="password_show_toogle">
+                  <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="#212529" d="M10.333 8c0 1.289-1.044 2.333-2.333 2.333C6.71 10.333 5.667 9.29 5.667 8 5.667 6.711 6.71 5.667 8 5.667c1.289 0 2.333 1.044 2.333 2.333z"></path><path fill="#212529" fill-rule="evenodd" d="M8 2.333c-2.288 0-4.083 1.023-5.37 2.16C1.348 5.63.544 6.902.22 7.469.03 7.8.03 8.2.22 8.533c.323.566 1.127 1.838 2.41 2.973 1.287 1.138 3.082 2.16 5.37 2.16 2.288 0 4.083-1.022 5.37-2.16 1.283-1.135 2.087-2.407 2.41-2.973.19-.333.19-.733 0-1.065-.323-.567-1.127-1.839-2.41-2.974-1.287-1.138-3.082-2.16-5.37-2.16zm-6.912 5.63c.295-.516 1.035-1.685 2.205-2.72C4.461 4.21 6.03 3.333 8 3.333c1.97 0 3.54.877 4.707 1.91 1.17 1.035 1.91 2.204 2.205 2.72.008.015.01.028.01.037 0 .01-.002.022-.01.037-.295.516-1.035 1.685-2.205 2.72-1.168 1.033-2.737 1.91-4.707 1.91-1.97 0-3.54-.877-4.707-1.91-1.17-1.035-1.91-2.204-2.205-2.72-.008-.015-.01-.028-.01-.037 0-.01.002-.022.01-.037z" clip-rule="evenodd"></path></svg>
+                </span>
+              </div>
+              <span id="passowrdResult"></span>
+            </div>
+
+            <!-- userPwCheck input -->
+            <div class="password_input_check_container input_style">
+              <div class="passwordCheck_title">비밀번호</div>
+              <div class="password_show_wrapper">
+                <input type="password" placeholder="******" />
+                <span class="password_show_toggle">
+                  <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="#212529" d="M10.333 8c0 1.289-1.044 2.333-2.333 2.333C6.71 10.333 5.667 9.29 5.667 8 5.667 6.711 6.71 5.667 8 5.667c1.289 0 2.333 1.044 2.333 2.333z"></path><path fill="#212529" fill-rule="evenodd" d="M8 2.333c-2.288 0-4.083 1.023-5.37 2.16C1.348 5.63.544 6.902.22 7.469.03 7.8.03 8.2.22 8.533c.323.566 1.127 1.838 2.41 2.973 1.287 1.138 3.082 2.16 5.37 2.16 2.288 0 4.083-1.022 5.37-2.16 1.283-1.135 2.087-2.407 2.41-2.973.19-.333.19-.733 0-1.065-.323-.567-1.127-1.839-2.41-2.974-1.287-1.138-3.082-2.16-5.37-2.16zm-6.912 5.63c.295-.516 1.035-1.685 2.205-2.72C4.461 4.21 6.03 3.333 8 3.333c1.97 0 3.54.877 4.707 1.91 1.17 1.035 1.91 2.204 2.205 2.72.008.015.01.028.01.037 0 .01-.002.022-.01.037-.295.516-1.035 1.685-2.205 2.72-1.168 1.033-2.737 1.91-4.707 1.91-1.97 0-3.54-.877-4.707-1.91-1.17-1.035-1.91-2.204-2.205-2.72-.008-.015-.01-.028-.01-.037 0-.01.002-.022.01-.037z" clip-rule="evenodd"></path></svg>
+                </span>
+              </div>
+              <span id="passowrdCheckResult"></span>
+            </div>
+
+            <!-- userNickname input -->
+            <div class="nickname_input_container input_style">
+              <div class="nickname_title">닉네임</div>
+              <input type="text" placeholder="닉네임" />
+              <span class="nickNamResult"></span>
+            </div>
+            <div class="button_container">
+              <input type="button" value="가입하기" />
+            </div>
+
+            <!-- 이용약관 -->
+            <div class="policy_container">
+              <div class="policy_text_area">
+                가입 시, 통합 계정으로 인프랩이 제공하는 서비스를 모두 이용하실 수 있습니다. 
+                <span>통합 계정</span> 및 서비스 이용약관 (<span>인프런 / 랠릿</span>), <span>개인정보취급방침에</span>
+                동의 합니다.     
+                </span>
+                </div>
+            </div>
+            <div class="check_container">
+              <input type="checkbox" class="mesage" id="mesage"><label for="mesage">통합회원 할인 혜택 및 유용한 채용 소식을 받아 볼래요.</label></div>
+            </div>
+
+
+            <div class="footer_container">
+              <fieldset class="other_platform_login">
+                <legend>간편 회원가입</legend>
+                <div class="kakao_login"></div>
+                <div class="google_login"></div>
+              </fieldset>
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+    </main>
+  <footer th:replace="/fixed/footer.html" :: body></footer>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="/js/join/userJoin.js"></script>
+</html>

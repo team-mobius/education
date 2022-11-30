@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mobius.education.mapper.ApplyLectureMapper">
+    <select id="selectOnGoingLectureCount" resultType="int">
+        SELECT COUNT(USER_NUMBER) FROM
+        (
+        SELECT * FROM TBL_LECTURE tl , TBL_APPLY_LECTURE tal
+        WHERE tl.LECTURE_NUMBER = tal.LECTURE_NUMBER AND tl.LECTURE_DATE <![CDATA[>]]> SYSDATE
+        )
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <select id="selectEndLectureCount" resultType="int">
+        SELECT COUNT(#{userNumber}) FROM
+        (
+        SELECT * FROM TBL_LECTURE tl , TBL_APPLY_LECTURE tal
+        WHERE tl.LECTURE_NUMBER = tal.LECTURE_NUMBER AND tl.LECTURE_DATE <![CDATA[<]]> SYSDATE
+        )
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+
+</mapper>

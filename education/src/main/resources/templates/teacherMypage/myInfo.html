@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/fixed/header2.css" />
+    <link rel="stylesheet" href="/css/fixed/footer.css" />
+    <link rel="stylesheet" href="/css/teacherMypage/myInfo.css" />
+</head>
+<body>
+<header th:replace="/fixed/header2.html :: body"></header>
+
+<!-- 비밀번호 변경 모달창 -->
+<div class="password_change_modal password_change_hidden">
+    <div class="bg"></div>
+    <div class="password_change_wrapper">
+        <form action="#" class="change_password">
+            <div class="change_password_title_container">
+                <div class="password_change_title">비밀번호 변경</div>
+                <div class="close_password_modal">닫기</div>
+            </div>
+
+            <!-- 모달창 내의 현재 비밀번호 입력 -->
+            <div class="current_password_input_container input_form">
+                <div class="current_password_title">현재 비밀번호</div>
+                <input type="password" class="input_current_password" />
+            </div>
+
+            <!-- 모달창 내의 변경 할 비밀번호 입력 -->
+            <div class="change_password_input_container input_form">
+                <div class="change_password_title">새로운 비밀번호</div>
+                <input type="password" class="input_change_password" />
+            </div>
+
+            <!-- 모달창 내의 변경 할 비밀번호 입력 -->
+            <div class="change_password_check_input_container input_form">
+                <div class="change_password_check_title">새로운 비밀번호 확인</div>
+                <input type="password" class="input_change_password" />
+            </div>
+            <!-- 비밀번호 수정 button -->
+            <div class="button_container">
+                <input type="button" value="변경하기" class="change_password_modal_button" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 메인 내용 시작 -->
+<div class="first_line"></div>
+<main class="mypage_main">
+    <!-- navi  -->
+    <div class="navi_wrapper">
+        <div class="navi_container">
+            <ul class="show_navi_detail">
+                <a th:href="@{/teacherMypage/mypage}"><li class="section1">MY 홈</li></a>
+                <a th:href="@{/teacherMypage/temporary}"><li class="section2">작성중인 지원서</li></a>
+                <a th:href="@{/teacherMypage/myLecture}"><li class="section3">나의 강의 현황</li></a>
+                <a th:href="@{/teacherMypage/myReview}"><li class="section4">나의 후기</li></a>
+                <a th:href="@{/teacherMypage/myInfo}"><li class="section5">개인정보 설정</li></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- mypage 보여질 내용 -->
+    <div class="mypage_detail">
+        <div class="detail_container">
+            <div class="mypage_title_container section_style">
+                <div class="mypage_title">개인정보 설정</div>
+            </div>
+        </div>
+
+        <!-- 계정 정보 -->
+        <div class="account_information_wrapper">
+            <div class="account_information_container">
+                <!-- 아이디 표시 -->
+                <div class="account_detail_container">
+                    <div class="information_title">아이디</div>
+                    <div class="information_content">example@gmail.com</div>
+                </div>
+
+                <!-- 이름 표시 -->
+                <div class="account_detail_container">
+                    <div class="information_title">이름</div>
+                    <div class="information_content">이종호</div>
+                </div>
+
+                <!-- 비밀번호 -->
+                <div class="account_detail_container">
+                    <div class="information_title">비밀번호</div>
+                    <div class="information_content">
+                        <a href="#"><span class="open_password_change_modal change_style">비밀번호 변경 &gt;</span></a>
+                    </div>
+                </div>
+
+                <!-- 소속 기관 표시 -->
+                <div class="account_detail_container">
+                    <div class="information_title">소속</div>
+                    <div class="information_content">개인</div>
+                </div>
+
+                <!-- 이메일 표시 -->
+                <div class="account_detail_container">
+                    <div class="information_title">이메일</div>
+                    <div class="information_content">example@gmail.com</div>
+                </div>
+
+                <!-- 핸드폰 번호 표시 -->
+                <div class="account_detail_container">
+                    <div class="information_title">핸드폰 번호</div>
+                    <div class="information_content">01012345678</div>
+                    <div class="phone_number_input">
+                        <a href="#"><span class="go_to_phone_number_change change_style">핸드폰 번호 변경 &gt;</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="go_to_secession_wrapper">
+            <div class="go_to_secession_container">
+                <div class="secession_mesage">
+                    더 이상 뫼비우스를 이용하지 않는다면 <a href="#"><span class="go_to_secession change_style">회원탈퇴 &gt;</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+<script src="/js/teacherMypage/myInformation.js"></script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>lecture</title>
+    <link rel="stylesheet" href="/css/lecture/detail.css">
+    <link rel="stylesheet" href="/css/fixed/footer.css">
+</head>
+<body>
+<header th:replace="/fixed/header2.html" :: body></header>
+
+<main class="main">
+    <section class="section_start">
+        <div class="banner">
+            <div class="banner_img">
+                <img class="bannerImg" src="https://cdn.inflearn.com/public/courses/326674/cover/4657d793-56a4-42f3-9d44-dc88d125a49e">
+            </div>
+            <div class="explanation" th:object="${lectures}">
+                <div class="programing" th:field="*{lectureCategory}"></div>
+                <div class="program_detail" th:field="*{lectureTitle}"></div>
+                <div class="program_detail2" th:field="*{lectureNumber}"></div>
+                <div class="program_name" th:field="*{lectureDate}">김영한</div>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="container">
+                        <span class="span1">
+                            <a href="">강의소개</a>
+                        </span>
+                <span class="span3">
+                            <a href="">수강평</a>
+                        </span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+                <div class="content_main">
+                    <section class="description">
+                        
+                        <p class="banner_explanation">
+                            <strong>원리를 알아야 핵심이 보인다!</strong>
+                            <br>
+                            <strong>김영한의 스프링 MVC기본편</strong>
+                            👨‍💻
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="btn_all">
+            <div class="div_btn">
+                <label class="btn">
+                    <input type="button" class="btn_in">
+                    <a class="btn_a" href="">수강신청 하기</a>
+                </label>
+            </div>
+            <div class="div_btn2">
+                <label class="btn2">
+                    <input type="button" class="btn2_in">
+                    <a class="btn_a" href="">강좌 게시판 바로가기</a>
+                </label>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+<script src="/js/basic/jquery.min.js"></script>
+<script src="/js/basic/jquery.dropotron.min.js"></script>
+<script src="/js/basic/browser.min.js"></script>
+<script src="/js/basic/breakpoints.min.js"></script>
+<script src="/js/basic/util.js"></script>
+<script src="/js/basic/main.js"></script>
+<script th:inline="javascript">
+    let $pages = $("a.changePage");
+
+    $pages.on("click", function(e){
+        e.preventDefault();
+        $(document.pageForm.page).val($(this).attr("href"));
+        document.pageForm.submit();
+    });
+</script>
+</html>
