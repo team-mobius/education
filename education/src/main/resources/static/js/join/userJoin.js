@@ -30,3 +30,12 @@ function autoSlide() {
         div.style.transform = "translate(-" + 320 * (count + 1) + "px)";
     }
 }
+
+const input = document.createElement("inp");
+
+input.addEventListener("click",function () {
+    if(input === null){
+        return alert("정보를 입력해주세요");
+    }
+
+});
