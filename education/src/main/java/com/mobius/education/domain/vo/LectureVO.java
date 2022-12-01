@@ -1,7 +1,6 @@
 package com.mobius.education.domain.vo;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component

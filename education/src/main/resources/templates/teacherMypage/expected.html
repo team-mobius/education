@@ -76,7 +76,9 @@
 
                 <th:block th:if="${countExpected != 0}" th:each="lecture:${lectures}">
                     <div class="class-list-container" th:object="${lecture}">
-                        <div class="list-class-title list-content" th:text="*{lectureTitle}"></div>
+                        <div class="list-class-title list-content">
+                            <a claas="goDetail" style="cursor: pointer;" onclick="goToDetail" th:href="@{/lecture/detail(lectureNumber=*{lectureNumber})}" th:text="*{lectureTitle}"></a>
+                        </div>
                         <div class="list-class-place list-content" th:text="*{lectureCategory}"></div>
                         <div class="list-class-time list-content" th:text="*{lectureTime}"></div>
                         <div class="list-class-start-date list-content" th:text="*{lectureDate}"></div>
@@ -128,12 +130,21 @@
 <script src="/js/basic/util.js"></script>
 <script src="/js/basic/main.js"></script>
 <script th:inline="javascript">
+    let lectureNumber = [[${lectureNumber}]];
     let $pages = $("a.changePage");
+    let queryString = [[${pagination.criteria.queryString}]];
+    const $goDetail = $("a.goDetail");
+
 
     $pages.on("click", function(e){
         e.preventDefault();
         $(document.pageForm.page).val($(this).attr("href"));
         document.pageForm.submit();
+    });
+
+    $goDetail.on("click", function(e){
+        e.preventDefault();
+        location.href = "/lecture/detail" + queryString + "&lectureNumber=" + $(this).attr("href");
     });
 
 </script>

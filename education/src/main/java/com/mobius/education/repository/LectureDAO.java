@@ -2,7 +2,6 @@ package com.mobius.education.repository;
 
 import com.mobius.education.domain.criteria.Criteria;
 import com.mobius.education.domain.vo.LectureDTO;
-import com.mobius.education.domain.vo.LectureFileVO;
 import com.mobius.education.domain.vo.LectureVO;
 import com.mobius.education.mapper.LectureMapper;
 import lombok.RequiredArgsConstructor;
@@ -73,5 +72,15 @@ public class LectureDAO {
     //  진행 예정 전체 개수
     public int findExpectedCountAll(){
         return lectureMapper.expectedGetTotal();
+    }
+
+    // 임시 저장 강의 전체 조회
+    public List<LectureVO> findTemporaryAll(Criteria criteria){
+        return lectureMapper.temporarySelectAll(criteria);
+    }
+
+    // 임시 저장 전체 개수
+    public int findTemporaryCountAll(){
+        return lectureMapper.temporaryGetTotal();
     }
 }

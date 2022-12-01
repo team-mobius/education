@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mobius.education.mapper.LectureNoticeMapper">
+    <insert id="insert">
+        <selectKey keyProperty="lectureNoticeNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_LECTURE_NOTICE.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_LECTURE_NOTICE(LECTURE_NOTICE_NUMBER, LECTURE_NOTICE_TITLE, LECTURE_NOTICE_CONTENT, LECTURE_NUMBER)
+        VALUES (#{lectureNoticeNumber}, #{lectureNoticeTitle}, #{lectureNoticeContent}, #{lectureNumber})
+    </insert>
 
+    <select id="selectAll" resultType="lectureNoticeVO">
+        SELECT LECTURE_NOTICE_NUMBER, LECTURE_NOTICE_TITLE, LECTURE_NOTICE_CONTENT, LECTURE_NOTICE_DATE, LECTURE_NUMBER
+        FROM
+        (
+            SELECT ROWNUM R, LECTURE_NOTICE_NUMBER, LECTURE_NOTICE_TITLE, LECTURE_NOTICE_CONTENT, LECTURE_NOTICE_DATE, LECTURE_NUMBER
+            FROM
+            (
+                SELECT LECTURE_NOTICE_NUMBER, LECTURE_NOTICE_TITLE, LECTURE_NOTICE_CONTENT, LECTURE_NOTICE_DATE, LECTURE_NUMBER
+                FROM TBL_LECTURE_NOTICE LN
+                ORDER BY LECTURE_NOTICE_NUMBER DESC
+            ) D2
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ) WHERE R > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="getTotal" resultType="_int">
+        SELECT COUNT(LECTURE_NOTICE_NUMBER) FROM TBL_LECTURE_NOTICE
+    </select>
+
+    <select id="select" resultType="lectureNoticeVO">
+        SELECT LECTURE_NOTICE_NUMBER, LECTURE_NOTICE_TITLE, LECTURE_NOTICE_CONTENT, LECTURE_NOTICE_DATE, LECTURE_NUMBER
+        FROM TBL_LECTURE_NOTICE
+        WHERE LECTURE_NOTICE_NUMBER = #{lectureNoticeNumber}
+    </select>
 </mapper>

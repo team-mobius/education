@@ -2,7 +2,6 @@ package com.mobius.education.domain.vo;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 @Data

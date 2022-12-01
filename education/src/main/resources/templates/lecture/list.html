@@ -93,9 +93,11 @@
 <script src="/js/basic/util.js"></script>
 <script src="/js/basic/main.js"></script>
 <script th:inline="javascript">
-    let boardNumber = [[${boardNumber}]];
+    let lectureNumber = [[${lectureNumber}]];
     let $pages = $("a.changePage");
+    let queryString = [[${pagination.criteria.queryString}]];
     const $goDetail = $("a.goDetail");
+
 
     $pages.on("click", function(e){
         e.preventDefault();
@@ -105,7 +107,7 @@
 
     $goDetail.on("click", function(e){
         e.preventDefault();
-        location.href = "/lecture/detail" + queryString + "&boardNumber=" + $(this).attr("href");
+        location.href = "/lecture/detail" + queryString + "&lectureNumber=" + $(this).attr("href");
     });
 </script>
 </html>
