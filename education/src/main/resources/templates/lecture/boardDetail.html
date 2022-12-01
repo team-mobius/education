@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/fixed/header2.css" />
+    <link rel="stylesheet" href="/css/fixed/footer.css" />
+    <link rel="stylesheet" href="/css/request/reset.css" />
+    <link rel="stylesheet" href="/css/request/detail.css" />
+</head>
+<body>
+<header th:replace="/fixed/header2.html :: body"></header>
+<main>
+    <!-- 게시글 -->
+    <section class="post_area">
+        <!-- 컨텐츠 -->
+        <div class="post_content_area" th:object="${notice}">
+            <div class="post_container">
+                <div class="post_header">
+                    <div class="post_title" th:text="*{lectureNoticeTitle}"></div>
+                    <div class="post_info">
+                        <span class="post_writer">myewon</span>
+                        <span class="post_dot">·</span>
+                        <span class="post_date" th:text="*{#strings.substring(lectureNoticeDate, 0, 10)}"></span>
+                    </div>
+                </div>
+                <div class="post_body">
+                    <div class="post_content" style="min-height : 200px;">
+                        <div class="content_text" th:text="*{lectureNoticeContent}"></div>
+                    </div>
+<!--                    <div class="post_category">-->
+<!--                        <a class="category_box" href="">-->
+<!--                            <p class="category_text">개발·프로그래밍</p>-->
+<!--                            <p class="move_to_lecture">-->
+<!--                                모집중인 강의-->
+<!--                                보러가기&nbsp;&nbsp;&nbsp;>-->
+<!--                            </p>-->
+<!--                        </a>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+    <footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+
+
+</html>

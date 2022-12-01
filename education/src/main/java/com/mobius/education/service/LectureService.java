@@ -84,4 +84,16 @@ public class LectureService {
     public int expectedGetTotal() {
         return lectureDAO.findExpectedCountAll();
     }
+
+//    예정 강의 리스트 출력
+    public List<LectureVO> showTemporaryAll(Criteria criteria) {
+        return lectureDAO.findTemporaryAll(criteria);
+    }
+
+//    예정 강의 개수
+    public int temporaryGetTotal() {
+        return lectureDAO.findTemporaryCountAll();
+    }
+
+
 }

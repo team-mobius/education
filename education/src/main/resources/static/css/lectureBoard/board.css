@@ -49,7 +49,7 @@ td {
     width: 45px;
 }
 .board_day, .board_writer {
-    width: 60px;
+    width: 120px;
 }
 td.board_title {
     text-align: left;

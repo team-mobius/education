@@ -19,14 +19,6 @@
                 <div class="board_header">
                     <h3>공지사항</h3>
                     <div class="board_search">
-                        <form class="search">
-                            <div class="search_btn">
-                            <input type="search" class="search_w" placeholder="Search">
-                            <button type="submit" class="search_b" value="">
-                                <img src="img/search2.png">
-                            </button>
-                            </div>
-                        </form>
                     </div>
                 </div>
                 <table>
@@ -35,74 +27,71 @@
                             <th class="board_num">No</th>
                             <th class="board_title">제목</th>
                             <th class="board_writer">글쓴이</th>
-                            <th class="board_day">작성시간</th>
-                            <th class="board_view">조회수</th>
-                            <th class="board_like">좋아요</th>
+                            <th class="board_day">작성날짜</th>
                         </tr>
-                        <tr>
-                            <td class="board_num">1</th>
-                            <td class="board_title">제목입니다</th>
-                            <td class="board_writer">이종호</th>
-                            <td class="board_day">2022/11/20</th>
-                            <td class="board_view">30</th>
-                            <td class="board_like">2</th>
+                        <th:block th:each="notice:${notices}">
+                        <tr th:object="${notice}">
+                            <td class="board_num" th:text="*{lectureNoticeNumber}"></td>
+                            <td class="board_title">
+                                <a claas="goDetail" style="cursor: pointer;" onclick="goToDetail" th:href="@{/lecture/boardDetail(lectureNoticeNumber=*{lectureNoticeNumber})}" th:text="*{lectureNoticeTitle}"></a>
+                            </td>
+                            <td class="board_writer">이종호</td>
+                            <td class="board_day" th:text="*{#strings.substring(lectureNoticeDate, 0, 10)}"></td>
                         </tr>
-                        <tr>
-                            <td class="board_num">2</th>
-                            <td class="board_title">제목입니다</th>
-                            <td class="board_writer">이종호</th>
-                            <td class="board_day">2022/11/20</th>
-                            <td class="board_view">30</th>
-                            <td class="board_like">2</th>
-                        </tr>
-                        <tr>
-                            <td class="board_num">3</th>
-                            <td class="board_title">제목입니다</th>
-                            <td class="board_writer">이종호</th>
-                            <td class="board_day">2022/11/20</th>
-                            <td class="board_view">30</th>
-                            <td class="board_like">2</th>
-                        </tr>
-                        <tr>
-                            <td class="board_num">4</th>
-                            <td class="board_title">제목입니다</th>
-                            <td class="board_writer">이종호</th>
-                            <td class="board_day">2022/11/20</th>
-                            <td class="board_view">30</th>
-                            <td class="board_like">2</th>
-                        </tr>
-                        <tr>
-                            <td class="board_num">5</th>
-                            <td class="board_title">제목입니다</th>
-                            <td class="board_writer">이종호</th>
-                            <td class="board_day">2022/11/20</th>
-                            <td class="board_view">30</th>
-                            <td class="board_like">2</th>
-                        </tr>
-                        <tr>
-                            <td class="board_num">6</th>
-                            <td class="board_title">제목입니다</th>
-                            <td class="board_writer">이종호</th>
-                            <td class="board_day">2022/11/20</th>
-                            <td class="board_view">30</th>
-                            <td class="board_like">2</th>
-                        </tr>
-                        <tr>
-                            <td class="board_num">7</th>
-                            <td class="board_title">제목입니다</th>
-                            <td class="board_writer">이종호</th>
-                            <td class="board_day">2022/11/20</th>
-                            <td class="board_view">30</th>
-                            <td class="board_like">2</th>
-                        </tr>
+                        </th:block>
                     </tbody>
                 </table>
                 <div class="board_btn">
-                    <button id="#" value="글쓰기">글쓰기</button>
+                    <button class="writeButton" th:href="@{/lecture/boardWrite}" value="글쓰기">글쓰기</button>
+                </div>
+
+                <div th:object="${pagination}" style="margin-top: 40px; margin-right: 100px; font-weight: bold; font-size: 16px;">
+                    <div style="text-align: center;">
+                        <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
+                        <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                            <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+                            <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+                        </th:block>
+                        <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>></code></a>
+                    </div>
+                    <form th:action="@{/lecture/list}" th:object="${criteria}" name="pageForm">
+                        <input type="hidden" th:field="*{page}">
+                        <input type="hidden" th:field="*{amount}">
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
 </body>
+<script src="/js/basic/jquery.min.js"></script>
+<script src="/js/basic/jquery.dropotron.min.js"></script>
+<script src="/js/basic/browser.min.js"></script>
+<script src="/js/basic/breakpoints.min.js"></script>
+<script src="/js/basic/util.js"></script>
+<script src="/js/basic/main.js"></script>
+<script th:inline="javascript">
+    let lectureNoticeNumber = [[${lectureNoticeNumber}]];
+    let $pages = $("a.changePage");
+    let queryString = [[${pagination.criteria.queryString}]];
+    const $goDetail = $("a.goDetail");
+
+    let $goWrite = $("button.writeButton");
+
+    $pages.on("click", function(e){
+        e.preventDefault();
+        $(document.pageForm.page).val($(this).attr("href"));
+        document.pageForm.submit();
+    });
+
+    $goDetail.on("click", function(e){
+        e.preventDefault();
+        location.href = "/lecture/detail" + queryString + "&lectureNumber=" + $(this).attr("href");
+    });
+
+    $goWrite.on("click", function(e){
+       e.preventDefault();
+       location.href = "/lecture/boardWrite";
+    });
+</script>
 </html>

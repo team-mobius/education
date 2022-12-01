@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/fixed/header2.css" />
+    <link rel="stylesheet" href="/css/fixed/footer.css" />
+    <link rel="stylesheet" href="/css/request/reset.css" />
+    <link rel="stylesheet" href="/css/request/ask.css" />
+</head>
+<body>
+<header th:replace="/fixed/header2.html :: body"></header>
+    <main>
+        <div class="body_area">
+            <!-- 헤더 -->
+            <div class="body_header">
+                <h2 class="body_header_text">공지사항 작성</h2>
+            </div>
+            <!-- 작성 -->
+            <div class="write_area">
+                <form method="post" id="writeForm" th:object="${notice}" enctype="multipart/form-data">
+                    <div class="field">
+                    <input th:field="*{lectureNoticeTitle}" class="ask_title" type="text" placeholder="제목을 입력하세요">
+                    </div>
+                    <div class="write_content_area field">
+                        <textarea th:field="*{lectureNoticeContent}" class="ask_content" cols="82" rows="22"></textarea>
+                    </div>
+                    <!-- 버튼 -->
+                    <div class="button_area actions" style="position: relative;">
+                        <div class="buttons" style="position: absolute; right: 0;">
+                            <button class="cancel_button">취소</button>
+                            <button th:action="@{/lecture/boardWrite}" type="submit" class="write_button">작성</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </main>
+    <footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+<script src="/js/basic/jquery.min.js"></script>
+<script src="/js/basic/jquery.dropotron.min.js"></script>
+<script src="/js/basic/browser.min.js"></script>
+<script src="/js/basic/breakpoints.min.js"></script>
+<script src="/js/basic/util.js"></script>
+<script src="/js/basic/main.js"></script>
+<script th:inline="javascript">
+    let $cancel = $("button.cancel_button");
+
+    $cancel.on("click", function(e) {
+       e.preventDefault();
+       location.href = "/lecture/board";
+    });
+</script>
+
+</html>

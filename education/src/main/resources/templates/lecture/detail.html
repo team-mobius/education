@@ -15,11 +15,12 @@
             <div class="banner_img">
                 <img class="bannerImg" src="https://cdn.inflearn.com/public/courses/326674/cover/4657d793-56a4-42f3-9d44-dc88d125a49e">
             </div>
-            <div class="explanation" th:object="${lectures}">
-                <div class="programing" th:field="*{lectureCategory}"></div>
-                <div class="program_detail" th:field="*{lectureTitle}"></div>
-                <div class="program_detail2" th:field="*{lectureNumber}"></div>
-                <div class="program_name" th:field="*{lectureDate}">김영한</div>
+            <div class="explanation" th:object="${lecture}">
+                <span class="box">Best</span>
+                <div style="display: inline-block;" class="programing" th:text="*{lectureCategory}"></div>
+                <div style="font-size: 24px;" class="program_detail" th:text="*{lectureTitle}"></div>
+                <div style="display: inline-block;" class="program_detail2" th:text="*{#strings.substring(lectureDate, 0, 10)}"></div>
+                <div class="program_detail2" th:text="*{lectureTime}"></div>
             </div>
         </div>
         <div class="menu">
@@ -35,29 +36,30 @@
         <div class="content">
             <div class="container">
                 <div class="content_main">
-                    <section class="description">
-                        
-                        <p class="banner_explanation">
-                            <strong>원리를 알아야 핵심이 보인다!</strong>
-                            <br>
-                            <strong>김영한의 스프링 MVC기본편</strong>
-                            👨‍💻
-                        </p>
-                    </section>
+                    <section class="description" th:object="${lecture}">
+                        <h6 th:text="*{lectureContent}"></h6>
                 </div>
             </div>
         </div>
         <div class="btn_all">
-            <div class="div_btn">
+            <th:block th:object="${lecture}">
+            <div th:if="*{#strings.equals(lectureStatus, '진행완료')}" style="background-color: #dcdcdc; border: 1px solid #dcdcdc; cursor: none !important;" class="div_btn">
+                <label class="btn">
+                    <input type="button" class="btn_in">
+                    <a class="btn_a" href="javascript:void(0)">수강신청 하기</a>
+                </label>
+            </div>
+            <div th:unless="*{#strings.equals(lectureStatus, '진행완료')}" class="div_btn">
                 <label class="btn">
                     <input type="button" class="btn_in">
                     <a class="btn_a" href="">수강신청 하기</a>
                 </label>
             </div>
+            </th:block>
             <div class="div_btn2">
                 <label class="btn2">
                     <input type="button" class="btn2_in">
-                    <a class="btn_a" href="">강좌 게시판 바로가기</a>
+                    <a class="btn_a" th:href="@{/lecture/board}">강좌 게시판 바로가기</a>
                 </label>
             </div>
         </div>
@@ -73,6 +75,7 @@
 <script src="/js/basic/util.js"></script>
 <script src="/js/basic/main.js"></script>
 <script th:inline="javascript">
+    let lectureNumber = [[${lecture.lectureNumber}]];
     let $pages = $("a.changePage");
 
     $pages.on("click", function(e){

@@ -118,17 +118,19 @@ div.mypage_title {
 }
 .list-class-title {
     width: 70%;
+    overflow: hidden;
 }
 
 .list-class-start-date {
     width: 15%;
+    overflow: hidden;
 }
 .class-list-delete {
     padding: 12px 8px 13px;
     font-size: 14px;
     cursor: pointer;
 }
-.class-list-delete :hover {
+.class-list-delete:hover {
     border-bottom: 2px solid #353a40;
 }
 .title-part {
@@ -140,6 +142,11 @@ div.mypage_title {
     padding: 12px 8px 13px;
     font-size: 14px;
     font-weight: 200;
+    overflow: hidden;
+}
+
+.date_content {
+    width: 120px;
 }
 
 /* 목록에 아무것도 없을때 예시 */
