@@ -43,12 +43,12 @@
           <!-- 수강생 로그인 방식 -->
           <div id="tab-1" class="user-login-wrapper tab-content current">
             <div class="user-login-container">
-              <form  class="user-login-form" method="post" th:action="@{/join/login}" id="loginForm" th:object="${user}" >
+              <form  class="user-login-form" method="post"  id="loginForm"  >
                 <div class="user-eamil-input-container">
-                  <input type="text" placeholder="이메일" th:field="*{userEmail}"/>
+                  <input type="text" placeholder="이메일"/>
                 </div>
                 <div class="user-password-input-container">
-                  <input type="password" placeholder="비밀번호" th:field="*{userPassword}"/>
+                  <input type="password" placeholder="비밀번호"/>
                 </div>
                 <div class="user-login-button-container">
                   <input class="modal-login-button" type="submit" value="로그인" />
