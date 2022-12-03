@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -26,11 +23,10 @@ import java.util.UUID;
 @RequestMapping("/lectureFile/*")
 public class LectureFileController {
     @PostMapping("/upload")
-    public List<LectureFileVO> upload(List<MultipartFile> upload, LectureService lectureService) throws IOException {
+    public List<LectureFileVO> upload(List<MultipartFile> upload) throws IOException {
         String rootPath = "C:/upload";
         String uploadPath = getUploadPath();
         List<LectureFileVO> files = new ArrayList<>();
-
 
         File uploadFullPath = new File(rootPath, uploadPath);
         if(!uploadFullPath.exists()){uploadFullPath.mkdirs();}
@@ -46,24 +42,24 @@ public class LectureFileController {
             lectureFileVO.setLectureFileUploadPath(getUploadPath());
             lectureFileVO.setLectureFileSize(multipartFile.getSize());
 
-
-            File fullPath = new File(uploadFullPath, multipartFile.getOriginalFilename());
+            File fullPath = new File(uploadFullPath, uploadFileName);
             multipartFile.transferTo(fullPath);
 
             if(Files.probeContentType(fullPath.toPath()).startsWith("image")){
                 FileOutputStream out = new FileOutputStream(new File(uploadFullPath, "s_" + uploadFileName));
-                Thumbnailator.createThumbnail(multipartFile.getInputStream(), out, 100, 100);
+                Thumbnailator.createThumbnail(multipartFile.getInputStream(), out, 1000, 1000);
                 out.close();
                 lectureFileVO.setLectureFileCheck(true);
             }
+
             files.add(lectureFileVO);
         }
         return files;
     }
 
     @GetMapping("/display")
-    public byte[] display(String fileName) throws IOException {
-        return FileCopyUtils.copyToByteArray(new File("C:/upload", fileName));
+    public byte[] display(String lectureFileName) throws IOException{
+        return FileCopyUtils.copyToByteArray(new File("C:/upload", lectureFileName));
     }
 
     @PostMapping("/delete")
@@ -80,8 +76,8 @@ public class LectureFileController {
         }
     }
 
-    private String getUploadPath(){
-        return new SimpleDateFormat("yyyy/MM/dd").format(new Date());
+    private String getUploadPath() {
+       return new SimpleDateFormat("yyyy/MM/dd").format(new Date());
     }
 }
 

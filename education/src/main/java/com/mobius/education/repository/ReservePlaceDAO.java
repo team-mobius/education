@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class ReservePlaceDAO {
     private final ReservePlaceMapper reservePlaceMapper;
 
-    //장소 예약 추가
+//    장소예약 추가
     public void save(ReservePlaceVO reservePlaceVO) {
         reservePlaceMapper.insert(reservePlaceVO);
     }

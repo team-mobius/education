@@ -19,8 +19,8 @@ public class LectureNoticeService {
     }
 
 //    공지 전체 조회
-    public List<LectureNoticeVO> showAll(Criteria criteria) {
-        return lectureNoticeDAO.findAll(criteria);
+    public List<LectureNoticeVO> showAll(Long lectureNumber, Criteria criteria){
+        return lectureNoticeDAO.findAll(lectureNumber, criteria);
     }
 
 //    공지 전체 개수

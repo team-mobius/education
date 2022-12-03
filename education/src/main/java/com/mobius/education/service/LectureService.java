@@ -22,9 +22,15 @@ public class LectureService {
     // 강의 신청
     @Transactional(rollbackFor = Exception.class)
     public void apply(LectureDTO lectureDTO, ReservePlaceVO reservePlaceVO) {
+        reservePlaceVO.setReservePlaceDate(lectureDTO.getLectureDate());
+        reservePlaceVO.setPlaceNumber(lectureDTO.getPlaceNumber());
+
         lectureDAO.save(lectureDTO);
         reservePlaceDAO.save(reservePlaceVO);
+
         List<LectureFileVO> files = lectureDTO.getFiles();
+        List<LectureThumbnailVO> thumbs = lectureDTO.getThumbs();
+
 //        Optional : 검증
         Optional.ofNullable(files).ifPresent(fileList -> {
             fileList.forEach(file -> {
@@ -32,8 +38,50 @@ public class LectureService {
                 lectureFileDAO.save(file);
             });
         });
+        Optional.ofNullable(thumbs).ifPresent(thumbList -> {
+            thumbList.forEach(thumb -> {
+                thumb.setLectureNumber(lectureDTO.getLectureNumber());
+                lectureThumbnailDAO.save(thumb);
+            });
+        });
     }
 
+//    강의 삭제
+    @Transactional(rollbackFor = Exception.class)
+    public void remove(Long lectureNumber) {
+        lectureFileDAO.remove(lectureNumber);
+        lectureThumbnailDAO.remove(lectureNumber);
+        lectureDAO.remove(lectureNumber);
+    }
+
+    
+//    강의 수정
+    @Transactional(rollbackFor = Exception.class)
+    public void modify(LectureDTO lectureDTO, ReservePlaceVO reservePlaceVO) {
+        reservePlaceVO.setReservePlaceDate(lectureDTO.getLectureDate());
+        reservePlaceVO.setPlaceNumber(lectureDTO.getPlaceNumber());
+
+        lectureDAO.modify(lectureDTO);
+        reservePlaceDAO.save(reservePlaceVO);
+        lectureFileDAO.remove(lectureDTO.getLectureNumber());
+        lectureThumbnailDAO.remove(lectureDTO.getLectureNumber());
+
+        List<LectureFileVO> files = lectureDTO.getFiles();
+        List<LectureThumbnailVO> thumbs = lectureDTO.getThumbs();
+
+        Optional.ofNullable(files).ifPresent(fileList -> {
+            fileList.forEach(file -> {
+                file.setLectureNumber(lectureDTO.getLectureNumber());
+                lectureFileDAO.save(file);
+            });
+        });
+        Optional.ofNullable(thumbs).ifPresent(thumbList -> {
+            thumbList.forEach(thumb -> {
+                thumb.setLectureNumber(lectureDTO.getLectureNumber());
+                lectureThumbnailDAO.save(thumb);
+            });
+        });
+    }
 
 // 강의장 불러오기
     public List<PlaceVO> showPlace(PlaceVO placeVO) {
@@ -42,11 +90,15 @@ public class LectureService {
 
 //    강의 조회
     public LectureDTO show(Long lectureNumber) {
-        return lectureDAO.findById(lectureNumber);
+        LectureDTO lectureDTO = new LectureDTO();
+        lectureDTO.create(lectureDAO.findById(lectureNumber));
+        lectureDTO.setFiles(lectureFileDAO.findAll(lectureNumber));
+        lectureDTO.setThumbs(lectureThumbnailDAO.findAll(lectureNumber));
+        return lectureDTO;
     }
 
 //    강의 전체 조회
-    public List<LectureVO> showAll(Criteria criteria) {
+    public List<LectureDTO> showAll(Criteria criteria) {
         return lectureDAO.findAll(criteria);
     }
 
@@ -85,12 +137,12 @@ public class LectureService {
         return lectureDAO.findExpectedCountAll();
     }
 
-//    예정 강의 리스트 출력
+//    임시저장 리스트 출력
     public List<LectureVO> showTemporaryAll(Criteria criteria) {
         return lectureDAO.findTemporaryAll(criteria);
     }
 
-//    예정 강의 개수
+//    임시저장 강의 개수
     public int temporaryGetTotal() {
         return lectureDAO.findTemporaryCountAll();
     }

@@ -20,10 +20,10 @@ public interface LectureMapper {
     public void update(LectureDTO lectureDTO);
 
     //강의 조회
-    public LectureDTO select(Long lectureNumber);
+    public LectureVO select(Long lectureNumber);
 
     //모든 강의 조회
-    public List<LectureVO> selectAll(Criteria criteria);
+    public List<LectureDTO> selectAll(Criteria criteria);
 
     //모든 강의 개수
     public int getTotal();
@@ -51,5 +51,8 @@ public interface LectureMapper {
 
     //임시저장 강의 개수
     public int temporaryGetTotal();
+
+    //강의 번호 추가
+    public void insertPlace();
 
 }

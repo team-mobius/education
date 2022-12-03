@@ -20,4 +20,21 @@ public class LectureThumbnailVO {
         this.lectureThumbnailUuid = lectureThumbnailUuid;
         this.lectureNumber = lectureNumber;
     }
+
+    public void create(String lectureThumbnailName, String lectureThumbnailUploadPath, String lectureThumbnailUuid, Long lectureThumbnailSize, boolean lectureThumbnailCheck) {
+        this.lectureThumbnailName = lectureThumbnailName;
+        this.lectureThumbnailUploadPath = lectureThumbnailUploadPath;
+        this.lectureThumbnailUuid = lectureThumbnailUuid;
+        this.lectureThumbnailSize = lectureThumbnailSize;
+        this.lectureThumbnailCheck = lectureThumbnailCheck;
+    }
+
+    public void create(String lectureThumbnailName, String lectureThumbnailUploadPath, String lectureThumbnailUuid, Long lectureThumbnailSize, boolean lectureThumbnailCheck, Long lectureNumber) {
+        this.lectureThumbnailName = lectureThumbnailName;
+        this.lectureThumbnailUploadPath = lectureThumbnailUploadPath;
+        this.lectureThumbnailUuid = lectureThumbnailUuid;
+        this.lectureThumbnailSize = lectureThumbnailSize;
+        this.lectureThumbnailCheck = lectureThumbnailCheck;
+        this.lectureNumber = lectureNumber;
+    }
 }

@@ -10,17 +10,34 @@
 <header th:replace="/fixed/header2.html" :: body></header>
 
 <main class="main">
-    <section class="section_start">
-        <div class="banner">
+    <section class="section_start" th:object="${lecture}">
+        <div class="banner" >
             <div class="banner_img">
-                <img class="bannerImg" src="https://cdn.inflearn.com/public/courses/326674/cover/4657d793-56a4-42f3-9d44-dc88d125a49e">
+                <th:block th:each="thumb:*{thumbs}">
+                    <img class="bannerImg" th:src="@{/lectureThumb/display(lectureThumbnailName=${thumb.lectureThumbnailUploadPath} + '/s_' + ${thumb.lectureThumbnailUuid} + '_' + ${thumb.lectureThumbnailName})}">
+<!--                    <img class="bannerImg" src="https://cdn.inflearn.com/public/courses/326674/cover/4657d793-56a4-42f3-9d44-dc88d125a49e">-->
+<!--                    <img class="bannerImg" th:src="@{/img/thumbnail.png}">-->
+                </th:block>
             </div>
-            <div class="explanation" th:object="${lecture}">
+            <div class="explanation">
                 <span class="box">Best</span>
                 <div style="display: inline-block;" class="programing" th:text="*{lectureCategory}"></div>
                 <div style="font-size: 24px;" class="program_detail" th:text="*{lectureTitle}"></div>
-                <div style="display: inline-block;" class="program_detail2" th:text="*{#strings.substring(lectureDate, 0, 10)}"></div>
-                <div class="program_detail2" th:text="*{lectureTime}"></div>
+                <div style="display: inline-block; margin-bottom: 5px;" class="program_detail2">
+                    <span>날짜</span>
+                    <span>&nbsp;&nbsp;</span>
+                    <span th:text="*{#strings.substring(lectureDate, 0, 10)}"></span>
+                </div>
+                <div class="program_detail2" style="margin-bottom: 5px;">
+                    <span>시간</span>
+                    <span>&nbsp;&nbsp;</span>
+                    <span th:text="*{lectureTime}"></span>
+                </div>
+                <div class="program_detail2">
+                    <span>장소</span>
+                    <span>&nbsp;&nbsp;</span>
+                    <span th:text="*{lecturePlace}"></span>
+                </div>
             </div>
         </div>
         <div class="menu">
@@ -38,6 +55,11 @@
                 <div class="content_main">
                     <section class="description" th:object="${lecture}">
                         <h6 th:text="*{lectureContent}"></h6>
+                        <div>
+                            <th:block th:each="file:*{files}">
+                                <img style="width: 100%;" th:if="${file.lectureFileCheck}" th:src="@{/lectureFile/display(lectureFileName=${file.lectureFileUploadPath} + '/s_' + ${file.lectureFileUuid} + '_' + ${file.lectureFileName})}">
+                            </th:block>
+                        </div>
                 </div>
             </div>
         </div>
@@ -59,7 +81,7 @@
             <div class="div_btn2">
                 <label class="btn2">
                     <input type="button" class="btn2_in">
-                    <a class="btn_a" th:href="@{/lecture/board}">강좌 게시판 바로가기</a>
+                    <a class="btn_a" th:href="@{/lecture/board(lectureNumber=*{lectureNumber})}">강좌 게시판 바로가기</a>
                 </label>
             </div>
         </div>
@@ -75,13 +97,15 @@
 <script src="/js/basic/util.js"></script>
 <script src="/js/basic/main.js"></script>
 <script th:inline="javascript">
-    let lectureNumber = [[${lecture.lectureNumber}]];
+    let lectureNumber = [[${lectureNumber}]];
     let $pages = $("a.changePage");
+    let $btnBoard = $("a.btn_a");
 
     $pages.on("click", function(e){
         e.preventDefault();
         $(document.pageForm.page).val($(this).attr("href"));
         document.pageForm.submit();
     });
+
 </script>
 </html>

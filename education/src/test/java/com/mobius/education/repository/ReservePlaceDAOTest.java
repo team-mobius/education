@@ -17,7 +17,7 @@ class ReservePlaceDAOTest {
     @Test
     public void insertTest() {
         ReservePlaceVO reservePlaceVO = new ReservePlaceVO();
-        reservePlaceVO.create("2022-11-28", false, true, false, 21L);
+        reservePlaceVO.create("2022-10-11", false, true, false, 1L);
         reservePlaceDAO.save(reservePlaceVO);
         log.info("reserve: " + reservePlaceVO.getReservePlaceDate());
     }

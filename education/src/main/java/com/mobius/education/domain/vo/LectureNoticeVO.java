@@ -17,4 +17,9 @@ public class LectureNoticeVO {
         this.lectureNoticeContent = lectureNoticeContent;
         this.lectureNumber = lectureNumber;
     }
+
+    public void create(String lectureNoticeTitle, String lectureNoticeContent) {
+        this.lectureNoticeTitle = lectureNoticeTitle;
+        this.lectureNoticeContent = lectureNoticeContent;
+    }
 }

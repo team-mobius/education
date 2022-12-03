@@ -121,10 +121,14 @@ div.mypage_title {
     text-align: left;
     overflow: hidden;
 }
-.list-class-title,
-.list-class-place {
+.list-class-title {
     width: 25%;
 }
+
+.list-class-place {
+    width: 15%;
+}
+
 .list-class-time {
     width: 20%;
 }
@@ -146,6 +150,16 @@ div.mypage_title {
     padding: 12px 8px 13px;
     font-size: 14px;
     font-weight: 200;
+}
+
+.class-list-delete {
+    padding: 12px 8px 13px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.class-list-delete:hover {
+    border-bottom: 2px solid #353a40;
 }
 
 /* 목록에 아무것도 없을때 예시 */

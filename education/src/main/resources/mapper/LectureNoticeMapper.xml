@@ -17,13 +17,15 @@
             FROM
             (
                 SELECT LECTURE_NOTICE_NUMBER, LECTURE_NOTICE_TITLE, LECTURE_NOTICE_CONTENT, LECTURE_NOTICE_DATE, LECTURE_NUMBER
-                FROM TBL_LECTURE_NOTICE LN
+                FROM TBL_LECTURE_NOTICE
+                WHERE LECTURE_NUMBER = #{lectureNumber}
                 ORDER BY LECTURE_NOTICE_NUMBER DESC
-            ) D2
-        <![CDATA[
-        WHERE ROWNUM <= #{page} * #{amount}
-        ) WHERE R > (#{page} - 1) * #{amount}
-        ]]>
+            )
+    <![CDATA[
+            WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+        )
+        WHERE R > (#{criteria.page} - 1) * #{criteria.amount}
+    ]]>
     </select>
 
     <select id="getTotal" resultType="_int">

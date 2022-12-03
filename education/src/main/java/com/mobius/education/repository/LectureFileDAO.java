@@ -18,5 +18,15 @@ public class LectureFileDAO {
         lectureFileMapper.insert(lectureFileVO);
     }
 
+    //    파일 삭제
+    public void remove(Long lectureNumber) {
+        lectureFileMapper.delete(lectureNumber);
+    }
+
+    //    파일 조회
+    public List<LectureFileVO> findAll(Long lectureNumber) {
+        return lectureFileMapper.selectAll(lectureNumber);
+    }
+
 
 }

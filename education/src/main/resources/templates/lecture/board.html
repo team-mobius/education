@@ -71,6 +71,7 @@
 <script src="/js/basic/util.js"></script>
 <script src="/js/basic/main.js"></script>
 <script th:inline="javascript">
+    let lectureNumber = [[${lecture.lectureNumber}]];
     let lectureNoticeNumber = [[${lectureNoticeNumber}]];
     let $pages = $("a.changePage");
     let queryString = [[${pagination.criteria.queryString}]];

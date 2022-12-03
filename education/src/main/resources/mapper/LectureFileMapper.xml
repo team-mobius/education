@@ -6,4 +6,14 @@
         VALUES (SEQ_LECTURE_FILE.NEXTVAL, #{lectureFileName}, #{lectureFileUploadPath}, #{lectureFileUuid}, #{lectureFileSize}, #{lectureFileCheck}, #{lectureNumber})
     </insert>
 
+    <delete id="delete">
+        DELETE FROM TBL_LECTURE_FILE
+        WHERE LECTURE_NUMBER = #{lectureNumber}
+    </delete>
+
+    <select id="selectAll" resultType="lectureFileVO">
+        SELECT LECTURE_FILE_NUMBER, LECTURE_FILE_NAME, LECTURE_FILE_UPLOAD_PATH, LECTURE_FILE_UUID, LECTURE_FILE_SIZE, LECTURE_FILE_CHECK, LECTURE_NUMBER
+        FROM TBL_LECTURE_FILE
+        WHERE LECTURE_NUMBER = #{lectureNumber}
+    </select>
 </mapper>

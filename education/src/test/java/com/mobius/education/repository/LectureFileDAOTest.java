@@ -18,12 +18,21 @@ class LectureFileDAOTest {
     private LectureFileDAO lectureFileDAO;
 
     @Test
-    public void insertTest() {
-        LectureDTO lectureDTO = new LectureDTO();
+    public void saveTest() {
         LectureFileVO lectureFileVO = new LectureFileVO();
-        lectureDTO.setLectureNumber(26L);
-        lectureFileVO.create("테스트dao3", "2022/11/28", UUID.randomUUID().toString(), 100L, lectureDTO.getLectureNumber());
+        lectureFileVO.create("테스트4", "2022/12/02", UUID.randomUUID().toString(), 100L, true, 66L);
         lectureFileDAO.save(lectureFileVO);
         log.info("name: " + lectureFileVO.getLectureFileName());
+    }
+
+    @Test
+    public void deleteTest() {
+        lectureFileDAO.remove(174L);
+    }
+
+    @Test
+    public void selectAllTest() {
+        lectureFileDAO.findAll(66L).stream().map(LectureFileVO::getLectureFileName).forEach(log::info);
+
     }
 }

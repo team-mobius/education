@@ -42,7 +42,7 @@
                 <div class="register-title">강의 등록</div>
             </div>
 
-            <form method="post" id="applyForm" th:object="${apply}" enctype="multipart/form-data" class="lecture-input-form">
+            <form method="post" id="modifyForm" th:object="${lecture}" enctype="multipart/form-data" class="lecture-input-form">
                 <!-- -----------
                     tab-2 시작 th:action="@{/teacherMypage/apply}"
                   ------------->
@@ -172,7 +172,7 @@
                 <div class="button-wrapper">
                     <div class="button-container">
                         <input type="submit" class="temporary-storage-btn" value="임시저장" onclick="javascript: form.action='/teacherMypage/temporary';"/>
-                        <input th:action="@{/teacherMypage/apply}" type="submit" class="submit-btn" value="제출하기" th:field="*{lectureStatus}"/>
+                        <input th:action="@{/teacherMypage/modify}" type="submit" class="submit-btn" value="제출하기" th:field="*{lectureStatus}"/>
                     </div>
                 </div>
             </form>
@@ -189,6 +189,12 @@
 <script src="/js/basic/main.js"></script>
 <script th:inline="javascript">
     let arrayFile = [];
+    let lectureNumber = [[${lectureNumber}]];
+
+    $("input[type='submit'].temporary-storage-btn").on("click", function (e) {
+        e.preventDefault();
+        location.href = "/teacherMypage/update"  + "?lectureNumber=" + lectureNumber;
+    });
 
     $("input[type='file'].detail-img-file").on('change', function(){
         let formData = new FormData();
@@ -261,7 +267,7 @@
             text += `<input type="hidden" name="files[` + i + `].lectureFileSize" value="` + lectureFileSize + `">`;
             text += `<input type="hidden" name="files[` + i + `].lectureFileCheck" value="` + lectureFileCheck + `">`;
         });
-        $("form#applyForm").append(text).submit();
+        $("form#modifyForm").append(text).submit();
     });
 
 
@@ -337,7 +343,7 @@
             text += `<input type="hidden" name="thumbs[` + i + `].lectureThumbnailSize" value="` + lectureThumbnailSize + `">`;
             text += `<input type="hidden" name="thumbs[` + i + `].lectureThumbnailCheck" value="` + lectureThumbnailCheck + `">`;
         });
-        $("form#applyForm").append(text).submit();
+        $("form#modifyForm").append(text).submit();
     });
 
 

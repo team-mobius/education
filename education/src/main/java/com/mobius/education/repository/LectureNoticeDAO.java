@@ -19,8 +19,8 @@ public class LectureNoticeDAO {
     }
 
     //공지 전체 조회
-    public List<LectureNoticeVO> findAll(Criteria criteria) {
-        return lectureNoticeMapper.selectAll(criteria);
+    public List<LectureNoticeVO> findAll(Long lectureNumber, Criteria criteria){
+        return lectureNoticeMapper.selectAll(lectureNumber, criteria);
     }
 
     //공지 전체 개수

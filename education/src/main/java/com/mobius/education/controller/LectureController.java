@@ -36,11 +36,12 @@ public class LectureController {
     }
 
     @GetMapping("/board")
-    public void board(Criteria criteria, Model model) {
+    public void board(Criteria criteria, Model model, Long lectureNumber) {
+
         if(criteria.getPage() == 0){
             criteria.create(1, 16);
         }
-        model.addAttribute("notices", lectureNoticeService.showAll(criteria));
+        model.addAttribute("notices", lectureNoticeService.showAll(lectureNumber, criteria));
         model.addAttribute("pagination", new PageDTO().createPageDTO(criteria, lectureNoticeService.countAll()));
     }
 

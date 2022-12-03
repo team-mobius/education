@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mobius.education.mapper.LectureMapper">
-    <select id="selectAll" resultType="lectureVO">
+    <select id="selectAll" resultType="lectureDTO">
         SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
         FROM
         (
@@ -10,6 +10,7 @@
             (
                 SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
                 FROM TBL_LECTURE L
+                WHERE LECTURE_STATUS NOT IN ('임시저장')
                 ORDER BY LECTURE_NUMBER DESC
             ) D2
         <![CDATA[
@@ -26,8 +27,8 @@
         <selectKey keyProperty="lectureNumber" order="BEFORE" resultType="long">
             SELECT SEQ_LECTURE.NEXTVAL FROM DUAL
         </selectKey>
-        INSERT INTO TBL_LECTURE(LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE,LECTURE_STATUS)
-        VALUES (#{lectureNumber}, #{lectureTitle}, #{lectureCategory}, #{lectureContent}, #{lectureDate}, #{lectureMaximumNumber}, #{lectureTime}, #{lecturePlace},#{lectureStatus})
+        INSERT INTO TBL_LECTURE(LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE,LECTURE_STATUS, PLACE_NUMBER)
+        VALUES (#{lectureNumber}, #{lectureTitle}, #{lectureCategory}, #{lectureContent}, #{lectureDate}, #{lectureMaximumNumber}, #{lectureTime}, #{lecturePlace}, #{lectureStatus}, #{placeNumber})
     </insert>
 
     <delete id="delete">
@@ -37,12 +38,12 @@
 
     <update id="update">
         UPDATE TBL_LECTURE
-        SET LECTURE_TITLE = #{lectureTitle}, LECTURE_CATEGORY = #{lectureCategory}, LECTURE_CONTENT = #{lectureContent}, LECTURE_DATE = #{lectureDate},  LECTURE_MAXIMUM_NUMBER = #{lectureMaximumNumber},  LECTURE_TIME = #{lectureTime},  LECTURE_PLACE = #{lecturePlace}, LECTURE_STATUS = #{lectureStatus}
+        SET LECTURE_TITLE = #{lectureTitle}, LECTURE_CATEGORY = #{lectureCategory}, LECTURE_CONTENT = #{lectureContent}, LECTURE_DATE = #{lectureDate},  LECTURE_MAXIMUM_NUMBER = #{lectureMaximumNumber},  LECTURE_TIME = #{lectureTime},  LECTURE_PLACE = #{lecturePlace}, LECTURE_STATUS = #{lectureStatus}, PLACE_NUMBER = #{placeNumber}
         WHERE LECTURE_NUMBER = #{lectureNumber}
     </update>
 
-    <select id="select" resultType="lectureDTO">
-        SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS
+    <select id="select" resultType="lectureVO">
+        SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_APPLY_NUMBER, LECTURE_MAXIMUM_NUMBER, LECTURE_TIME, LECTURE_PLACE, LECTURE_STATUS, PLACE_NUMBER
         FROM TBL_LECTURE
         WHERE LECTURE_NUMBER = #{lectureNumber}
     </select>
@@ -139,4 +140,9 @@
         WHERE LECTURE_STATUS = '임시저장'
     </select>
 
+    <update id="insertPlace">
+        UPDATE TBL_LECTURE
+        SET PLACE_NUMBER = #{placeNumber}
+        WHERE LECTURE_NUMBER = #{lectureNumber}
+    </update>
 </mapper>
