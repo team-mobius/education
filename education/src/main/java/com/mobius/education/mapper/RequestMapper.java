@@ -23,4 +23,12 @@ public interface RequestMapper {
 //    전체조회
     public List<RequestVO> selectAll();
 
+//    나의 요청 수 조회
+    public int selectUserRequestCount(Long userNumber);
+
+//    나의 요청 전체 조회
+    public List<RequestVO> selectUserRequestAll(Long userNumber);
+
+    public List<RequestVO> selectUserRequestThree(Long userNumber);
+
 }

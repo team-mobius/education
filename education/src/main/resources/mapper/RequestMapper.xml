@@ -3,7 +3,7 @@
 <mapper namespace="com.mobius.education.mapper.RequestMapper">
     <insert id="insert">
         INSERT INTO TBL_REQUEST(REQUEST_NUMBER, REQUEST_TITLE, REQUEST_CATEGORY,REQUEST_CONTENT)
-        VALUES (SEQ_BOARD.NEXTVAL, #{requestTitle}, #{requestCategory}, #{requestContent})
+        VALUES (SEQ_REQUEST.NEXTVAL, #{requestTitle}, #{requestCategory}, #{requestContent})
     </insert>
 
     <update id="update">
@@ -25,5 +25,25 @@
     <select id="selectAll" resultType="requestVO">
         SELECT REQUEST_NUMBER, REQUEST_TITLE, REQUEST_CATEGORY,REQUEST_CONTENT, REQUEST_REGISTER_DATE, REQUEST_MODIFY_DATE
         FROM TBL_REQUEST
+    </select>
+
+<!--    사용자가 작성한 요청 수-->
+    <select id="selectUserRequestCount" resultType="int">
+        SELECT COUNT(USER_NUMBER) FROM TBL_REQUEST
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+<!--    사용자가 작성한 요청-->
+    <select id="selectUserRequestAll" resultType="requestVO">
+        SELECT REQUEST_NUMBER , REQUEST_TITLE , REQUEST_CATEGORY , REQUEST_REGISTER_DATE , REQUEST_MODIFY_DATE
+        FROM TBL_REQUEST
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+<!--    마이페이지에서 보여지는 요청 수-->
+    <select id="selectUserRequestThree" resultType="requestVO">
+        SELECT REQUEST_NUMBER , REQUEST_TITLE , REQUEST_CATEGORY , REQUEST_REGISTER_DATE , REQUEST_MODIFY_DATE
+        FROM TBL_REQUEST
+        WHERE USER_NUMBER = #{userNumber} AND ROWNUM <![CDATA[<]]>=3
     </select>
 </mapper>

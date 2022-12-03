@@ -7,7 +7,6 @@
     <title>Document</title>
     <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/review/review.css">
-    <link rel="stylesheet" href="review.css">
 </head>
 <body>
 
@@ -29,13 +28,14 @@
         </div>
     </div>
     <div class="container">
+
+<!--        리스트 보이는 테이블 시작-->
         <div class="table-wrapper">
             <table>
                 <thead>
                 <tr class="tHead">
                     <th class="reviewNumber">번호</th>
                     <th class="reviewTitle">제목</th>
-                    <th class="reviewContent">제목</th>
                     <th class="reviewWriter">작성자</th>
                     <th class="reivewRegisterDate">작성일</th>
                     <th class="reivewUpdateDate">수정일</th>
@@ -44,141 +44,55 @@
                 <tbody>
                 <th:block th:each="review:${reviews}">
                     <tr class="tBody" th:object="${review}">
-                        <!--<td class="reviewNumber" th:text="*{reviewNumber}">1</td>-->
-                        <!--<td class="reviewTitle">[ABC] 원어민처럼 말하게 되는 기초 영어 🎶<a class="read" th:text="*{boardTitle}" th:href="@{/board/read(boardNumber=*{boardNumber})}"></a></td>-->
-                        <td class="reviewTitle" th:text="*{reviewTitle}"></td>
-                        <td class="reviewContent" th:text="*{reviewContent}"></td>
-                        <!--<td class="reviewWriter" th:text="*{boardWriter}">홍길동</td>-->
-                        <td class="reivewRegisterDate" th:text="*{reviewRegisterDate}"></td>
-                        <td class="reivewUpdateDate" th:text="*{reviewModifyDate}"></td>
+                        <td class="reviewNumber" th:text="*{reviewNumber}"></td>
+                        <td class="reviewTitle"><a class="read" th:text="*{reviewTitle}" th:href="*{lectureNumber}"></a></td>
+                        <td class="userNickname" th:text="*{userNickname}"></td>
+                        <td class="reviewRegisterDate" th:text="*{#strings.substring(reviewRegisterDate,0,10)}"></td>
+                        <td class="reviewUpdateDate" th:text="*{#strings.substring(reviewModifyDate,0,10)}"></td>
                     </tr>
-<!--
-                    <tr class="tBody" th:object="${review}">
-                        &lt;!&ndash;<td class="reviewNumber" th:text="*{reviewNumber}">1</td>&ndash;&gt;
-                        &lt;!&ndash;<td class="reviewTitle">[ABC] 원어민처럼 말하게 되는 기초 영어 🎶<a class="read" th:text="*{boardTitle}" th:href="@{/board/read(boardNumber=*{boardNumber})}"></a></td>&ndash;&gt;
-                        <td class="reviewTitle" th:text="*{reviewTitle}">[ABC] 원어민처럼 말하게 되는 기초 영어 🎶</td>
-                        <td class="reviewContent" th:text="*{reviewContent}">너무 쉽고 다시 듣고 싶어요 정말 잘 들었습니다~~!!!!</td>
-                        &lt;!&ndash;<td class="reviewWriter" th:text="*{boardWriter}">홍길동</td>&ndash;&gt;
-                        <td class="reivewRegisterDate" th:text="*{reviewRegisterDate}">2022-01-02</td>
-                        <td class="reivewUpdateDate" th:text="*{reviewModifyDate}">2022-01-03</td>
-                    </tr>
--->
                 </th:block>
                 </tbody>
+            </table>
+
+<!--              페이지 버튼 여지는 부분-->
+            <div th:object="${pagination}">
+                <div style="text-align: center">
+                    <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>PREV</code></a>
+                    <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                        <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+                        <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+                    </th:block>
+                    <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>NEXT</code></a>
+                </div>
+                <form th:action="@{/review/list}" th:object="${criteria}" name="pageForm">
+                    <input type="hidden" th:field="*{page}">
+                    <input type="hidden" th:field="*{amount}">
+                </form>
+            </div>
         </div>
     </div>
 </section>
-<footer id="footer">
-    <div class="wrapper">
-        <div class="footerTop">
-            <div class="menuList">
-                <div class="listTitle">
-                    강의목록
-                </div>
-                <div class="menuSublist">
-                    <a href="" >IT</a>
-                    <a href="" >외국어</a>
-                    <a href="" >강의추천</a>
-                </div>
-            </div>
-            <div class="menuList">
-                <div class="listTitle">
-                    공지사항
-                </div>
-                <div class="menuSublist">
-                    <a href="" >강의장 소개</a>
-                    <a href="" >수강생 문의</a>
-                    <a href="" >수강평 모아보기</a>
-                </div>
-            </div>
-            <div class="menuList">
-                <div class="listTitle">
-                    1대 1 문의
-                </div>
-                <div class="menuSublist">
-                    <a href="" >문의하기</a>
-                    <a href="" >문의답변</a>
-                    <a href="" >자주묻는 질문</a>
-                </div>
-            </div>
-            <div class="menuList">
-                <div class="listTitle">
-                    고객센터
-                </div>
-                <div class="menuSublist">
-                    <a href="" >공지사항</a>
-                    <a href="" >자주묻는 질문</a>
-                    <a href="" >저작권 신고센터</a>
-                    <a href="" >수료증 확인</a>
-                    <a href="" >강의 · 기능요청</a>
-                </div>
-            </div>
-            <div class="menuList">
-                <div class="listTitle">
-                    강의장
-                </div>
-                <div class="menuSublist">
-                    <a href="" >강의장 둘러보기</a>
-                    <a href="" >강의장 문의</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer_bottom">
-            <div class="footer_bottom_left">
-                <div class="footer_info_top">
-                        <span class="footerLogo">
-                            <a href="">
-                                <img src="img/logo.png">
-                            </a>
-                        </span>
-                    <span>
-                            |
-                            <a href="" style="color: #bdbdbd; margin-left: 10px; margin-right: 10px;">개인정보취급방침</a>
-                        </span>
-                    <span>
-                            |
-                            <a href="" style="color: #bdbdbd; margin-left: 10px;">이용약관</a>
-                        </span>
-                </div>
-                <div class="footer_info_bottom">
-                    <div class="info_dropdown">
-                        <span> (주)인프랩 | </span>
-                        <span> 대표자: 이형주 | </span>
-                        <span> 사업자번호: 499-81-00612 </span>
-                        <br>
-                        <span>통신판매업: 2018-성남분당B-0062 | </span>
-                        <span>개인정보보호책임자: 이동욱 |  </span>
-                        <span>이메일: info@inflearn.com  </span>
-                        <br>
-                        <span>주소: 경기도 성남시 분당구 대왕판교로 660 유스페이스 1A동 405호</span>
-                    </div>
-                    ©INFLAB. ALL RIGHTS RESERVED
-                </div>
-            </div>
-            <div class="footer_bottom_right">
-                <a href="">
-                    <img src="https://www.shouse.garden/images/common/u_in_m.png">
-                </a>
-                <a href="">
-                    <img src="https://www.shouse.garden/images/common/u_fb_m.png">
-                </a>
-                <a href="">
-                    <img src="https://www.shouse.garden/images/common/u_kc_m.png">
-                </a>
-                <a href="">
-                    <img src="https://www.shouse.garden/images/common/u_ap_m.png">
-                </a>
-                <a href="">
-                    <img src="https://www.shouse.garden/images/common/u_yt_m.png">
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
+
+<footer th:replace="/fixed/footer.html" :: #footer></footer>
+</body>
 <script src="/js/review/review.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
 
+    let boardNumber = [[${boardNumber}]];
+    let $pages = $("a.changePage");
+    let queryString = [[${pagination.criteria.queryString}]];
+    const $read = $("a.read");
+
+    $pages.on("click", function(e){
+        e.preventDefault();
+        $(document.pageForm.page).val($(this).attr("href"));
+        document.pageForm.submit();
+    });
+
+    $read.on("click", function(e){
+        e.preventDefault();
+        location.href = "/review/detail" + queryString + "&reviewNumber=" + $(this).attr("href");
+    });
 </script>
-</body>
 </html>

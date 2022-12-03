@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:li="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Board</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="/css/fixed/header2.css" />
     <link rel="stylesheet" href="/css/fixed/footer.css" />
-    <link rel="stylesheet" href="/css/request/reset.css" />
+<!--    <link rel="stylesheet" href="/css/request/reset.css" />-->
     <link rel="stylesheet" href="/css/request/list.css" />
 </head>
     <body>
-    <header th:replace="/fixed/header2.html :: body"></header>
+    <header th:replace="/fixed/header2.html" :: body></header>
         <main>
             <!-- 메인에 있는 헤더 -->
             <section class="request_header">
@@ -124,8 +124,8 @@
                                 <!-- 목록 -->
                                 <div class="list_area">
                                     <ul class="list_container">
-                                        <!-- requestList -->
-                                        <li:block class="list_box" th:each="request:${requests}">
+<!--                                         request list-->
+                                        <th:block class="list_box" th:each="request:${requests}">
                                             <a href="">
                                                 <div class="list_info" th:object="${request}">
                                                     <div class="list_left_info">
@@ -153,7 +153,7 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </li:bl>
+                                        </th:block>
                                     </ul>
                                 </div>
                             </div>
@@ -220,11 +220,11 @@
                 </div>
             </section>
         </main>
-        <footer th:replace="/fixed/footer.html :: #footer"></footer>
+        <footer th:replace="/fixed/footer.html" :: #footer></footer>
     </body>
 <script src="/js/request/list.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script th:inline="javascript"></script>
+<!--<script th:inline="javascript"></script>-->
 <script>
     $("button.write").on("click", function (e) {
         e.preventDefault();

@@ -1,6 +1,7 @@
 package com.mobius.education.mapper;
 
 import com.mobius.education.domain.vo.RequestVO;
+import com.mobius.education.domain.vo.ReviewVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.Request;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,7 @@ public class RequestMapperTest {
 //    조회
     @Test
     public void selectTest(){
-        log.info("request: " + requestMapper.select(41L));
+        log.info("request: " + requestMapper.select(0L));
 
     }
 
@@ -41,5 +42,25 @@ public class RequestMapperTest {
     public void selectAllTest(){
         requestMapper.selectAll().stream().map(RequestVO::getRequestTitle).forEach(log::info);
     }
+
+//    요청 수 조회
+    @Test
+    public void selectCountTest(){
+        log.info("요청 수 : " + requestMapper.selectUserRequestCount(0L));
+    }
+
+//    내가 용청한 것 전부
+    @Test
+    public void selectUserAllTest(){
+        log.info("내가 요청한 것 : " + requestMapper.selectUserRequestAll(0L));
+    }
+
+//    마이페이지에서 보여지는 3개의 리뷰
+    @Test
+    public void selectUserTree(){
+        log.info("요청 3개 :" +requestMapper.selectUserRequestThree(0L));
+    }
+
+
 
 }

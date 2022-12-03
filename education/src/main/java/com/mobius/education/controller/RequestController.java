@@ -1,6 +1,7 @@
 package com.mobius.education.controller;
 
 import com.mobius.education.domain.vo.RequestVO;
+import com.mobius.education.service.RequestBoardService;
 import com.mobius.education.service.RequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,12 +19,13 @@ import javax.xml.ws.Service;
 @RequiredArgsConstructor
 @RequestMapping("request/*")
 public class RequestController {
-    private final RequestService requestService;
+    private final RequestBoardService requestBoardService;
 
 //    강의 요청 목록
     @GetMapping("/list")
-    public void review(Model model) {
-        model.addAttribute("requests",requestService.showAll());
+    public String list(Model model) {
+        model.addAttribute("requests",requestBoardService.showAll());
+        return "/request/list";
     }
 
 
@@ -39,7 +41,7 @@ public class RequestController {
 
     @PostMapping("/ask")
     public RedirectView ask(RequestVO requestVO, RedirectAttributes redirectAttributes) {
-        requestService.register(requestVO);
+        requestBoardService.register(requestVO);
         redirectAttributes.addFlashAttribute("requestNumber", requestVO.getRequestNumber());
         return new RedirectView(("/request/list"));
     }
@@ -47,13 +49,13 @@ public class RequestController {
     //    강의 상세 정보
     @GetMapping(value = {"/detail","/update"})
     public void detail(Long requestNumber, Model model) {
-        model.addAttribute("request",requestService.show(requestNumber));
+        model.addAttribute("request",requestBoardService.show(requestNumber));
     }
 
     //    강의요청 수정완료
     @PostMapping("/update")
     public RedirectView update(RequestVO requestVO, RedirectAttributes redirectAttributes) {
-        requestService.modify(requestVO);
+        requestBoardService.modify(requestVO);
         redirectAttributes.addAttribute("requestNumber", requestVO.getRequestNumber());
         return new RedirectView(("request/detail"));
     }
@@ -61,7 +63,7 @@ public class RequestController {
     //    강의요청 삭제
     @PostMapping("delete")
     public RedirectView delete(Long requestNumber) {
-        requestService.remove(requestNumber);
+        requestBoardService.remove(requestNumber);
         return new RedirectView(("/request/list"));
     }
 }

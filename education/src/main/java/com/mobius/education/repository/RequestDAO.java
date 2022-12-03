@@ -37,4 +37,19 @@ public class RequestDAO {
     public List<RequestVO> findAll(){
         return requestMapper.selectAll();
     }
+
+//    나의 요청 수 조회
+    public int showMyRequestCount(Long userNumber){
+        return requestMapper.selectUserRequestCount(userNumber);
+    }
+
+//    나의 모든 요청 조회
+    public List<RequestVO> showMyRequestAll(Long userNumber){
+        return requestMapper.selectUserRequestAll(userNumber);
+    }
+
+//    마이페이지에서 보여지는 요청 3개
+    public List<RequestVO> showMyRequestThree(Long userNumber){
+        return requestMapper.selectUserRequestThree(userNumber);
+    }
 }
