@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class ReviewVO {
+public class ReviewDTO {
     private Long reviewNumber;
     private String reviewTitle;
     private String reviewContent;
@@ -13,12 +13,17 @@ public class ReviewVO {
     private String reviewModifyDate;
     private Long lectureNumber;
     private Long userNumber;
+    private String userNickname;
 
-    public void create(String reviewTitle, String reviewContent, Long userNumber, Long lectureNumber){
+    public void create(Long reviewNumber, String reviewTitle, String reviewContent, String reviewRegisterDate, String reviewModifyDate, Long lectureNumber, Long userNumber, String userNickname){
+        this.reviewNumber = reviewNumber;
         this.reviewTitle = reviewTitle;
         this.reviewContent = reviewContent;
-        this.userNumber = userNumber;
+        this.reviewRegisterDate = reviewRegisterDate;
+        this.reviewModifyDate = reviewModifyDate;
         this.lectureNumber = lectureNumber;
-
+        this.userNumber = userNumber;
+        this.userNickname = userNickname;
     }
+
 }

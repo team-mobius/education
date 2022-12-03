@@ -12,8 +12,86 @@
     </select>
 
     <select id="selectAll" resultType="reviewVO">
-        SELECT REVIEW_TITLE , REVIEW_CONTENT , REVIEW_REGISTER_DATE , REVIEW_MODIFY_DATE
+        SELECT REVIEW_TITLE , REVIEW_CONTENT , REVIEW_REGISTER_DATE , REVIEW_MODIFY_DATE , USER_NUMBER
         FROM TBL_REVIEW
+    </select>
+
+    <select id="selectUserReviewThree" resultType="reviewVO">
+        SELECT REVIEW_TITLE , REVIEW_CONTENT , REVIEW_REGISTER_DATE , REVIEW_MODIFY_DATE, LECTURE_NUMBER , USER_NUMBER FROM TBL_REVIEW
+        WHERE USER_NUMBER = #{userNumber} AND ROWNUM <![CDATA[<]]>=3
+    </select>
+
+    <insert id="insert">
+        INSERT INTO TBL_REVIEW(REVIEW_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, LECTURE_NUMBER, USER_NUMBER)
+        VALUES (SEQ_REVIEW.NEXTVAL, #{reviewTitle}, #{reviewContent}, #{lectureNumber}, #{userNumber})
+    </insert>
+
+    <update id="update">
+        UPDATE TBL_REVIEW
+        SET REVIEW_TITLE = #{reviewTitle}, REVIEW_CONTENT = #{reviewContent}, REVIEW_MODIFY_DATE = SYSDATE
+        WHERE REVIEW_NUMBER = #{reviewNumber}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM TBL_REVIEW
+        WHERE REVIEW_NUMBER = #{reviewNumber}
+    </delete>
+
+    <select id="select" resultType="reviewVO">
+        SELECT REVIEW_NUMBER , REVIEW_TITLE , REVIEW_CONTENT , REVIEW_REGISTER_DATE , REVIEW_MODIFY_DATE , USER_NUMBER
+        FROM TBL_REVIEW
+        WHERE REVIEW_NUMBER =#{reviewNumber}
+    </select>
+
+    <select id="getTotal" resultType="int">
+        SELECT COUNT(REVIEW_NUMBER) FROM TBL_REVIEW
+    </select>
+
+    <select id="selectReviewAll" resultType="reviewVO">
+        SELECT REVIEW_NUMBER, REVIEW_TITLE, USER_NUMBER, REVIEW_CONTENT, REVIEW_REGISTER_DATE, REVIEW_MODIFY_DATE
+        FROM
+        (
+            SELECT ROWNUM R, REVIEW_NUMBER, REVIEW_TITLE, USER_NUMBER, REVIEW_CONTENT, REVIEW_REGISTER_DATE, REVIEW_MODIFY_DATE
+            FROM
+            (
+                SELECT REVIEW_NUMBER, REVIEW_TITLE, USER_NUMBER, REVIEW_CONTENT, REVIEW_REGISTER_DATE, REVIEW_MODIFY_DATE
+                FROM TBL_REVIEW B
+                ORDER BY REVIEW_NUMBER DESC
+            ) D2
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ) WHERE R > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="selectReviewAllAndUserNickname" resultType="com.mobius.education.domain.vo.ReviewDTO">
+        SELECT REVIEW_NUMBER, REVIEW_TITLE, USER_NUMBER, REVIEW_CONTENT, REVIEW_REGISTER_DATE, REVIEW_MODIFY_DATE, USER_NICKNAME, LECTURE_NUMBER
+        FROM
+        (
+            SELECT ROWNUM R, REVIEW_NUMBER, REVIEW_TITLE, USER_NUMBER, REVIEW_CONTENT, REVIEW_REGISTER_DATE, REVIEW_MODIFY_DATE, USER_NICKNAME, LECTURE_NUMBER
+            FROM
+            (
+                SELECT REVIEW_NUMBER, REVIEW_TITLE, USER_NUMBER, REVIEW_CONTENT, REVIEW_REGISTER_DATE, REVIEW_MODIFY_DATE, USER_NICKNAME, LECTURE_NUMBER
+                FROM
+                (
+                SELECT REVIEW_NUMBER, REVIEW_TITLE, tu.USER_NUMBER, REVIEW_CONTENT, REVIEW_REGISTER_DATE, REVIEW_MODIFY_DATE, USER_NICKNAME, LECTURE_NUMBER FROM TBL_USER tu , TBL_REVIEW tr
+                WHERE tu.USER_NUMBER  = tr.USER_NUMBER
+                ) B
+                ORDER BY REVIEW_NUMBER DESC
+            ) D2
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ) WHERE R > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="selectLectureReview" resultType="com.mobius.education.domain.vo.ReviewDTO">
+        SELECT USER_NICKNAME, REVIEW_NUMBER , REVIEW_REGISTER_DATE, REVIEW_MODIFY_DATE, LECTURE_NUMBER, REVIEW_CONTENT, REVIEW_TITLE  FROM
+        (
+        SELECT * FROM TBL_USER tu , TBL_REVIEW tr
+        WHERE tu.USER_NUMBER  = tr.USER_NUMBER
+        )
+        WHERE LECTURE_NUMBER = #{lectureNumber}
     </select>
 
 </mapper>

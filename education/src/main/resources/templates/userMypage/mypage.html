@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <title>마이페이지</title>
     <link rel="stylesheet" href="/css/userMypage/userMypage.css" />
-    <link rel="stylesheet" href="/css/fixed/reset.css" />
+<!--    <link rel="stylesheet" href="/css/fixed/reset.css" />-->
   </head>
-  <body>
+  <body style="margin: 0">
   <header th:replace="/fixed/header2.html" :: body></header>
     <div class="App">
       <div class="wrap">
@@ -99,13 +99,13 @@
                     <!--<p class="">알림 설정</p>-->
                   </div>
                 </div>
-                <div class="lecture-number">
+                <div class="lecture-number" th:object="${counts}">
                   <div class="text-ro">
-                    <p class="text-root">1</p>
+                    <p class="text-root" th:text="*{userExpectedLectureCount}"></p>
                     <p class="text-roots">수강중</p>
                   </div>
                   <div class="text-ro">
-                    <p class="text-root">0</p>
+                    <p class="text-root" th:text="*{userEndLectureCount}"></p>
                     <p class="text-roots">수강완료</p>
                   </div>
                   <!--<div class="study-go">
@@ -126,11 +126,39 @@
                     <a href="">
                       <p class="second-">작성하기</p>
                     </a>
-                    <!--<p class="">알림 설정</p>-->
                   </div>
                 </div>
+
                 <div class="text-third">
-                  <p>작성된 후기가 없습니다.</p>
+
+                  <!--                    목록 보여지는 table -->
+                  <th:block th:if = "${counts.userReviewCount != 0}">
+                    <table class="show-table">
+                      <thead>
+                      <tr class="tHead">
+                        <th class="review-title">제목</th>
+                        <th class="review-register-date">등록일</th>
+                        <th class="review-register-date"></th>
+                        <th class="review-register-date"></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <th:block th:each="review : ${reviews}">
+                        <tr class="tBody" th:object="${review}">
+                          <td class="review-title" th:text="*{reviewTitle}" th:href="*{reviewNumber}"></td>
+                          <td class="review-register-date" th:text="*{#strings.substring(reviewRegisterDate,0,4)}"></td>
+                          <td class="review-register-date" th:text="*{#strings.substring(reviewRegisterDate,5,7)}"></td>
+                          <td class="review-register-date" th:text="*{#strings.substring(reviewRegisterDate,8,10)}"></td>
+                        </tr>
+                      </th:block>
+                      </tbody>
+                    </table>
+                  </th:block>
+
+<!--                  reviews에 아무것도 없으면 나오는 것-->
+                  <th:block th:if ="${counts.userReviewCount ==0}">
+                    <p>작성된 후기가 없습니다.</p>
+                  </th:block>
                 </div>
               </div>
             </div>
@@ -139,18 +167,49 @@
               <div class="content-text">
                 <div class="text-one">
                   <div class="text-first">
-                    <span class="">🚩</span>
-                    <p class="bow-left">수강중인 강의</p>
+                    <span class="">📝</span>
+                    <p class="bow-left">나의 요청</p>
                   </div>
                   <div class="text-second">
                     <a href="">
                       <p class="second-">자세히</p>
                     </a>
-                    <!--<p class="">알림 설정</p>-->
+
                   </div>
                 </div>
                 <div class="text-third">
-                  <p>내용이 없습니다.</p>
+
+                  <!--                    요청 목록 보여지는 table -->
+                  <th:block th:if ="${counts.userRequestCount != 0 }">
+                    <table class="show-table">
+                      <thead>
+                      <tr class="tHead">
+                        <th class="review-title">제목</th>
+                        <th class="review-register-date">등록일</th>
+                        <th class="review-register-date"></th>
+                        <th class="review-register-date"></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <th:block th:each="request : ${requests}">
+                        <tr class="tBody" th:object="${request}">
+                          <td class="review-title" th:text="*{requestTitle}" th:href="*{requestNumber}"></td>
+                          <td class="review-register-date" th:text="*{#strings.substring(requestRegisterDate,0,4)}"></td>
+                          <td class="review-register-date" th:text="*{#strings.substring(requestRegisterDate,5,7)}"></td>
+                          <td class="review-register-date" th:text="*{#strings.substring(requestRegisterDate,8,10)}"></td>
+                        </tr>
+                      </th:block>
+                      </tbody>
+                    </table>
+                  </th:block>
+
+
+
+                  <!--                  request에 아무것도 없으면 나오는 것-->
+                  <th:block th:if = "${counts.userRequestCount == 0}">
+                    <p>작성된 후기가 없습니다.</p>
+                  </th:block>
+
                 </div>
               </div>
             </div>
@@ -296,4 +355,6 @@
       </footer>
     </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="/js/userMypage/userMypage.js"></script>
 </html>
