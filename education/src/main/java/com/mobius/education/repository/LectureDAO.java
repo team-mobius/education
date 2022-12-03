@@ -30,12 +30,12 @@ public class LectureDAO {
     }
 
     //강의 조회
-    public LectureDTO findById(Long lectureNumber) {
+    public LectureVO findById(Long lectureNumber) {
         return lectureMapper.select(lectureNumber);
     }
 
     //강의 전체 조회
-    public List<LectureVO> findAll(Criteria criteria) {
+    public List<LectureDTO> findAll(Criteria criteria) {
         return lectureMapper.selectAll(criteria);
     }
 

@@ -59,10 +59,10 @@
             <th:block th:if="${countTemporary != 0}" th:each="lecture:${lectures}">
             <div class="class-list-container" th:object="${lecture}">
               <div class="list-class-title list-content">
-                  <a style="cursor: pointer;"  th:text="*{lectureTitle}">
+                  <a class="goModify" style="cursor: pointer;"  th:text="*{lectureTitle}" th:href="@{/teacherMypage/modify(lectureNumber=*{lectureNumber})}">
               </div>
               <div class="list-class-start-date date_content list-content" th:text="*{#strings.substring(lectureDate, 0, 10)}"></div>
-              <div class="class-list-delete"><a href="#">삭제</a></div>
+              <div class="class-list-delete"><a class="deleteButton" th:href="@{/teacherMypage/delete(lectureNumber=*{lectureNumber})}">삭제</a></div>
             </div>
             </th:block>
 
@@ -100,11 +100,20 @@
   </body>
   <script src="teacher_temporary_storage.js">
     let $pages = $("a.changePage");
+    let lectureNumber = [[${lectureNumber}]];
+    let queryString = [[${pagination.criteria.queryString}]];
+    const $goModify = $("a.goModify");
 
     $pages.on("click", function(e){
       e.preventDefault();
       $(document.pageForm.page).val($(this).attr("href"));
       document.pageForm.submit();
     });
+
+    $("a.deleteButton").on("click", function (e) {
+      e.preventDefault();
+      location.href = "/teacherMypage/delete"  + "?lectureNumber=" + lectureNumber;
+    });
+
   </script>
 </html>

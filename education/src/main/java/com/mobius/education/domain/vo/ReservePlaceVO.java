@@ -14,6 +14,19 @@ public class ReservePlaceVO {
     private boolean reservePlaceDinner;
     private Long placeNumber;
 
+    public void create(String reservePlaceDate, boolean reservePlaceMorning, boolean reservePlaceAfternoon, boolean reservePlaceDinner) {
+        this.reservePlaceDate = reservePlaceDate;
+        this.reservePlaceMorning = reservePlaceMorning;
+        this.reservePlaceAfternoon = reservePlaceAfternoon;
+        this.reservePlaceDinner = reservePlaceDinner;
+    }
+
+    public void create(boolean reservePlaceMorning, boolean reservePlaceAfternoon, boolean reservePlaceDinner) {
+        this.reservePlaceMorning = reservePlaceMorning;
+        this.reservePlaceAfternoon = reservePlaceAfternoon;
+        this.reservePlaceDinner = reservePlaceDinner;
+    }
+
     public void create(String reservePlaceDate, boolean reservePlaceMorning, boolean reservePlaceAfternoon, boolean reservePlaceDinner, Long placeNumber) {
         this.reservePlaceDate = reservePlaceDate;
         this.reservePlaceMorning = reservePlaceMorning;

@@ -17,7 +17,7 @@ class ReservePlaceMapperTest {
     @Test
     public void insertTest() {
         ReservePlaceVO reservePlaceVO = new ReservePlaceVO();
-        reservePlaceVO.create("2022-11-28", false, false, true, 21L);
+        reservePlaceVO.create("2022-10-12", false, false, true, 21L);
         reservePlaceMapper.insert(reservePlaceVO);
         log.info("reserve: " + reservePlaceVO.getReservePlaceDate());
     }

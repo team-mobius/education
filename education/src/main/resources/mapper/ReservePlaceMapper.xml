@@ -8,4 +8,5 @@
         INSERT INTO TBL_RESERVE_PLACE(RESERVE_PLACE_NUMBER, RESERVE_PLACE_DATE, RESERVE_PLACE_MORNING, RESERVE_PLACE_AFTERNOON, RESERVE_PLACE_DINNER, PLACE_NUMBER)
         VALUES (#{reservePlaceNumber}, #{reservePlaceDate}, #{reservePlaceMorning}, #{reservePlaceAfternoon}, #{reservePlaceDinner}, #{placeNumber})
     </insert>
+
 </mapper>

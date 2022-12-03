@@ -2,7 +2,6 @@ package com.mobius.education.mapper;
 
 import com.mobius.education.domain.criteria.Criteria;
 import com.mobius.education.domain.vo.LectureDTO;
-import com.mobius.education.domain.vo.LectureFileVO;
 import com.mobius.education.domain.vo.LectureVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,7 @@ class LectureMapperTest {
     public void insertTest(){
         LectureDTO lectureDTO = new LectureDTO();
         lectureDTO.create("강의 넘버 테스트1", "프로그래밍", "개발자의 필수 교양이라 할 수 있는 깃을 명령어 없이, 명령어로 다루는 방법과 깃허브를 능수능란하게 다루는 방법을 배웁니다.",
-                "2022-12-20", Long.parseLong("18"), "Time B (13:00~17:00)","진행예정");
+                "2022-12-20", Long.parseLong("18"), "Time B (13:00~17:00)", "뫼비우스강연장 5F 501","진행예정", 1L);
         lectureMapper.insert(lectureDTO);
         log.info("number: " + lectureDTO.getLectureNumber());
         log.info("title: " + lectureDTO.getLectureTitle());
@@ -31,7 +30,7 @@ class LectureMapperTest {
     @Test
     public void deleteTest() {
         LectureVO lectureVO = new LectureVO();
-        lectureMapper.delete(Long.parseLong("21"));
+        lectureMapper.delete(138L);
     }
 
     @Test
@@ -51,7 +50,7 @@ class LectureMapperTest {
 
     @Test
     public void selectAllTest() {
-        lectureMapper.selectAll(new Criteria().create(3, 10)).stream().map(LectureVO::getLectureTitle).forEach(log::info);
+        lectureMapper.selectAll(new Criteria().create(3, 10)).stream().map(LectureDTO::getLectureTitle).forEach(log::info);
     }
 
     @Test
@@ -61,9 +60,27 @@ class LectureMapperTest {
 
     @Test
     public void selectTest() {
-        log.info("select: " + lectureMapper.select(50L));
+        log.info("select: " + lectureMapper.select(97L));
     }
 
+    @Test
+    public void temporarySelectAllTest(){
+        lectureMapper.temporarySelectAll(new Criteria().create(1, 10)).stream().map(LectureVO::getLectureTitle).forEach(log::info);
+    }
 
+    @Test
+    public void temporaryAllTest(){
+        log.info("count: " + lectureMapper.temporaryGetTotal());
+    }
+
+    @Test
+    public void updateTest(){
+        LectureDTO lectureDTO = new LectureDTO();
+        lectureDTO.create(lectureMapper.select(123L));
+        lectureDTO.setLectureTitle("수정mapper1");
+        lectureDTO.setLectureDate("2022-12-03");
+        lectureDTO.setPlaceNumber(1L);
+        lectureMapper.update(lectureDTO);
+    }
 
 }
