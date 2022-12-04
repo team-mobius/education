@@ -27,8 +27,8 @@ public class ReviewController {
     }
 
     @GetMapping("/detail")
-    public String myReview(Model model) {
-        model.addAttribute("reviews",reviewBoardSevice.showLectureReview(3L));
+    public String myReview(Model model, Long lectureNumber, Criteria criteria) {
+        model.addAttribute("reviews",reviewBoardSevice.showLectureReview(lectureNumber));
 
         return "/review/classReview";
     }

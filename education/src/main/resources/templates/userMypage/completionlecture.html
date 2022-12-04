@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>수강종료 강의</title>
+    <link rel="stylesheet" href="/css/userMypage/completionlecture.css" />
+  </head>
+  <body style="margin: 0">
+  <header th:replace="/fixed/header2.html" :: body></header>
+    <div class="App">
+      <div class="wrap">
+        <aside class="left-menu">
+          <nav class="nav">
+            <ul class="ul-one">
+              <li class="li-one li">
+                <a href="">
+                  <span class="dash">대시보드</span>
+                </a>
+              </li>
+              <li class="li-two li">
+                <a href="">
+                  <span class="profile">프로필</span>
+                </a>
+              </li>
+              <li class="li-three li">
+                <a href="">
+                  <span class="notice">알림</span>
+                </a>
+              </li>
+            </ul>
+            <p class="lecture-management">수강 관리</p>
+            <ul class="ul-two">
+              <li class="lecture-one li">
+                <a href="">
+                  <span class="lecture-ing">수강 중인 강좌</span>
+                </a>
+              </li>
+              <li class="lecture-two li">
+                <a href="">
+                  <span class="lecture-end">수강 완료 강좌</span>
+                </a>
+              </li>
+              <li class="lecture-two li">
+                <a href="">
+                  <span class="lecture-review">수강 후기</span>
+                </a>
+              </li>
+            </ul>
+            <p class="inquiry">문의</p>
+            <ul class="ul-three">
+              <li class="">
+                <a href="">
+                  <span class="inquiry-history">문의 내역</span>
+                </a>
+              </li>
+              <li class="">
+                <a href="">
+                  <span class="inquiry-history">1:1 문의</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+        <div class="completion-lecture">
+          <section class="nav">
+            <ul class="nav-list">
+              <li class="review">수강 완료</li>
+            </ul>
+          </section>
+          <section>
+            <div class="total-lecture">
+              <div class="completion-total">
+                <p class="total">전체</p>
+                <p class="lecture-count">2</p>
+              </div>
+              <div class="review-write">
+                <p class="">후기 작성</p>
+              </div>
+            </div>
+            <ul class="completion-list">
+              <li class="completion-lecture-list">
+                <div class="show-completion">
+                  <div class="completion-lecture-img">
+                    <a href="">
+                      <img src="../static/img/img2.png" class="completion-img" />
+                    </a>
+                  </div>
+                  <div class="completion-lecture-name">
+                    <a href="">파이썬 무료강의 (활용편1) - 추억의 오락실 게임 만들기(3시간)</a>
+                  </div>
+                  <div class="completion-lecture-review">
+                    <a href="">📑</a>
+                  </div>
+                </div>
+              </li>
+              <li class="lecture-list">
+                <div class="show-completion">
+                  <div class="completion-lecture-img">
+                    <a href="">
+                      <img src="../static/img/img1.png" class="completion-img" />
+                    </a>
+                  </div>
+                  <div class="completion-lecture-name">
+                    <a href="">시작해보세요! 당신의 첫 지식공유</a>
+                  </div>
+                  <div class="completion-lecture-review">
+                    <a href="">📑</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

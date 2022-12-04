@@ -1,5 +1,7 @@
 package com.mobius.education.mapper;
 
+import com.mobius.education.domain.criteria.Criteria;
+import com.mobius.education.domain.vo.RequestDTO;
 import com.mobius.education.domain.vo.RequestVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -30,5 +32,13 @@ public interface RequestMapper {
     public List<RequestVO> selectUserRequestAll(Long userNumber);
 
     public List<RequestVO> selectUserRequestThree(Long userNumber);
+
+    public List<RequestDTO> selectAllRequest(Criteria criteria);
+
+    public int getTotal();
+
+    public RequestDTO selectRequestAndNickname(Long requestNumber);
+
+
 
 }

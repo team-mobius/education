@@ -29,7 +29,7 @@
                         <div class="like_box">
                             <button class="like_button">
                                 <div class="heart_img"></div>
-                                <div class="like_count">15</div>
+                                <div class="like_count" th:text="${countHeart}"></div>
                             </button>
                         </div>
                     </div>
@@ -37,41 +37,18 @@
                 <!-- 컨텐츠 -->
                 <div class="post_content_area">
                     <div class="post_container">
-                        <div class="post_header">
-                            <div class="post_title">웹 강의 열어주세요!</div>
+                        <div class="post_header" th:object="${request}">
+                            <div class="post_title" th:text="*{requestTitle}">웹 강의 열어주세요!</div>
                             <div class="post_info">
-                                <span class="post_writer">myewon</span>
+                                <span class="post_writer" th:text="*{userNickname}">myewon</span>
                                 <span class="post_dot">·</span>
-                                <span class="post_date">2022.11.18</span>
+                                <span class="post_date" th:text="*{#strings.substring(requestRegisterDate,0,10)}">2022.11.18</span>
                             </div>
                         </div>
                         <div class="post_body">
                             <div class="post_content">
-                                <div class="content_text">
-                                    Lorem ipsum dolor sit amet consectetur,
-                                    adipisicing elit. Magni, sunt. Adipisci
-                                    voluptatibus temporibus corporis soluta
-                                    facere nostrum at reiciendis voluptates
-                                    nesciunt voluptate tenetur numquam,
-                                    dignissimos vero voluptas fuga atque. Eos.
-                                    Lorem ipsum, dolor sit amet consectetur
-                                    adipisicing elit. Quae atque cupiditate
-                                    nulla in maiores ipsum eligendi rerum porro
-                                    quos cum? Minima accusantium voluptatum
-                                    aspernatur itaque possimus ipsa doloremque
-                                    ab consequuntur. Lorem ipsum dolor sit, amet
-                                    consectetur adipisicing elit. Debitis
-                                    explicabo eligendi doloribus expedita
-                                    distinctio ipsa cumque perferendis aut
-                                    inventore, ea alias necessitatibus dolor,
-                                    temporibus numquam blanditiis perspiciatis,
-                                    accusantium nihil. Sit! Lorem ipsum dolor,
-                                    sit amet consectetur adipisicing elit.
-                                    Dolorum suscipit exercitationem quae dolores
-                                    atque asperiores corrupti blanditiis? Nihil
-                                    dolorem consequatur deserunt maiores optio
-                                    accusamus nisi, fugiat accusantium, possimus
-                                    nemo sunt.
+                                <div class="content_text" th:text="${request.requestContent}">
+
                                 </div>
                             </div>
                             <div class="post_category">
@@ -122,62 +99,31 @@
                             <span>개의 댓글이 달렸습니다.</span>
                         </div>
                     </div>
+
+<!--                    댓글 시작 -->
                     <!-- 첫번째 댓글 -->
-                    <div class="reply_read_container">
-                        <!-- 댓글 헤더 -->
-                        <div class="reply_read_header">
-                            <div class="reply_writer">뫼비우스</div>
-                            <div class="reply_date">2022.11.18</div>
-                            <div class="reply_button_area">
-                                <button class="modify_button">수정</button>
-                                <button class="remove_button">삭제</button>
+                    <th:block th:each="requestComment:${requestComments}">
+                        <div class="reply_read_container" th:object="${requestComments}">
+                            <!-- 댓글 헤더 -->
+                            <div class="reply_read_header">
+                                <div class="reply_writer" th:text="*{userNickname}">뫼비우스</div>
+                                <div class="reply_date" th:text="*{requestRegisterDate}">2022.11.18</div>
+                                <div class="reply_button_area">
+                                    <button class="modify_button">수정</button>
+                                    <button class="remove_button">삭제</button>
+                                </div>
+                            </div>
+                            <!-- 댓글 내용 -->
+                            <div class="reply_content" th:text="*{requestContent}">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing
+                                elit. Impedit quod ipsum reprehenderit voluptatem
+                                voluptatum placeat iste vitae, fugit cumque porro
+                                earum dicta a optio at ex, ullam temporibus
+                                asperiores consequatur.
                             </div>
                         </div>
-                        <!-- 댓글 내용 -->
-                        <div class="reply_content">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Impedit quod ipsum reprehenderit voluptatem
-                            voluptatum placeat iste vitae, fugit cumque porro
-                            earum dicta a optio at ex, ullam temporibus
-                            asperiores consequatur.
-                        </div>
-                    </div>
-                    <!-- 두번째 댓글 -->
-                    <div class="reply_read_container">
-                        <!-- 댓글 헤더 -->
-                        <div class="reply_read_header">
-                            <div class="reply_writer">뫼비우스</div>
-                            <div class="reply_date">2022.11.18</div>
-                            <div class="reply_button_area">
-                                <button class="modify_button">수정</button>
-                                <button class="remove_button">삭제</button>
-                            </div>
-                        </div>
-                        <!-- 댓글 내용 -->
-                        <div class="reply_content">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Impedit quod ipsum reprehenderit voluptatem
-                            voluptatum placeat iste vitae, fugit cumque porro
-                            earum dicta a optio at ex, ullam temporibus
-                            asperiores consequatur.
-                        </div>
-                    </div>
-                    <!-- 세번째 댓글 -->
-                    <div class="reply_read_container">
-                        <!-- 댓글 헤더 -->
-                        <div class="reply_read_header">
-                            <div class="reply_writer">인프런</div>
-                            <div class="reply_date">2022.11.18</div>
-                        </div>
-                        <!-- 댓글 내용 -->
-                        <div class="reply_content">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Impedit quod ipsum reprehenderit voluptatem
-                            voluptatum placeat iste vitae, fugit cumque porro
-                            earum dicta a optio at ex, ullam temporibus
-                            asperiores consequatur.
-                        </div>
-                    </div>
+                    </th:block>
+
                 </section>
             </div>
         </main>

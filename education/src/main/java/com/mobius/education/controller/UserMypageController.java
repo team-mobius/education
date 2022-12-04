@@ -26,6 +26,13 @@ public class UserMypageController {
         model.addAttribute("reviews",userMypageService.showMyReviewThree(0L));
         model.addAttribute("requests",userMypageService.showMyRequestThree(0L));
 
-        return "userMypage/mypage";
+        return "/userMypage/mypage";
+    }
+
+//  내가 완료한 강의
+    @GetMapping("/endLec")
+    public String endLec(Model model){
+        model.addAttribute("counts",userMypageService.showCounts(0L));
+        return "/userMypage/completionlecture";
     }
 }

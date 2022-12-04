@@ -10,4 +10,8 @@ import org.springframework.stereotype.Repository;
 public class RequestHeartDAO {
     private final RequestHeartMapper requestHeartMapper;
 
+    public int showHeartCount(Long requestNumber){
+        return requestHeartMapper.selectHeartCount(requestNumber);
+    }
+
 }

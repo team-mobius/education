@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="">
+                <a href="#">
                     <span>Java & 프로그래밍기초</span>
                     <br>
                     [2022 코딩 입문] 누구나 쉽게 배우는 JAVA!
@@ -43,56 +43,23 @@
             <div class="reviewMain">
                 <div class="container">
                 <h6>수강후기</h6>
+<!--                    후기 리스트로 올라오는 부분-->
                 <ul class="review_list">
-                    <li>
+                    <th:block th:each="review:${reviews}">
+                    <li th:object="${review}">
                         <div class="txt_area">
                             <div class="tp">
-                                <strong>홍길동</strong>
-                                <span class="tm">2022-11-16</span>
+                                <strong th:text="*{userNickname}"></strong>
+                                <span class="tm" th:text="*{#strings.substring(reviewRegisterDate,0,10)}"></span>
                             </div>
-                            <div class="txt">
-                                큰 도움이 되었습니다. 강의 내용, 강의 자료가 너무 만족스럽고 이해가 너무 잘됩니다!! 다음 강의도 기대할게요~~
+                            <div class="txt" th:text="*{reviewContent}">
+
                             </div>
                         </div>
                     </li>
+                    </th:block>
                 </ul>
-<!--                <ul class="review_list">-->
-<!--                    <li>-->
-<!--                        <div class="txt_area">-->
-<!--                            <div class="tp">-->
-<!--                                <strong>김자바</strong>-->
-<!--                                <span class="tm">2022-11-16</span>-->
-<!--                            </div>-->
-<!--                            <div class="txt">-->
-<!--                                입문으로 배우기 좋아요-->
-<!--                                <br>-->
-<!--                                초보자가 이해하기 쉽게 알려주십니다.-->
-<!--                                <br>-->
-<!--                                친구에게도 추천할 의향이 있습니다!!-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--                <ul class="review_list">-->
-<!--                    <li>-->
-<!--                        <div class="txt_area">-->
-<!--                            <div class="tp">-->
-<!--                                <strong>이순신</strong>-->
-<!--                                <span class="tm">2022-11-16</span>-->
-<!--                            </div>-->
-<!--                            <div class="txt">-->
-<!--                                프로그래밍에 관심이 막 생겨서 뭐부터 배워야할 지 막막했는데-->
-<!--                                <br>-->
-<!--                                이거 듣고나니 너무 좋네요.-->
-<!--                                <br>-->
-<!--                                어렵지 않게 예제도 풀어주면서 진행한 점이 좋았어요.-->
-<!--                                <br>-->
-<!--                                강사님의 다른 강의도 기대됩니다~!-->
-<!--                                -->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                </ul>-->
+
                 </div>
             </div>
         

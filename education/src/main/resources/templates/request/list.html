@@ -37,49 +37,35 @@
                                 </li>
                                 <li class="category_list_content">
                                     <a>
-                                        <span>개발·프로그래밍</span>
+                                        <span>IT</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
                                     <a>
-                                        <span>보안·네트워크</span>
+                                        <span>언어</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
                                     <a>
-                                        <span>데이터 사이언스</span>
+                                        <span>수학</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
                                     <a>
-                                        <span>보안·네트워크</span>
+                                        <span>과학</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
                                     <a>
-                                        <span>보안·네트워크</span>
+                                        <span>체육</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
                                     <a>
-                                        <span>보안·네트워크</span>
+                                        <span>기타</span>
                                     </a>
                                 </li>
-                                <li class="category_list_content">
-                                    <a>
-                                        <span>보안·네트워크</span>
-                                    </a>
-                                </li>
-                                <li class="category_list_content">
-                                    <a>
-                                        <span>보안·네트워크</span>
-                                    </a>
-                                </li>
-                                <li class="category_list_content">
-                                    <a>
-                                        <span>보안·네트워크</span>
-                                    </a>
-                                </li>
+
                             </ul>
                         </div>
                         <!-- 가운데 -->
@@ -130,11 +116,13 @@
                                                 <div class="list_info" th:object="${request}">
                                                     <div class="list_left_info">
                                                         <div class="list_title">
-                                                            <h3 class="title_text requestTitle" th:text="*{requestTitle}"></h3>
+                                                            <h3 class="title_text requestTitle">
+                                                                <a class="read" th:text="*{requestTitle}" th:href="*{requestNumber}"></a>
+                                                            </h3>
                                                         </div>
                                                         <p class="list_content requestContent" th:text="*{requestContent}"></p>
                                                         <div class="list_info_footer">
-                                                            <span>myewon</span>
+                                                            <span th:text="*{userNickname}"></span>
                                                             <span>·</span>
                                                             <span class="requestRegisterDate" th:text="*{requestRegisterDate}"></span>
                                                             <span>·</span>
@@ -143,12 +131,12 @@
                                                     </div>
                                                     <div class="list_right_info">
                                                         <div class="reply_area">
-                                                            <span class="reply_count">0</span>
+                                                            <span class="reply_count" th:text="*{replyCount}">5</span>
                                                             <span class="reply_text">댓글</span>
                                                         </div>
                                                         <div class="like_area">
                                                             <span class="like_img"></span>
-                                                            <span class="like_count">3</span>
+                                                            <span class="like_count" th:text="*{heartCount}">3</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,6 +144,23 @@
                                         </th:block>
                                     </ul>
                                 </div>
+<!--                                목록 버튼-->
+                                <!--              페이지 버튼 여지는 부분-->
+                                <div th:object="${pagination}">
+                                    <div style="text-align: center">
+                                        <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>PREV</code></a>
+                                        <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                                            <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+                                            <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+                                        </th:block>
+                                        <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>NEXT</code></a>
+                                    </div>
+                                    <form th:action="@{/request/list}" th:object="${criteria}" name="pageForm">
+                                        <input type="hidden" th:field="*{page}">
+                                        <input type="hidden" th:field="*{amount}">
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
                         <!-- 우측 -->
@@ -224,11 +229,23 @@
     </body>
 <script src="/js/request/list.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!--<script th:inline="javascript"></script>-->
-<script>
-    $("button.write").on("click", function (e) {
+
+<script th:inline="javascript">
+
+    let queryString = [[${pagination.criteria.queryString}]];
+    const $read = $("a.read");
+    let $pages = $("a.changePage");
+
+    $pages.on("click", function(e){
         e.preventDefault();
-        location.href="/request/ask";
-    })
+        $(document.pageForm.page).val($(this).attr("href"));
+        document.pageForm.submit();
+    });
+
+    $read.on("click", function(e){
+        e.preventDefault();
+        location.href = "/request/detail" + queryString + "&requestNumber=" + $(this).attr("href");
+        // location.href = "/review/detail" + "?" + "lectureNumber=" + $(this).attr("href");
+    });
 </script>
 </html>
