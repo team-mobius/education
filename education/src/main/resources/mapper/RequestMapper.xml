@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mobius.education.mapper.RequestMapper">
     <insert id="insert">
-        INSERT INTO TBL_REQUEST(REQUEST_NUMBER, REQUEST_TITLE, REQUEST_CATEGORY,REQUEST_CONTENT)
-        VALUES (SEQ_REQUEST.NEXTVAL, #{requestTitle}, #{requestCategory}, #{requestContent})
+        INSERT INTO TBL_REQUEST(REQUEST_NUMBER, REQUEST_TITLE, REQUEST_CATEGORY,REQUEST_CONTENT, USER_NUMBER)
+        VALUES (SEQ_REQUEST.NEXTVAL, #{requestTitle}, #{requestCategory}, #{requestContent}, #{userNumber})
     </insert>
 
     <update id="update">
@@ -46,4 +46,37 @@
         FROM TBL_REQUEST
         WHERE USER_NUMBER = #{userNumber} AND ROWNUM <![CDATA[<]]>=3
     </select>
+
+    <select id="selectAllRequest" resultType="com.mobius.education.domain.vo.RequestDTO">
+        SELECT REQUEST_NUMBER, REQUEST_TITLE, USER_NUMBER, REQUEST_CONTENT, REQUEST_REGISTER_DATE, REQUEST_MODIFY_DATE, USER_NICKNAME, REQUEST_CATEGORY
+        FROM
+        (
+            SELECT ROWNUM R, REQUEST_NUMBER, REQUEST_TITLE, USER_NUMBER, REQUEST_CONTENT, REQUEST_REGISTER_DATE, REQUEST_MODIFY_DATE, USER_NICKNAME, REQUEST_CATEGORY
+            FROM
+            (
+                SELECT REQUEST_NUMBER, REQUEST_TITLE, USER_NUMBER, REQUEST_CONTENT, REQUEST_REGISTER_DATE, REQUEST_MODIFY_DATE, USER_NICKNAME, REQUEST_CATEGORY
+                FROM
+                (
+                SELECT REQUEST_NUMBER, REQUEST_TITLE, tu.USER_NUMBER, REQUEST_CONTENT, REQUEST_REGISTER_DATE, REQUEST_MODIFY_DATE, USER_NICKNAME, REQUEST_CATEGORY FROM TBL_USER tu , TBL_REQUEST tr
+                WHERE tu.USER_NUMBER  = tr.USER_NUMBER
+                ) B
+                ORDER BY REQUEST_NUMBER DESC
+            ) D2
+        <![CDATA[
+        WHERE ROWNUM <= #{page} * #{amount}
+        ) WHERE R > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <select id="getTotal" resultType="int">
+        SELECT COUNT(REQUEST_NUMBER) FROM TBL_REQUEST
+    </select>
+
+    <select id="selectRequestAndNickname" resultType="com.mobius.education.domain.vo.RequestDTO">
+        SELECT REQUEST_NUMBER, REQUEST_TITLE,  REQUEST_CONTENT, REQUEST_REGISTER_DATE, REQUEST_MODIFY_DATE, USER_NICKNAME, REQUEST_CATEGORY, tu.USER_NUMBER
+        FROM TBL_USER tu , TBL_REQUEST tr
+        WHERE tu.USER_NUMBER = tr.USER_NUMBER AND REQUEST_NUMBER=#{requestNumber}
+    </select>
+
+
 </mapper>

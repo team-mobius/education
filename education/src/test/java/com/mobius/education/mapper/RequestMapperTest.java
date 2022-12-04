@@ -1,5 +1,7 @@
 package com.mobius.education.mapper;
 
+import com.mobius.education.domain.criteria.Criteria;
+import com.mobius.education.domain.vo.RequestDTO;
 import com.mobius.education.domain.vo.RequestVO;
 import com.mobius.education.domain.vo.ReviewVO;
 import lombok.extern.slf4j.Slf4j;
@@ -59,6 +61,22 @@ public class RequestMapperTest {
     @Test
     public void selectUserTree(){
         log.info("요청 3개 :" +requestMapper.selectUserRequestThree(0L));
+    }
+
+//    request 페이징 처리
+    @Test
+    public void selectRequestAllTest(){
+        requestMapper.selectAllRequest(new Criteria().create(1,10)).stream().map(RequestDTO::getRequestTitle).forEach(log::info);
+    }
+
+    @Test
+    public void getTotalTest(){
+        log.info("전체수 : " + requestMapper.getTotal());
+    }
+
+    @Test
+    public void getNicknameTest(){
+        log.info("닉네임 :" + requestMapper.selectRequestAndNickname(1L));
     }
 
 

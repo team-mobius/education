@@ -34,6 +34,7 @@
             <table>
                 <thead>
                 <tr class="tHead">
+                    <th></th>
                     <th class="reviewNumber">번호</th>
                     <th class="reviewTitle">제목</th>
                     <th class="reviewWriter">작성자</th>
@@ -44,6 +45,7 @@
                 <tbody>
                 <th:block th:each="review:${reviews}">
                     <tr class="tBody" th:object="${review}">
+                        <td th:text="*{lectureNumber}"></td>
                         <td class="reviewNumber" th:text="*{reviewNumber}"></td>
                         <td class="reviewTitle"><a class="read" th:text="*{reviewTitle}" th:href="*{lectureNumber}"></a></td>
                         <td class="userNickname" th:text="*{userNickname}"></td>
@@ -79,7 +81,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
 
-    let boardNumber = [[${boardNumber}]];
+    // let boardNumber = [[${boardNumber}]];
     let $pages = $("a.changePage");
     let queryString = [[${pagination.criteria.queryString}]];
     const $read = $("a.read");
@@ -92,7 +94,8 @@
 
     $read.on("click", function(e){
         e.preventDefault();
-        location.href = "/review/detail" + queryString + "&reviewNumber=" + $(this).attr("href");
+        location.href = "/review/detail" + queryString + "&lectureNumber=" + $(this).attr("href");
+        // location.href = "/review/detail" + "?" + "lectureNumber=" + $(this).attr("href");
     });
 </script>
 </html>

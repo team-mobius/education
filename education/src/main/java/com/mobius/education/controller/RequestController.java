@@ -1,9 +1,13 @@
 package com.mobius.education.controller;
 
+import com.mobius.education.domain.criteria.Criteria;
+import com.mobius.education.domain.vo.PageDTO;
+import com.mobius.education.domain.vo.RequestDTO;
 import com.mobius.education.domain.vo.RequestVO;
 import com.mobius.education.service.RequestBoardService;
 import com.mobius.education.service.RequestService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,42 +18,51 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.ws.Service;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("request/*")
+@Slf4j
 public class RequestController {
     private final RequestBoardService requestBoardService;
 
+
 //    강의 요청 목록
     @GetMapping("/list")
-    public String list(Model model) {
-        model.addAttribute("requests",requestBoardService.showAll());
+    public String list(Model model, Criteria criteria) {
+        if(criteria.getPage() == 0){
+            criteria.create(1, 10);
+        }
+//        List<Object> requests = requestBoardService.showRequestAll(criteria).stream().map(requestDTO -> requestDTO.create(requestBoardService.showRequestHeartCount(requestDTO.getRequestNumber()))).collect(Collectors.toUnmodifiableList());
+
+        model.addAttribute("requests",requestBoardService.showRequestAll(criteria).stream().map(requestDTO -> requestDTO.create(requestBoardService.showRequestHeartCount(requestDTO.getRequestNumber()),requestBoardService.showCommentCount(requestDTO.getRequestNumber()))).collect(Collectors.toUnmodifiableList()));
+        model.addAttribute("pagination",new PageDTO().createPageDTO(criteria,requestBoardService.getTotal()));
         return "/request/list";
     }
 
 
-//    강의 요청 작성
-    /*@GetMapping("/ask")
-    public void ask(HttpServletRequest request, Model model) {
-        model.addAttribute("userNumber", request.getSession().getAttribute("userNumber"));
-    }*/
     @GetMapping("/ask")
-    public void ask(Model model) {
+    public String ask(Model model) {
         model.addAttribute("request", new RequestVO());
+        return "/request/ask";
     }
 
     @PostMapping("/ask")
     public RedirectView ask(RequestVO requestVO, RedirectAttributes redirectAttributes) {
         requestBoardService.register(requestVO);
-        redirectAttributes.addFlashAttribute("requestNumber", requestVO.getRequestNumber());
+
         return new RedirectView(("/request/list"));
     }
 
     //    강의 상세 정보
     @GetMapping(value = {"/detail","/update"})
-    public void detail(Long requestNumber, Model model) {
-        model.addAttribute("request",requestBoardService.show(requestNumber));
+    public String detail(Long requestNumber, Model model, Criteria criteria) {
+        model.addAttribute("request",requestBoardService.showReviewDetail(requestNumber));
+        model.addAttribute("countHeart",requestBoardService.showRequestHeartCount(requestNumber));
+        model.addAttribute("requestComments",requestBoardService.showComment(requestNumber));
+        return "/request/detail";
     }
 
     //    강의요청 수정완료
@@ -65,5 +78,11 @@ public class RequestController {
     public RedirectView delete(Long requestNumber) {
         requestBoardService.remove(requestNumber);
         return new RedirectView(("/request/list"));
+    }
+
+    @GetMapping("/test")
+    public String test(){
+        return "";
+
     }
 }

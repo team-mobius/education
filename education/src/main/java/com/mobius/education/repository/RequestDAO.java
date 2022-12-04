@@ -1,5 +1,7 @@
 package com.mobius.education.repository;
 
+import com.mobius.education.domain.criteria.Criteria;
+import com.mobius.education.domain.vo.RequestDTO;
 import com.mobius.education.domain.vo.RequestVO;
 import com.mobius.education.mapper.LectureFileMapper;
 import com.mobius.education.mapper.RequestMapper;
@@ -51,5 +53,18 @@ public class RequestDAO {
 //    마이페이지에서 보여지는 요청 3개
     public List<RequestVO> showMyRequestThree(Long userNumber){
         return requestMapper.selectUserRequestThree(userNumber);
+    }
+
+//    요청 페이징 처리
+    public List<RequestDTO> showRequestAll(Criteria criteria){
+        return requestMapper.selectAllRequest(criteria);
+    }
+
+    public int getTotal(){
+        return requestMapper.getTotal();
+    }
+
+    public RequestDTO showReviewDetail(Long requestNumber){
+        return requestMapper.selectRequestAndNickname(requestNumber);
     }
 }

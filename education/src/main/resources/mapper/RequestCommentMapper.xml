@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mobius.education.mapper.RequestCommentMapper">
+    <select id="countComment" resultType="int">
+        SELECT COUNT(REQUEST_COMMENT_NUMBER) FROM TBL_REQUEST_COMMENT
+        WHERE REQUEST_NUMBER = #{requestNumber}
+    </select>
 
+    <select id="select" resultType="requestCommentVO">
+        SELECT REQUEST_COMMENT_NUMBER, REQUEST_COMMENT_CONTENT, REQUEST_COMMENT_REGISTER_DATE, REQUEST_COMMENT_MODIFY_DATE , USER_NUMBER, REQUEST_NUMBER FROM TBL_REQUEST_COMMENT
+        WHERE REQUEST_NUMBER = #{requestNumber}
+    </select>
+
+    <select id="selectAndNickname" resultType="com.mobius.education.domain.vo.RequestCommentDTO">
+        SELECT REQUEST_COMMENT_NUMBER, REQUEST_COMMENT_CONTENT, REQUEST_COMMENT_REGISTER_DATE, REQUEST_COMMENT_MODIFY_DATE , tu.USER_NUMBER , REQUEST_NUMBER , USER_NICKNAME FROM TBL_REQUEST_COMMENT rc , TBL_USER tu
+        WHERE tu.USER_NUMBER = rc.USER_NUMBER  AND REQUEST_NUMBER =#{requestNumber}
+    </select>
 </mapper>
