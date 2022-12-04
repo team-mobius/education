@@ -16,8 +16,8 @@
 
 
 
-       <select id="login" resultType="long">
-        SELECT USER_NUMBER
+       <select id="login" resultType="UserVO">
+        SELECT USER_NUMBER, USER_EMAIL,USER_NICKNAME, USER_PASSWORD
          FROM TBL_USER
          WHERE USER_EMAIL = #{userEmail} AND USER_PASSWORD = #{userPassword}
     </select>

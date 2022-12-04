@@ -37,16 +37,23 @@ public class UserController {
     public void loginForm(Model model){ model.addAttribute("user", new UserVO());}
 
     @PostMapping("/login")
-    public RedirectView loginForm(HttpServletRequest request, String userEmail, String userPassword){
+    public RedirectView loginForm(HttpServletRequest request, UserVO userVO){
         HttpSession session = request.getSession();
-        log.info(userEmail + userPassword);
-        Long userNumber = null;
+
+//        log.info("email " + userVO.getUserEmail());
+//        log.info(userVO.getUserPassword());
+        UserVO userNumber = null;
         try{
-            userNumber = signUserService.login(userEmail, userPassword);
-            session.setAttribute("userNumber", userNumber);
+//            userNumber = signUserService.login(userVO);
+            userNumber = signUserService.login(userVO);
+            session.setAttribute("userNumber", userNumber.getUserNumber());
+//            log.info(session.getAttribute("userNumber") + " ====== sesssion");
             return new RedirectView("/mainpage/index");
         }catch (Exception e){
+            log.info("TEST= " + e.getMessage());
+
             return new RedirectView("/join/userJoin");
+
         }
 
     }

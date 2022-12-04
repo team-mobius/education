@@ -17,6 +17,6 @@ public class SignUserService {
     }
 
     // 로그인
-    public long login(String userEmail, String userPassword){return userDAO.login(userEmail, userPassword);}
+    public UserVO login(UserVO userVO){return userDAO.login(userVO);}
 
 }

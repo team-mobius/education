@@ -8,7 +8,7 @@ public interface UserMapper {
 
     public void insert(UserVO userVO);
 
-    public long login(String userEmail, String userPassword);
+    public UserVO login(UserVO userVO);
 
 
 }
