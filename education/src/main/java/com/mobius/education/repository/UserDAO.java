@@ -14,5 +14,5 @@ public class UserDAO {
     public void save(UserVO userVO){userMapper.insert(userVO);}
 
 //    로그인
-    public long login(String userEmail, String userPassword){return userMapper.login(userEmail,userPassword);}
+    public UserVO login(UserVO userVO){return userMapper.login(userVO);}
 }
