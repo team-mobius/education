@@ -109,7 +109,7 @@ div.button_container {
 }
 
 /* 버튼 style */
-form.join_form input[type="button"] {
+form.join_form input[type="submit"] {
     box-sizing: border-box;
     margin: 16px 0 14px 0;
     border-radius: 4px;

@@ -1,6 +1,8 @@
 package com.mobius.education.controller;
 
+import com.mobius.education.domain.vo.TeacherVO;
 import com.mobius.education.domain.vo.UserVO;
+import com.mobius.education.service.SignTeacherService;
 import com.mobius.education.service.SignUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,7 @@ import java.net.http.HttpClient;
 public class UserController {
 
     private final SignUserService signUserService;
+    private final SignTeacherService signTeacherService;
 
     @GetMapping("/userJoin")
     public void userinsert(Model model){
@@ -57,5 +60,13 @@ public class UserController {
         }
 
     }
+    @GetMapping("logout")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/mainpage/index";
+    }
+
+
 
 }

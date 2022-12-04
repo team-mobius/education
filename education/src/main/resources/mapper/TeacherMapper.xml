@@ -2,4 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mobius.education.mapper.TeacherMapper">
 
+    <insert id="insert">
+        <selectKey keyProperty="teacherNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_TEACHER.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_TEACHER(TEACHER_NUMBER, TEACHER_EMAIL, TEACHER_PASSWORD,TEACHER_NAME,TEACHER_BELONGING,TEACHER_PHONE_NUMBER)
+        VALUES(#{teacherNumber}, #{teacherEmail}, #{teacherPassword}, #{teacherName}, #{teacherBelonging},#{teacherPhoneNumber})
+    </insert>
+
+    <select id="login" resultType="TeacherVO">
+        SELECT TEACHER_NUMBER, TEACHER_EMAIL,TEACHER_PASSWORD, TEACHER_NAME,TEACHER_BELONGING,TEACHER_PHONE_NUMBER
+         FROM TBL_TEACHER
+         WHERE TEACHER_EMAIL = #{teacherEmail} AND TEACHER_PASSWORD = #{teacherPassword}
+    </select>
+
+
 </mapper>

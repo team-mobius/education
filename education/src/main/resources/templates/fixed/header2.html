@@ -43,7 +43,6 @@
           <!-- 수강생 로그인 방식 -->
           <div id="tab-1" class="user-login-wrapper tab-content current">
             <div class="user-login-container">
-<!--              <form  class="user-login-form" method="post" th:action="@{/join/login}" th:object="${user}" id="loginForm"  >-->
                 <form  class="user-login-form" method="post" th:action="@{/join/login}" id="loginForm"  >
                 <div class="user-eamil-input-container">
                   <input type="text" placeholder="이메일" th:name="userEmail"/>
@@ -66,20 +65,17 @@
           </div>
           <!-- 강사 로그인 방식 -->
           <div id="tab-2" class="teacher-login-wrapper tab-content">
-<!--            <form action="/login" class="user-login-form" th:action="@{/join/userJoin}" th:object="${user}">-->
-              <form action="/login" class="user-login-form" th:action="@{/join/userJoin}">
+              <form method="post" class="user-login-form" th:action="@{/join/teacherlogin}" id="teacherForm">
               <div class="user-eamil-input-container">
-<!--                <input type="text" placeholder="이메일" th:field="*{userEmail}"/>-->
-                <input type="text" placeholder="이메일" th:name="userEmail"/>
+                <input type="text" placeholder="이메일" th:name="teacherEmail"/>
               </div>
               <div class="user-password-input-container">
-<!--                <input type="password" placeholder="비밀번호" th:field="*{userPassword}"/>-->
-                <input type="password" placeholder="비밀번호" th:name="userPassword"/>
+                <input type="password" placeholder="비밀번호" th:name="teacherPassword"/>
 
 
               </div>
               <div class="user-login-button-container">
-                <input class="modal-login-button" type="button" value="로그인" />
+                <input class="modal-login-button" type="submit" value="로그인" />
               </div>
               <div class="user-login-extra-service-container">
                 <div class="user-login-extra-service">
@@ -174,13 +170,13 @@
               </div>
             </div>
             <div class="navbar_right">
-              <div class="buttons" th:if="${session.userNumber == null}">
+              <div class="buttons" th:if="${session.userNumber == null && session.teacherNumber == null}">
                 <a href="#" class="button"><span class="open-login-modal">로그인</span></a>
                 <a href="" class="button joinBtn">회원가입</a>
               </div>
-              <div class="buttons" th:unless="${session.userNumber == null}">
+              <div class="buttons" th:unless="${session.userNumber == null && session.teacherNumber == null}">
                 <a href="" class="button"><span class="">마이페이지</span></a>
-                <a href="" class="button joinBtn">로그아웃</a>
+                <a href="/join/logout" class="button joinBtn">로그아웃</a>
               </div>
             </div>
           </div>
