@@ -53,6 +53,7 @@ td {
 }
 td.board_title {
     text-align: left;
+    width: 80px;
 }
 .board_btn {
     float: right;

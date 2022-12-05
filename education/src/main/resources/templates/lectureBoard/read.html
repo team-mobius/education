@@ -1,0 +1,59 @@
+<html lang="ko">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:tr="http://www.thymeleaf.org"
+      xmlns:div="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>수거 가능/불가능 품목</title>
+        <!--<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>-->
+        <link href="https://webfontworld.github.io/pretendard/Pretendard.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/lectureBoard/read.css">
+
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+       *{ font-family: 'Noto Sans KR', sans-serif;}
+
+        </style>
+<body>
+<div class="sub" id="contents">
+<div class="container">
+      <div class="sub_con" th:object="${lectureNotice}">
+            <h3 class="tit icon" th:text="*{lectureNoticeTitle}"></h3>
+            
+            <ul class="con_list">
+                <li>
+                <!--<h4 th:text="*{lectureNoticeTitle}"></h4>-->
+            
+                <div class="table">
+                <table class="tableB border sort">
+                    <colgroup>
+                        <col width="20%">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td th:text="*{lectureNoticeContent}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                </li>
+            </ul>
+            </div>
+        <ul class="actions special">
+        <li>
+            <input type="button" class="button list" value="List"/>
+        </li>
+        </ul>
+        </div>
+    </div>
+        </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $("input.list").on("click", function(e){
+            e.preventDefault();
+            location.href = "/lectureBoard/board";
+        });
+    </script>
+        </html>
+
+        
