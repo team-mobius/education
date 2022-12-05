@@ -22,5 +22,12 @@
          WHERE USER_EMAIL = #{userEmail} AND USER_PASSWORD = #{userPassword}
     </select>
 
+    <select id="idCheck" parameterType="String" resultType="_int">
+		SELECT COUNT(USER_NUMBER) FROM TBL_USER WHERE USER_EMAIL= #{userEmail}
+	</select>
+
+    <select id="idCheck2" parameterType="String" resultType="_int">
+		SELECT COUNT(USER_NUMBER) FROM TBL_USER WHERE USER_NICKNAME= #{userNickname}
+	</select>
 
 </mapper>

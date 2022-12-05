@@ -15,4 +15,10 @@ public class UserDAO {
 
 //    로그인
     public UserVO login(UserVO userVO){return userMapper.login(userVO);}
+
+    public int idCheck(String userEmail){return userMapper.idCheck(userEmail);}
+
+    public int idCheck2(String userNickname){return userMapper.idCheck2(userNickname);}
+
+
 }

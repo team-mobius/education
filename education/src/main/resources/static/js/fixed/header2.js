@@ -32,3 +32,13 @@ $("a.review").on("click", function(e){
   e.preventDefault();
   location.href = "/review/review";
 });
+
+//
+let urlParams = new URL(location.href).searchParams;
+let check = urlParams.get("check");
+console.log(check);
+if(check == 'false'){
+  alert("아이디와 비밀번호를 확인해주세요.");
+}
+else{
+}

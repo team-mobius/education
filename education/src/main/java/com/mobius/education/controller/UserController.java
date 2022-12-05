@@ -50,12 +50,12 @@ public class UserController {
 //            userNumber = signUserService.login(userVO);
             userNumber = signUserService.login(userVO);
             session.setAttribute("userNumber", userNumber.getUserNumber());
-//            log.info(session.getAttribute("userNumber") + " ====== sesssion");
+            log.info(session.getAttribute("userNumber") + " ====== sesssion");
             return new RedirectView("/mainpage/index");
         }catch (Exception e){
             log.info("TEST= " + e.getMessage());
 
-            return new RedirectView("/join/userJoin");
+            return new RedirectView("/mainpage/index?check=false");
 
         }
 
@@ -65,6 +65,20 @@ public class UserController {
         HttpSession session = request.getSession();
         session.invalidate();
         return "redirect:/mainpage/index";
+    }
+
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public int idCheck(@RequestParam("userEmail") String userEmail) {
+        int cnt = signUserService.idCheck(userEmail);
+        return cnt;
+    }
+
+    @PostMapping("/idCheck2")
+    @ResponseBody
+    public int idCheck2(@RequestParam("userNickname") String userNickname) {
+        int cnt2 = signUserService.idCheck2(userNickname);
+        return cnt2;
     }
 
 
