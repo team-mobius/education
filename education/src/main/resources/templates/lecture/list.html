@@ -55,7 +55,7 @@
                                     <div class="card_content" th:text="*{lectureTitle}"></div>
                                     <div class="name" th:text="*{lectureCategory}"></div>
                                     <div class="tags">
-                                        <span class="tag" style="background-color: hs1(321,63%,90%);" th:text="*{lectureDate}"></span>
+                                        <span class="tag" style="background-color: hs1(321,63%,90%);" th:text="*{#strings.substring(lectureDate, 0, 10)}"></span>
                                     </div>
                                 </div>
                             </a>

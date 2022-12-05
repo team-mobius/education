@@ -4,6 +4,7 @@ import com.mobius.education.domain.criteria.Criteria;
 import com.mobius.education.domain.vo.*;
 import com.mobius.education.repository.*;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -108,33 +109,33 @@ public class LectureService {
     }
 
 //    완료 강의 리스트 출력
-    public List<LectureVO> showFinishedAll(Criteria criteria) {
-        return lectureDAO.findFinishedAll(criteria);
+    public List<LectureVO> showFinishedAll(Criteria criteria, Long teacherNumber) {
+        return lectureDAO.findFinishedAll(criteria, teacherNumber);
     }
 
 //    완료 강의 개수
-    public int finishedGetTotal() {
-        return lectureDAO.findFinishedCountAll();
+    public int finishedGetTotal(Long teacherNumber) {
+        return lectureDAO.findFinishedCountAll(teacherNumber);
     }
 
 //    진행 중인 강의 리스트 출력
-    public List<LectureVO> showOngoingAll(Criteria criteria) {
-        return lectureDAO.findOngoingAll(criteria);
+    public List<LectureVO> showOngoingAll(@Param("criteria") Criteria criteria, @Param("teacherNumber") Long teacherNumber) {
+        return lectureDAO.findOngoingAll(criteria, teacherNumber);
     }
 
 //    진행 중인 강의 개수
-    public int ongoingGetTotal() {
-        return lectureDAO.findOngoingCountAll();
+    public int ongoingGetTotal(Long teacherNumber) {
+        return lectureDAO.findOngoingCountAll(teacherNumber);
     }
 
 //    예정 강의 리스트 출력
-    public List<LectureVO> showExpectedAll(Criteria criteria) {
-        return lectureDAO.findExpectedAll(criteria);
+    public List<LectureVO> showExpectedAll(@Param("criteria") Criteria criteria, @Param("teacherNumber") Long teacherNumber) {
+        return lectureDAO.findExpectedAll(criteria, teacherNumber);
     }
 
 //    예정 강의 개수
-    public int expectedGetTotal() {
-        return lectureDAO.findExpectedCountAll();
+    public int expectedGetTotal(Long teacherNumber) {
+        return lectureDAO.findExpectedCountAll(teacherNumber);
     }
 
 //    임시저장 리스트 출력
@@ -147,5 +148,24 @@ public class LectureService {
         return lectureDAO.findTemporaryCountAll();
     }
 
+//    최신 임시 강의
+    public LectureVO temporaryLast() {
+        return lectureDAO.temporaryOne();
+    }
+
+//    마이 리뷰 리스트
+    public List<ReviewDTO> showMyReviewAll(@Param("criteria") Criteria criteria, @Param("teacherNumber") Long teacherNumber) {
+        return lectureDAO.findMyReviewAll(criteria, teacherNumber);
+    }
+
+//    마이 리뷰 개수
+    public int myReviewGetTotal(Long teacherNumber) {
+        return lectureDAO.findMyReviewCountAll(teacherNumber);
+    }
+
+//    마인 인포 조회
+    public TeacherVO showMyInfo(Long teacherNumber) {
+        return lectureDAO.findInfoById(teacherNumber);
+    }
 
 }

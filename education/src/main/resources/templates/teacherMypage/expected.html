@@ -87,7 +87,7 @@
                             <span>/</span>
                             <span th:text="*{lectureMaximumNumber}"></span>
                         </div>
-                        <div class="class-list-delete"><a href="">삭제</a></div>
+                        <div class="class-list-delete"><a th:href="@{/teacherMypage/delete(lectureNumber=*{lectureNumber})}">삭제</a></div>
                     </div>
                 </th:block>
 

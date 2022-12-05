@@ -71,18 +71,18 @@
         </div>
 
         <!-- 계정 정보 -->
-        <div class="account_information_wrapper">
+        <div class="account_information_wrapper" th:object="${info}">
             <div class="account_information_container">
                 <!-- 아이디 표시 -->
                 <div class="account_detail_container">
                     <div class="information_title">아이디</div>
-                    <div class="information_content">example@gmail.com</div>
+                    <div class="information_content" th:text="*{teacherEmail}"></div>
                 </div>
 
                 <!-- 이름 표시 -->
                 <div class="account_detail_container">
                     <div class="information_title">이름</div>
-                    <div class="information_content">이종호</div>
+                    <div class="information_content" th:text="*{teacherName}"></div>
                 </div>
 
                 <!-- 비밀번호 -->
@@ -96,22 +96,22 @@
                 <!-- 소속 기관 표시 -->
                 <div class="account_detail_container">
                     <div class="information_title">소속</div>
-                    <div class="information_content">개인</div>
+                    <div class="information_content" th:text="*{teacherBelonging}"></div>
                 </div>
 
                 <!-- 이메일 표시 -->
                 <div class="account_detail_container">
                     <div class="information_title">이메일</div>
-                    <div class="information_content">example@gmail.com</div>
+                    <div class="information_content" th:text="*{teacherEmail}"></div>
                 </div>
 
                 <!-- 핸드폰 번호 표시 -->
                 <div class="account_detail_container">
                     <div class="information_title">핸드폰 번호</div>
-                    <div class="information_content">01012345678</div>
-                    <div class="phone_number_input">
-                        <a href="#"><span class="go_to_phone_number_change change_style">핸드폰 번호 변경 &gt;</span></a>
-                    </div>
+                    <div class="information_content" th:text="*{teacherPhoneNumber}"></div>
+<!--                    <div class="phone_number_input">-->
+<!--                        <a href="#"><span class="go_to_phone_number_change change_style">핸드폰 번호 변경 &gt;</span></a>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>

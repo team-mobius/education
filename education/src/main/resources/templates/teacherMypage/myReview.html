@@ -37,43 +37,33 @@
             <!-- 세부 내용 시작 -->
             <div class="show-class-detail-container">
                 <div class="show-class-detail-title">
-                    <div class="count-class">총 2개</div>
+                    <div class="count-class">
+                        <span>총&nbsp;</span>
+                        <span th:text=${countMyReview}></span>
+                        <span>개</span>
+                    </div>
                 </div>
 
                 <div class="class-list-container">
                     <div class="list-class-title title-part">강의명</div>
                     <div class="list-class-place title-part">제목</div>
-                    <div class="list-class-time title-part">작성자</div>
+                    <div class="list-class-time title-part">내용</div>
                     <div class="list-class-start-date title-part">작성 날짜</div>
-                    <div class="list-class-end-date title-part">조회수</div>
-                    <div class="list-class-personnel title-part"></div>
                 </div>
 
-                <div class="class-list-container">
-                    <div class="list-class-title list-content">타자 3000타 너두 할 수있어</div>
-                    <div class="list-class-place list-content">강의 듣고 타자가 너무 빨라졌어요</div>
-                    <div class="list-class-time list-content">이종호</div>
-                    <div class="list-class-start-date list-content">2022/12/01</div>
-                    <div class="list-class-end-date list-content">15</div>
-                    <div class="list-class-personnel list-content"></div>
+                <th:block th:if="${countMyReivew != 0}" th:each="review:${reviews}">
+                <div class="class-list-container" th:object="${review}">
+                    <div class="list-class-title list-content">
+                        <a claas="goDetail" style="cursor: pointer;" th:href="@{/review/detail(lectureNumber=*{lectureNumber})}" th:text="*{lectureTitle}"></a>
+                    </div>
+                    <div class="list-class-place list-content" th:text="*{reviewTitle}"></div>
+                    <div class="list-class-time list-content" th:text="*{reviewContent}"></div>
+                    <div class="list-class-start-date list-content" th:text="*{#strings.substring(reviewRegisterDate, 0, 10)}"></div>
                 </div>
 
-                <div class="class-list-container">
-                    <div class="list-class-title list-content">타자 3000타 너두 할 수있어</div>
-                    <div class="list-class-place list-content">강의 듣고 타자가 너무 빨라졌어요</div>
-                    <div class="list-class-time list-content">이종호</div>
-                    <div class="list-class-start-date list-content">2022/12/01</div>
-                    <div class="list-class-end-date list-content">15</div>
-                    <div class="list-class-personnel list-content"></div>
-                </div>
-
-                <div class="page-button-wrapper">
-                    <div class="button-container"><button type="button" class="page-button">1</button></div>
-                    <div class="button-container"><button type="button" class="page-button">2</button></div>
-                    <div class="button-container"><button type="button" class="page-button">3</button></div>
-                </div>
-
+                </th:block>
                 <!-- 아무것도 없을 때 예시 -->
+                <th:block th:unless="${countMyReivew != 0}">
                 <div class="no-data-show-container">
                     <div class="big-title">나의 후기가 없습니다.</div>
                     <div class="middle-title">열심히 강의를 제공해 주세요.</div>
@@ -81,10 +71,43 @@
                         <button type="button" class="go-to-apply-class">강의 신청하러 가기</button>
                     </div>
                 </div>
+                </th:block>
+                <th:block th:if="${countMyReivew != 0}">
+                <div th:object="${pagination}" style="margin-top: 40px; margin-right: 40px;">
+                    <div style="text-align: center">
+                        <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
+                        <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                            <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
+                            <code th:unless="${pagination.criteria.page != page}" th:text="${page}"></code>
+                        </th:block>
+                        <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>></code></a>
+                    </div>
+                    <form th:action="@{/teacherMypage/myReview}" th:object="${criteria}" name="pageForm">
+                        <input type="hidden" th:field="*{page}">
+                        <input type="hidden" th:field="*{amount}">
+                    </form>
+                </div>
+                </th:block>
             </div>
         </div>
     </div>
 </main>
 <footer th:replace="/fixed/footer.html :: #footer"></footer>
 </body>
+<script src="/js/basic/jquery.min.js"></script>
+<script src="/js/basic/jquery.dropotron.min.js"></script>
+<script src="/js/basic/browser.min.js"></script>
+<script src="/js/basic/breakpoints.min.js"></script>
+<script src="/js/basic/util.js"></script>
+<script src="/js/basic/main.js"></script>
+<script th:inline="javascript">
+    let $pages = $("a.changePage");
+
+    $pages.on("click", function(e){
+        e.preventDefault();
+        $(document.pageForm.page).val($(this).attr("href"));
+        document.pageForm.submit();
+    });
+
+</script>
 </html>

@@ -30,14 +30,14 @@ class LectureServiceTest {
         ReservePlaceVO reservePlaceVO = new ReservePlaceVO();
 
 
-        file1.create("썸네일테스트2", "2022/12/03", UUID.randomUUID().toString(), 200L, true);
-        file2.create("썸네일테스트2", "2022/12/03", UUID.randomUUID().toString(), 100L, true);
-        thumb.create("썸네일테스트2", "2022/12/03", UUID.randomUUID().toString(), 200L, true);
+        file1.create("강사넘버서비스테스트1", "2022/12/03", UUID.randomUUID().toString(), 200L, true);
+        file2.create("강사넘버서비스테스트1", "2022/12/03", UUID.randomUUID().toString(), 100L, true);
+        thumb.create("강사넘버서비스테스트1", "2022/12/03", UUID.randomUUID().toString(), 200L, true);
         List<LectureFileVO> files = new ArrayList<>(Arrays.asList(file1, file2));
         List<LectureThumbnailVO> thumbs = new ArrayList<>(Arrays.asList(thumb));
         reservePlaceVO.create(true, false, false);
-        lectureDTO.create("썸네일테스트1", "프로그래밍", "개발자의 필수 교양이라 할 수 있는 깃을 명령어 없이, 명령어로 다루는 방법과 깃허브를 능수능란하게 다루는 방법을 배웁니다.",
-                "2022-12-08", 20L, "Time B (13:00~17:00)","뫼비우스 강연장 5F 501", "진행예정", 21L);
+        lectureDTO.create("강사넘버서비스테스트1", "IT", "개발자의 필수 교양이라 할 수 있는 깃을 명령어 없이, 명령어로 다루는 방법과 깃허브를 능수능란하게 다루는 방법을 배웁니다.",
+                "2022-12-08", 20L, "Time B (13:00~17:00)","뫼비우스 강연장 5F 501", "진행예정", 21L, 2L);
 
         lectureDTO.setFiles(files);
         lectureDTO.setThumbs(thumbs);
@@ -56,17 +56,17 @@ class LectureServiceTest {
 
     @Test
     public void showLectureAllTest(){
-        lectureService.showFinishedAll(new Criteria().create(2, 10)).stream().map(LectureVO::getLectureTitle).forEach(log::info);
+        lectureService.showFinishedAll(new Criteria().create(1, 10), 2L).stream().map(LectureVO::getLectureTitle).forEach(log::info);
     }
 
     @Test
     public void showOngoingAllTest(){
-        lectureService.showOngoingAll(new Criteria().create(1, 10)).stream().map(LectureVO::getLectureTitle).forEach(log::info);
+        lectureService.showOngoingAll(new Criteria().create(1, 10), 2L).stream().map(LectureVO::getLectureTitle).forEach(log::info);
     }
 
     @Test
     public void showExpectedAllTest(){
-        lectureService.showExpectedAll(new Criteria().create(2, 10)).stream().map(LectureVO::getLectureTitle).forEach(log::info);
+        lectureService.showExpectedAll(new Criteria().create(1, 10), 2L).stream().map(LectureVO::getLectureTitle).forEach(log::info);
     }
 
     @Test
@@ -82,7 +82,26 @@ class LectureServiceTest {
 
     @Test
     public void removeTest() {
-        lectureService.remove(126L);
+        lectureService.remove(219L);
     }
 
+    @Test
+    public void temporaryLastTest() {
+        lectureService.temporaryLast();
+    }
+
+    @Test
+    public void showMyReviewAllTest() {
+        lectureService.showMyReviewAll(new Criteria().create(1, 3), 1L);
+    }
+
+    @Test
+    public void myReviewGetTotalTest() {
+        lectureService.myReviewGetTotal(1L);
+    }
+
+    @Test
+    public void showMyInfoTest() {
+        lectureService.showMyInfo(2L);
+    }
 }

@@ -15,6 +15,10 @@ public class ReviewDTO {
     private Long userNumber;
     private String userNickname;
 
+    private LectureVO lectureVO;
+    private String lectureTitle;
+    private Long teacherNumber;
+
     public void create(Long reviewNumber, String reviewTitle, String reviewContent, String reviewRegisterDate, String reviewModifyDate, Long lectureNumber, Long userNumber, String userNickname){
         this.reviewNumber = reviewNumber;
         this.reviewTitle = reviewTitle;
