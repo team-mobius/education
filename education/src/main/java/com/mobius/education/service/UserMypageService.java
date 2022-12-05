@@ -1,6 +1,7 @@
 package com.mobius.education.service;
 
 import com.mobius.education.domain.criteria.ShowUserMypageCountCriteria;
+import com.mobius.education.domain.vo.LectureVO;
 import com.mobius.education.domain.vo.RequestVO;
 import com.mobius.education.domain.vo.ReviewVO;
 import com.mobius.education.repository.ApplyLectureDAO;
@@ -38,6 +39,21 @@ public class UserMypageService {
 //    마의 페이지 내에서 나의 요청 목록
     public List<RequestVO> showMyRequestThree(Long userNumber){
         return requestDAO.showMyRequestThree(userNumber);
+    }
+
+//    내가 완료한 강의 리스트
+    public List<LectureVO> showMyEndedLecture(Long userNumber){
+        return applyLectureDAO.showMyEndedLecture(userNumber);
+    }
+
+    //    내가 완료한 강의 리스트
+    public List<LectureVO> showMyOnGoingLecture(Long userNumber){
+        return applyLectureDAO.showMyOnGoingLecture(userNumber);
+    }
+
+//    나의 리뷰 전체
+    public List<ReviewVO> showMyAllReview(Long userNumber){
+        return reviewDAO.findMyReviewAll(userNumber);
     }
 }
 

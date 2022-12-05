@@ -33,6 +33,20 @@ public class UserMypageController {
     @GetMapping("/endLec")
     public String endLec(Model model){
         model.addAttribute("counts",userMypageService.showCounts(0L));
+        model.addAttribute("lectures",userMypageService.showMyEndedLecture(0L));
         return "/userMypage/completionlecture";
+    }
+
+    @GetMapping("/onGoing")
+    public String onGoing(Model model){
+        model.addAttribute("counts",userMypageService.showCounts(0L));
+        model.addAttribute("lectures",userMypageService.showMyOnGoingLecture(0L));
+        return "/userMypage/onGoingLecture";
+    }
+
+    @GetMapping("/review")
+    public String review(Model model){
+        model.addAttribute("reviews",userMypageService.showMyAllReview(0L));
+        return "/userMypage/myReview";
     }
 }

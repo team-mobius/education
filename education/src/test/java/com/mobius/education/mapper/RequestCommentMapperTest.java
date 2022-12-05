@@ -24,6 +24,12 @@ public class RequestCommentMapperTest {
 
     }
 
+    @Test
+    public void selectOneTest(){
+        log.info("select on :" + requestCommentMapper.selectOneAndNickname(22L));
+    }
+
+
 
 
 

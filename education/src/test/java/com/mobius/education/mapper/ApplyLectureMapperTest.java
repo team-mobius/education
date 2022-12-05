@@ -20,4 +20,14 @@ public class ApplyLectureMapperTest {
     public void selectTest01(){
         log.info("진행 중인 강좌 :" + applyLectureMapper.selectOnGoingLectureCount(0L));
     }
+
+    @Test
+    public void selectEndedLectureTest(){
+        log.info("강좌 :" + applyLectureMapper.selectEndedLecture(0L));
+    }
+
+    @Test
+    public void selectOnGoingLectureTest(){
+        log.info("강좌 :" + applyLectureMapper.selectOnGoingLecture(0L));
+    }
 }

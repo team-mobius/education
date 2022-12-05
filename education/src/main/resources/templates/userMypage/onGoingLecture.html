@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
-    <title>수강종료 강의</title>
-    <link rel="stylesheet" href="/css/userMypage/completionlecture.css" />
+    <title>수강 중인 강의</title>
+    <link rel="stylesheet" href="/css/userMypage/onGoingLecture.css" />
   </head>
   <body style="margin: 0">
   <header th:replace="/fixed/header2.html" :: body></header>
@@ -43,7 +43,7 @@
               </li>
               <li class="lecture-two li">
                 <a href="">
-                  <span class="lecture-request">나의 요청</span>
+                  <span class="lecture-review">나의 요청</span>
                 </a>
               </li>
             </ul>
@@ -65,17 +65,17 @@
         <div class="completion-lecture">
           <section class="nav">
             <ul class="nav-list">
-              <li class="review">수강 완료</li>
+              <li class="review">수강 중인 강좌</li>
             </ul>
           </section>
           <section>
             <div class="total-lecture">
               <div class="completion-total">
                 <p class="total">전체</p>
-                <p class="lecture-count" th:text="${counts.userEndLectureCount}">2</p>
+                <p class="lecture-count" th:text="${counts.userExpectedLectureCount}">2</p>
               </div>
               <div class="review-write">
-                <p class="">후기 작성</p>
+                <p class="">강좌 게시판</p>
               </div>
             </div>
 
@@ -96,7 +96,6 @@
                   </div>
                 </div>
               </li>
-
             </ul>
             </th:block>
           </section>

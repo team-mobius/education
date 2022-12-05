@@ -88,11 +88,11 @@ li > span {
 .lecture-review {
     margin-left: 15px;
     font-size: 13px;
+    color: green;
+    font-weight: 900;
 }
 .lecture-end {
     margin-left: 15px;
-    color: green;
-    font-weight: 900;
     font-size: 13px;
 }
 .inquiry-history {
