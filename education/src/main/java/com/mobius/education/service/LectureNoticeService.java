@@ -32,4 +32,8 @@ public class LectureNoticeService {
     public LectureNoticeVO show(Long lectureNoticeNumber) {
         return lectureNoticeDAO.findById(lectureNoticeNumber);
     }
+
+    public List<LectureNoticeVO> noticeSelectAll() {
+        return lectureNoticeDAO.lectureFindAll();
+    }
 }
