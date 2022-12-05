@@ -91,14 +91,20 @@ div.mypage_title {
 }
 .list-class-title,
 .list-class-place {
-    width: 30%;
+    width: 25%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .list-class-time {
-    width: 15%;
+    width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .list-class-start-date,
 .list-class-end-date {
     width: 12.5%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .title-part {
     color: #a1aab2;

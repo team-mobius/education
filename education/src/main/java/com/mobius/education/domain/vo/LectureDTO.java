@@ -1,5 +1,6 @@
 package com.mobius.education.domain.vo;
 
+import com.mobius.education.domain.criteria.Criteria;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -41,7 +42,7 @@ public class LectureDTO {
     }
 
 
-    public void create(String lectureTitle, String lectureCategory, String lectureContent, String lectureDate, Long lectureMaximumNumber, String lectureTime, String lecturePlace,String lectureStatus, Long placeNumber) {
+    public void create(String lectureTitle, String lectureCategory, String lectureContent, String lectureDate, Long lectureMaximumNumber, String lectureTime, String lecturePlace,String lectureStatus, Long placeNumber, Long teacherNumber) {
         this.lectureTitle = lectureTitle;
         this.lectureCategory = lectureCategory;
         this.lectureContent = lectureContent;
@@ -51,6 +52,7 @@ public class LectureDTO {
         this.lecturePlace = lecturePlace;
         this.lectureStatus = lectureStatus;
         this.placeNumber = placeNumber;
+        this.teacherNumber = teacherNumber;
     }
 
     public void create(String lectureTitle, String lectureCategory, String lectureContent, String lectureDate, Long lectureMaximumNumber, String lectureTime, String lecturePlace,String lectureStatus, Long placeNumber,List<LectureFileVO> files, List<LectureThumbnailVO> thumbs) {

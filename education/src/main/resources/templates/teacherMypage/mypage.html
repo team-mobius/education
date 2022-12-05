@@ -77,33 +77,27 @@
                 </div>
                 <div class="mypage_part1_detail_container">
                     <div class="mypage_part1_detail">
+                        <th:block th:if="${countTemporary != 0}">
                         <div class="comment_mesage">
                             <span class="comment_list_title">강의제목</span>
                             <span class="comment_list_writer">작성자</span>
                             <span class="comment_list_date">작성 날짜</span>
                         </div>
-                        <div class="comment_mesage">
-                            <span class="comment_title">[2022 코딩 입문] 누구나 쉽게 배우는 JAVA!</span>
-                            <span class="comment_writer">김혜원</span>
-                            <span class="comment_date">2022/11/28</span>
+                        <div class="comment_mesage"  th:object="${lectureTemporaryLast}">
+                            <span class="comment_title" th:text="*{lectureTitle}"></span>
+                            <span class="comment_writer" th:text="*{lectureCategory}"></span>
+                            <span class="comment_date" th:text="*{#strings.substring(lectureDate, 0, 10)}"></span>
                         </div>
-                        <div class="comment_mesage">
-                            <span class="comment_title">[2022 코딩 입문] 누구나 쉽게 배우는 JAVA!</span>
-                            <span class="comment_writer">김혜원</span>
-                            <span class="comment_date">2022/11/28</span>
+                        </th:block>
+                        <th:block th:unless="${countTemporary != 0}">
+                        <div class="no_apply_mesage">작성중인 지원서가 없어요</div>
+                        <div class="no_apply_mesage">관심있는 공고에 지원해 보세요.</div>
+                        </th:block>
+                        <div class="go_to_apply">
+                            <button type="button">
+                                <a style="color: #00ccaa;" th:href="@{/teacherMypage/apply}">강의 등록하러 가기</a>
+                            </button>
                         </div>
-                        <div class="comment_mesage">
-                            <span class="comment_title">[2022 코딩 입문] 누구나 쉽게 배우는 JAVA!</span>
-                            <span class="comment_writer">김혜원</span>
-                            <span class="comment_date">2022/11/28</span>
-                        </div>
-<!--                        <div class="no_apply_mesage">작성중인 지원서가 없어요</div>-->
-<!--                        <div class="no_apply_mesage">관심있는 공고에 지원해 보세요.</div>-->
-<!--                        <div class="go_to_apply">-->
-<!--                            <button type="button">-->
-<!--                                <a style="color: #00ccaa;" th:href="@{/teacherMypage/apply}">강의 등록하러 가기</a>-->
-<!--                            </button>-->
-<!--                        </div>-->
                     </div>
                 </div>
             </div>
