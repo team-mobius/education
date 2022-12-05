@@ -73,4 +73,8 @@ public interface LectureMapper {
     //비번 변경
     public void updatePw(TeacherVO teacherVO);
 
+//    리뷰를 위한 강의 정보
+    public LectureVO selectLecDetailAndAll(Long teacherNumber);
+
+
 }

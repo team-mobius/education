@@ -34,7 +34,6 @@ let requestCommentService = (function(){
             url:"/comment/" +requestCommentNumber,
             type:"get",
             success:function (requestComment) {
-                console.log(requestComment);
             }
         })
     };

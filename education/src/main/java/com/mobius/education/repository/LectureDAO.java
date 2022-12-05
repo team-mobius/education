@@ -107,4 +107,9 @@ public class LectureDAO {
     public TeacherVO findInfoById (Long teacherNumber) {
         return lectureMapper.infoSelect(teacherNumber);
     }
+
+//    강의 리뷰를 위한 강의 하나 조회
+    public LectureVO selectLecDetailSomething(Long teacherNumber){
+        return lectureMapper.selectLecDetailAndAll(teacherNumber);
+    }
 }

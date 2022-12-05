@@ -92,7 +92,7 @@
                     <a href=""  th:text="*{lectureTitle}">파이썬 무료강의 (활용편1) - 추억의 오락실 게임 만들기(3시간)</a>
                   </div>
                   <div class="completion-lecture-review">
-                    <a th:href="*{lectureNumber}">📑</a>
+                    <a class="go-to-lecture-review" th:href="*{lectureNumber}">📑</a>
                   </div>
                 </div>
               </li>
@@ -105,4 +105,13 @@
     </div>
 
   </body>
+  <script th:inline="javascript">
+
+    const $goToReview = $("a.go-to-lecture-review");
+
+    $goToReview.on("click",function (e) {
+      e.preventDefault();
+      location.href="/review/write"+ "?" +"&lectureNumber="+$(this).attr("href");
+    })
+  </script>
 </html>

@@ -203,4 +203,9 @@
         SET TEACHER_PASSWORD = #{teacherPassword}
         WHERE TEACHER_NUMBER = #{teacherNumber}
     </update>
+
+    <select id="selectLecDetailAndAll" resultType="LectureVO">
+        SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, TEACHER_NUMBER FROM TBL_LECTURE
+        WHERE LECTURE_NUMBER = #{lectureNumber}
+    </select>
 </mapper>
