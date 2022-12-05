@@ -118,7 +118,7 @@
                             </div>
                             <!-- 댓글 내용 -->
                             <div class="reply_content">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -180,10 +180,8 @@
 
         getList();
 
-        // 댓글 입력
-        console.log(1,"success");
-        console.log(2,requestNumber);
 
+        //댓글 입력
         $("a.register-button-wrapper").on("click",function () {
             let requestCommentContent = $("textarea[name='requestCommentContent']").val();
             let userNumber = 0;
@@ -203,18 +201,17 @@
         }
 
         function showList(requestComments) {
-            console.log(requestComments);
             let text="";
             requestComments.forEach(requestComment =>{
                 text += "<div class='reply_read_container' >";
                 text += "<div class='reply_read_header'>";
                 text += "<div class='reply_writer'>" +requestComment.userNickname + "</div>";
-                text += "<div class='reply_date'>"+ requestComment.requestCommentRegisterDate+"</div>";
+                text += "<div class='reply_date'>"+ requestComment.requestCommentModifyDate+"</div>";
                 text += "<div class='reply_button_area'>";
-                text += "<button class='modify_button first-show'>수정</button>";
-                text += "<button class='remove_button first-show'>삭제</button>";
-                text += "<button class='modify-save second-show'>확인</button>";
-                text += "<button class='modify-cancel second-show'>취소</button>";
+                text += "<button class='modify_button first-show' style='cursor: pointer;'>수정</button>";
+                text += "<button class='remove_button first-show' style='cursor: pointer;'>삭제</button>";
+                text += "<button class='modify-save second-show' style='cursor: pointer;'>수정 완료</button>";
+                text += "<button class='modify-cancel second-show' style='cursor: pointer;'>취소</button>";
                 text += "</div>";
                 text += "</div>";
                 text += "<div class='reply_content'>";
@@ -226,11 +223,14 @@
             $("button.second-show").hide();
         }
     //    댓글 수정
-        $("div.request-comment-wrapper").on("click","modify_button",function(){
+
+        $("div.request-comment-wrapper").on("click", "button.modify_button", function(){
+            console.log($(this));
             $(this).hide();
             $(this).next().hide();
             $(this).next().next().show();
             $(this).next().next().next().show();
+            $("div.")
 
         })
 
