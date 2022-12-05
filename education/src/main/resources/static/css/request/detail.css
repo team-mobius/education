@@ -269,14 +269,17 @@ textarea {
 }
 
 .modify_button,
-.remove_button {
+.remove_button,
+.modify-save,
+.modify-cancel{
     font-size: 12px;
     border: 0;
     background-color: #fff;
     padding: 3px;
 }
 
-.modify_button {
+
+.modify_button,.modify-save {
     border-right: 1px solid #e9ecef;
 }
 

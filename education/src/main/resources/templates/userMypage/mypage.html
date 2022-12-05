@@ -23,27 +23,28 @@
                   <span class="profile">프로필</span>
                 </a>
               </li>
-              <li class="li-three li">
-                <a href="">
-                  <span class="notice">알림</span>
-                </a>
-              </li>
+
             </ul>
             <p class="lecture-management">수강 관리</p>
             <ul class="ul-two">
               <li class="lecture-one li">
-                <a href="">
+                <a th:href="@{/mypage/user/onGoing}">
                   <span class="lecture-ing">수강 중인 강좌</span>
                 </a>
               </li>
               <li class="lecture-two li">
-                <a href="">
+                <a th:href="@{/mypage/user/endLec}">
                   <span class="lecture-end">수강 완료 강좌</span>
                 </a>
               </li>
               <li class="lecture-two li">
                 <a href="">
-                  <span class="lecture-end">수강 후기</span>
+                  <span class="lecture-end">나의 후기</span>
+                </a>
+              </li>
+              <li class="lecture-two li">
+                <a href="">
+                  <span class="lecture-end">나의 요청</span>
                 </a>
               </li>
             </ul>
@@ -70,7 +71,7 @@
                 <div class="text-one">
                   <div class="text-first">
                     <span class="">😀</span>
-                    <p class="bow-left"><span id="userName" th:name="userName"></span> 계정 정보</p>
+                    <p class="bow-left"><span id="userName"></span> 계정 정보</p>
                   </div>
                   <div class="text-second">
                     <a href="">

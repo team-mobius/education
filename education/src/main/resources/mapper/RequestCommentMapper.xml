@@ -15,4 +15,25 @@
         SELECT REQUEST_COMMENT_NUMBER, REQUEST_COMMENT_CONTENT, REQUEST_COMMENT_REGISTER_DATE, REQUEST_COMMENT_MODIFY_DATE , tu.USER_NUMBER , REQUEST_NUMBER , USER_NICKNAME FROM TBL_REQUEST_COMMENT rc , TBL_USER tu
         WHERE tu.USER_NUMBER = rc.USER_NUMBER  AND REQUEST_NUMBER =#{requestNumber}
     </select>
+
+    <insert id="insert">
+        INSERT INTO TBL_REQUEST_COMMENT(REQUEST_COMMENT_NUMBER, REQUEST_COMMENT_CONTENT, USER_NUMBER, REQUEST_NUMBER)
+        VALUES(SEQ_REQUEST_COMMENT.NEXTVAL, #{requestCommentContent}, #{userNumber}, #{requestNumber})
+    </insert>
+
+    <update id="update">
+        UPDATE TBL_REQUEST_COMMENT
+        SET REQUEST_COMMENT_CONTENT = #{requestCommentContent} , REQUEST_COMMENT_MODIFY_DATE = SYSDATE
+        WHERE REQUEST_COMMENT_NUMBER = #{requestCommentNumber}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM TBL_REQUEST_COMMENT
+        WHERE REQUEST_COMMENT_NUMBER = #{requestCommentNumber}
+    </delete>
+
+    <select id="selectOneAndNickname" resultType="com.mobius.education.domain.vo.RequestCommentDTO">
+        SELECT REQUEST_COMMENT_NUMBER, REQUEST_COMMENT_CONTENT, REQUEST_COMMENT_REGISTER_DATE, REQUEST_COMMENT_MODIFY_DATE , tu.USER_NUMBER , REQUEST_NUMBER , USER_NICKNAME FROM TBL_REQUEST_COMMENT rc , TBL_USER tu
+        WHERE tu.USER_NUMBER = rc.USER_NUMBER  AND REQUEST_COMMENT_NUMBER = #{requestCommentNumber}
+    </select>
 </mapper>

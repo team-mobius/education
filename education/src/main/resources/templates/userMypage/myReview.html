@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>수강종료 강의</title>
-    <link rel="stylesheet" href="/css/userMypage/completionlecture.css" />
+    <link rel="stylesheet" href="/css/userMypage/myReview.css" />
   </head>
   <body style="margin: 0">
   <header th:replace="/fixed/header2.html" :: body></header>
@@ -37,7 +37,7 @@
                 </a>
               </li>
               <li class="lecture-two li">
-                <a href="">
+                <a th:href="@{/mypage/user/review}">
                   <span class="lecture-review">나의 후기</span>
                 </a>
               </li>

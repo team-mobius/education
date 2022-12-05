@@ -38,7 +38,7 @@
                 <div class="post_content_area">
                     <div class="post_container">
                         <div class="post_header" th:object="${request}">
-                            <div class="post_title" th:text="*{requestTitle}">웹 강의 열어주세요!</div>
+                            <div class="post_title" th:text="*{requestTitle}"></div>
                             <div class="post_info">
                                 <span class="post_writer" th:text="*{userNickname}">myewon</span>
                                 <span class="post_dot">·</span>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="post_category">
                                 <a class="category_box" href="">
-                                    <p class="category_text">개발·프로그래밍</p>
+                                    <p class="category_text" th:text="${request.requestCategory}">개발·프로그래밍</p>
                                     <p class="move_to_lecture">
                                         모집중인 강의
                                         보러가기&nbsp;&nbsp;&nbsp;>
@@ -76,16 +76,18 @@
                         </div>
                         <!-- 댓글 작성 칸 -->
                         <div class="write_reply_box">
-                            <form action="">
-                                <textarea cols="30" rows="5"></textarea>
+                            <form th:action="@{/comment/new}">
+                                <textarea name="requestCommentContent" cols="30" rows="5"></textarea>
                             </form>
                         </div>
                         <!-- 댓글 버튼 -->
                         <div class="reply_write_button_area">
                             <div class="reply_write_button_space">
-                                <button class="reply_write_button">
+                                <a class="register-button-wrapper">
+                                <button type="submit" class="reply_write_button">
                                     답변 등록
                                 </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -95,38 +97,148 @@
                     <div class="reply_count_area">
                         <div class="reply_count_container">
                             <span>총</span>
-                            <span class="repky_count">3</span>
+                            <span class="repky_count" th:text="${#lists.size(requestComments)}"></span>
                             <span>개의 댓글이 달렸습니다.</span>
                         </div>
                     </div>
 
 <!--                    댓글 시작 -->
                     <!-- 첫번째 댓글 -->
-                    <th:block th:each="requestComment:${requestComments}">
-                        <div class="reply_read_container" th:object="${requestComments}">
+
+                    <div class="request-comment-wrapper">
+                        <div class="reply_read_container" >
                             <!-- 댓글 헤더 -->
                             <div class="reply_read_header">
-                                <div class="reply_writer" th:text="*{userNickname}">뫼비우스</div>
-                                <div class="reply_date" th:text="*{requestRegisterDate}">2022.11.18</div>
+                                <div class="reply_writer" >뫼비우스</div>
+                                <div class="reply_date">2022.11.18</div>
                                 <div class="reply_button_area">
                                     <button class="modify_button">수정</button>
                                     <button class="remove_button">삭제</button>
                                 </div>
                             </div>
                             <!-- 댓글 내용 -->
-                            <div class="reply_content" th:text="*{requestContent}">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing
-                                elit. Impedit quod ipsum reprehenderit voluptatem
-                                voluptatum placeat iste vitae, fugit cumque porro
-                                earum dicta a optio at ex, ullam temporibus
-                                asperiores consequatur.
+                            <div class="reply_content">
+                                
                             </div>
                         </div>
-                    </th:block>
+                    </div>
+
+
 
                 </section>
             </div>
         </main>
         <footer th:replace="/fixed/footer.html :: #footer"></footer>
     </body>
+    <script src="/js/request/detail.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:inline="javascript">
+        HTMLCollection.prototype.forEach = Array.prototype.forEach;
+        let requestNumber = [[${request.requestNumber}]];
+
+        console.log(requestNumber);
+
+        // requestCommentService.add({
+        //     requestCommentContent : "test",
+        //     userNumber : 0,
+        //     requestNumber : requestNumber
+        // },showAlert,function (a,b,c) {
+        //     console.log((a,b,c));
+        // });
+        //
+        // function showAlert(result){
+        //     alert(result);
+        // }
+
+
+        // 전체 목록 조회
+        // requestCommentService.getList(requestNumber,showList);
+        //
+        // function showList(requestComments) {
+        //     console.log(requestComments);
+        // }
+
+        // select one
+        // requestCommentService.read(22,showRequestComment)
+        //
+        // function showRequestComment(requestComment) {
+        //     console.log(requestComment);
+        // }
+
+    //    delete
+    //     requestCommentService.remove(22,showResult)
+    //
+    //     function showResult(requestComment) {
+    //         console.log(requestComment);
+    //     }
+
+    //    modify
+    //     requestCommentService.modify({
+    //         requestCommentNumber:25,
+    //         requestCommentContent:"modify 수장됨"
+    //     });
+
+        getList();
+
+        // 댓글 입력
+        console.log(1,"success");
+        console.log(2,requestNumber);
+
+        $("a.register-button-wrapper").on("click",function () {
+            let requestCommentContent = $("textarea[name='requestCommentContent']").val();
+            let userNumber = 0;
+            requestCommentService.add({
+                requestCommentContent : requestCommentContent,
+                userNumber : userNumber,
+                requestNumber : requestNumber
+            },function () {
+                window.location.reload();
+            })
+            getList();
+        });
+
+        // 목록 보여지는 부분
+        function getList() {
+            requestCommentService.getList(requestNumber,showList);
+        }
+
+        function showList(requestComments) {
+            console.log(requestComments);
+            let text="";
+            requestComments.forEach(requestComment =>{
+                text += "<div class='reply_read_container' >";
+                text += "<div class='reply_read_header'>";
+                text += "<div class='reply_writer'>" +requestComment.userNickname + "</div>";
+                text += "<div class='reply_date'>"+ requestComment.requestCommentRegisterDate+"</div>";
+                text += "<div class='reply_button_area'>";
+                text += "<button class='modify_button first-show'>수정</button>";
+                text += "<button class='remove_button first-show'>삭제</button>";
+                text += "<button class='modify-save second-show'>확인</button>";
+                text += "<button class='modify-cancel second-show'>취소</button>";
+                text += "</div>";
+                text += "</div>";
+                text += "<div class='reply_content'>";
+                text += requestComment.requestCommentContent;
+                text+="</div>";
+                text+="</div>";
+            });
+            $("div.request-comment-wrapper").html(text);
+            $("button.second-show").hide();
+        }
+    //    댓글 수정
+        $("div.request-comment-wrapper").on("click","modify_button",function(){
+            $(this).hide();
+            $(this).next().hide();
+            $(this).next().next().show();
+            $(this).next().next().next().show();
+
+        })
+
+
+
+
+
+
+
+    </script>
 </html>

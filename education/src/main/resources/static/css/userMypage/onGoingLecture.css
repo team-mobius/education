@@ -79,10 +79,8 @@ li > span {
 }
 .lecture-ing {
     margin-left: 15px;
-    font-size: 13px;
-}
-.lecture-request {
-    margin-left: 15px;
+    color: green;
+    font-weight: 900;
     font-size: 13px;
 }
 .lecture-review {
@@ -91,8 +89,6 @@ li > span {
 }
 .lecture-end {
     margin-left: 15px;
-    color: green;
-    font-weight: 900;
     font-size: 13px;
 }
 .inquiry-history {

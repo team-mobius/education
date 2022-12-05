@@ -69,6 +69,7 @@ public class RequestBoardService {
     }
 
     public List<RequestCommentDTO> showComment(Long requestNumber){
+        System.out.println("6");
         return requestCommentDAO.showComment(requestNumber);
     }
 

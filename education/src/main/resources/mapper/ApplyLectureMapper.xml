@@ -19,5 +19,25 @@
         WHERE USER_NUMBER = #{userNumber}
     </select>
 
+    <select id="selectEndedLecture" resultType="lectureVO">
+        SELECT LECTURE_TITLE, LECTURE_NUMBER FROM
+        (
+        SELECT tl.LECTURE_NUMBER, USER_NUMBER, LECTURE_TITLE FROM TBL_LECTURE tl , TBL_APPLY_LECTURE tal
+        WHERE tl.LECTURE_NUMBER = tal.LECTURE_NUMBER AND tl.LECTURE_DATE <![CDATA[<]]> SYSDATE
+        )
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <select id="selectOnGoingLecture" resultType="lectureVO">
+        SELECT LECTURE_TITLE, LECTURE_NUMBER FROM
+        (
+        SELECT tl.LECTURE_NUMBER, USER_NUMBER, LECTURE_TITLE FROM TBL_LECTURE tl , TBL_APPLY_LECTURE tal
+        WHERE tl.LECTURE_NUMBER = tal.LECTURE_NUMBER AND tl.LECTURE_DATE <![CDATA[>]]> SYSDATE
+        )
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+
+
 
 </mapper>
