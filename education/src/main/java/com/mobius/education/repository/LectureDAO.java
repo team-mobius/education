@@ -83,4 +83,9 @@ public class LectureDAO {
     public int findTemporaryCountAll(){
         return lectureMapper.temporaryGetTotal();
     }
+
+    //    강의 전체조회
+    public List<LectureVO> lectureFindAll() {
+        return lectureMapper.lectureSelectAll();
+    }
 }

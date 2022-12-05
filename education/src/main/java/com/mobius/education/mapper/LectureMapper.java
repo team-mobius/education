@@ -55,4 +55,8 @@ public interface LectureMapper {
     //강의 번호 추가
     public void insertPlace();
 
+//    메인페이지 강의조회
+//    강의 전체조회
+    public List<LectureVO> lectureSelectAll();
+
 }

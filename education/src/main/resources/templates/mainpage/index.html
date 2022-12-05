@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:div="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -109,7 +109,7 @@
         <div class="container">
             <div class="mainList">
                 <div class="openClassHeader">
-                    <a href="">
+                    <a th:href="@{/lecture/mypage}">
                         <h1 class="title classTitle">
                             무료강의? 오히려 좋아 ✨
                             <span class="icon">
@@ -121,158 +121,27 @@
                         무료 강의로 다양한 배움을 시작해 보세요.
                     </p>
                 </div>
-                <div class="openClassList">
-                    <div class="classCard">
+                <div class="openClassList" >
+                    <div:th:block class="classCard" th:each="lecture:${lectures}">
                         <a href="">
-                            <div class="cardImage">
-                                <img src="https://cdn.inflearn.com/public/courses/329442/cover/9b564bc1-433b-4a85-a2f2-147bf198bdc3/329442-eng.png">
-                                <div class="cardContent">
-                                    <div class="classTitle">
-                                        시작해보세요! 당신의 첫 지식공유
-                                    </div>
-                                    <div class="instructor" id="">2023/11/15</div>
-                                    <div class="instructor" id="">강남문화센터 5층</div>
-                                    <div class="price" id="">이종호강사</div>
-                                    <div class="tags">
-                                        <span class="tag" style="background-color: hsl(321,63%,90%);">IT</span>
-                                        <span class="tag" style="background-color: hsl(182,75%,94%);">새강의</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="classCard">
-                        <a href="">
-                            <div class="cardImage">
+                            <div class="cardImage" th:object="${lecture}">
                                 <img src="https://cdn.inflearn.com/public/courses/324952/course_cover/6d039c4b-8463-4dda-80c8-fac86506131f/cw-hiragana.png">
                                 <div class="cardContent">
-                                    <div class="classTitle">
-                                        안녕, 일본어는 처음이지? 누구나 쉽게 배우는 기초 일본어!
+                                    <div class="classTitle lectureTitle">
+                                        <a class="lectureDetail" th:text="*{lectureTitle}" th:href="*{lectureNumber}"></a>
                                     </div>
-                                    <div class="instructor" id="">2023/01/15</div>
-                                    <div class="instructor" id="">강남문화센터 5층</div>
-                                    <div class="price" id="">김정표강사</div>
+                                    <div class="instructor lectureDate" th:text="*{lectureDate}"></div>
+                                    <!--<div class="instructor lecturePlace" th:text="*{lecturePlace}"></div>-->
+                                    <!--<div class="price teacherNumber" th:text="*{teacherNumber}"></div>-->
                                     <div class="tags">
-                                        <span class="tag" style="background-color: hsl(321,63%,90%);">외국어</span>
+                                        <!--<span class="tag lectureMaximumNumber" style="background-color: hsl(321,63%,90%);" th:text="*{lectureMaximumNumber}"></span>
+                                        <span class="tag lectureCategory" style="background-color: hsl(182,75%,94%);" th:text="*{lectureCategory}"></span>-->
                                     </div>
                                 </div>
                             </div>
                         </a>
-                    </div>
-                    <div class="classCard">
-                        <a href="">
-                            <div class="cardImage">
-                                <img src="https://cdn.inflearn.com/public/course-326281-cover/9486a764-df5f-4654-a512-79f35f498730">
-                                <div class="cardContent">
-                                    <div class="classTitle">
-                                        웃으면서 배우는 생활일본어
-                                    </div>
-                                    <div class="instructor" id="">2023/11/15</div>
-                                    <div class="instructor" id="">강남문화센터 5층</div>
-                                    <div class="price" id="">김혜원강사</div>
-                                    <div class="tags">
-                                        <span class="tag" style="background-color: hsl(321,63%,90%);">외국어</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="classCard">
-                        <a href="">
-                            <div class="cardImage">
-                                <img src="https://cdn.inflearn.com/public/courses/328999/cover/79e6611a-e32f-42c1-8a9e-374c41b3c1cf/328999-eng.png">
-                                <div class="cardContent">
-                                    <div class="classTitle">
-                                        원어민 수준 찍는 영어회화 공부방법
-                                    </div>
-                                    <div class="instructor" id="">2023/11/15</div>
-                                    <div class="instructor" id="">강남문화센터 5층</div>
-                                    <div class="price" id="">박세리강사</div>
-                                    <div class="tags">
-                                        <span class="tag" style="background-color: hsl(321,63%,90%);">외국어</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    </div:th:block>
                 </div>
-                <div class="openClassList">
-                    <div class="classCard">
-                        <a href="">
-                            <div class="cardImage">
-                                <img src="https://www.ddazua.com/pluginfile.php/3839/local_courselist/thumbnailimg/173/%EC%8D%B8%EB%84%A4%EC%9D%BC_%EC%97%84%EB%A7%88%EB%84%A4%EB%B0%98%EC%B0%AC%EA%B0%80%EA%B2%8C_%EC%8B%9C%EC%A6%8C2.jpg">
-                                <div class="cardContent">
-                                    <div class="classTitle">
-                                        누구나 쉽게 배우는 한식 반찬 만들기!
-                                    </div>
-                                    <div class="instructor" id="">2023/11/15</div>
-                                    <div class="instructor" id="">강남문화센터 5층</div>
-                                    <div class="price" id="">김동근강사</div>
-                                    <div class="tags">
-                                        <span class="tag" style="background-color: hsl(321,63%,90%);">요리</span>
-                                        <span class="tag" style="background-color: hsl(182,75%,94%);">새강의</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="classCard">
-                        <a href="">
-                            <div class="cardImage">
-                                <img src="https://cdn.inflearn.com/public/courses/327809/cover/6efc77ed-9f98-4626-8404-a359c23daeb2/327809-eng.png">
-                                <div class="cardContent">
-                                    <div class="classTitle">
-                                        스마트폰 사진 연구소 대표의 인생 사진 찍기
-                                    </div>
-                                    <div class="instructor" id="">2023/10/09</div>
-                                    <div class="instructor" id="">강남문화센터 5층</div>
-                                    <div class="price" id="">박은지강사</div>
-                                    <div class="tags">
-                                        <span class="tag" style="background-color: hsl(321,63%,90%);">취미</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="classCard">
-                        <a href="">
-                            <div class="cardImage">
-                                <img src="https://cdn.inflearn.com/public/courses/327788/cover/699d503d-f231-41ce-812a-3e661db529a3/327788-eng.png">
-                                <div class="cardContent">
-                                    <div class="classTitle">
-                                        아나운서 김주우의 말습관 트레이닝 - 중요한 것은 교감
-                                    </div>
-                                    <div class="instructor" id="">2023/11/15</div>
-                                    <div class="instructor" id="">강남문화센터 5층</div>
-                                    <div class="price" id="">이종호강사</div>
-                                    <div class="tags">
-                                        <span class="tag" style="background-color: hsl(321,63%,90%);">생활</span>
-                                        <span class="tag" style="background-color: hsl(182,75%,94%);">새강의</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="classCard">
-                        <a href="">
-                            <div class="cardImage">
-                                <img src="https://cdn.inflearn.com/public/courses/324941/course_cover/a8153884-2434-4e0d-a6af-edeb9f2d267d/rookiss-rpg-4-1.jpg">
-                                <div class="cardContent">
-                                    <div class="classTitle">
-                                        [누구나 쉽게 접근하는 게임만들기] Part4: C#과 유니트로 만드는 개발 시리즈
-                                    </div>
-                                    <div class="instructor" id="">2023/11/15</div>
-                                    <div class="instructor" id="">강남문화센터 5층</div>
-                                    <div class="price" id="">이종호강사</div>
-                                    <div class="tags">
-                                        <span class="tag" style="background-color: hsl(321,63%,90%);">IT</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
             </div>
         </div>
     </section>
@@ -403,49 +272,17 @@
                 </div>
             </div>
             <div class="content">
-                <div class="request_content">
-                    <div class="box">
-                        <h2 class="subtitle">
-                            미술이 배우고 싶어요!
+                <div:th:block class="request_content"th:each="request:${requests}">
+                    <div class="box" th:object="${request}">
+                        <h2 class="subtitle requestTitle" th:text="*{requestTitle}">
                         </h2>
-                        <div class="text">
-                            저희 어머니랑 함께 미술을 배워보고 싶어요.
-                            저희 어머니랑 함께 미술을 배워보고 싶어요.
-                            저희 어머니랑 함께 미술을 배워보고 싶어요.
+                        <div class="text requestContent" th:text="*{requestContent}">
                         </div>
-                        <a href="" class="requestList">
+                        <a href="" class="requestList requestNumber" th:href="*{requestNumber}">
                             <span>강좌요청 상세보기</span>
                         </a>
                     </div>
-                    <div class="box">
-                        <h2 class="subtitle">
-                            스프링이 배우고 싶어요!
-                        </h2>
-                        <div class="text">
-                            스프링이 배우고 싶어요!!
-                            스프링이 배우고 싶어요!!
-                            스프링이 배우고 싶어요!!
-                            스프링이 배우고 싶어요!!
-                        </div>
-                        <a href="" class="requestList">
-                            <span>강좌요청 상세보기</span>
-                        </a>
-                    </div>
-                    <div class="box">
-                        <h2 class="subtitle">
-                            미술이 배우고 싶어요!
-                        </h2>
-                        <div class="text">
-                            저희 어머니랑 함께 미술을 배워보고 싶어요.
-                            저희 어머니랑 함께 미술을 배워보고 싶어요.
-                            저희 어머니랑 함께 미술을 배워보고 싶어요.
-                            저희 어머니랑 함께 미술을 배워보고 싶어요.
-                        </div>
-                        <a href="" class="requestList">
-                            <span>강좌요청 상세보기</span>
-                        </a>
-                    </div>
-                </div>
+                </div:th:block>
             </div>
         </div>
     </section>
@@ -564,5 +401,18 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:inline="javascript">
 
+    const $read = $("a.lectureDetail");
+    /*const $reviewBtn = $("a.reviewBtn");*/
+    /* const $requestBtn = $("a.requestBtn");*/
+
+    $read.on("click", function(e){
+        e.preventDefault();
+        location.href = "/lectureDetail/lecture_board" + "?" + "lectureNumber=" + $(this).attr("href");
+    });
+
+    /*$reviewBtn.on("click", function(e){
+        e.preventDefault();
+        location.href = "/review/review" + "?" + "reviewNumber=" + $(this).attr("href");
+    });*/
 </script>
 </html>

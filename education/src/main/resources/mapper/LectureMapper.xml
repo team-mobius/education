@@ -145,4 +145,13 @@
         SET PLACE_NUMBER = #{placeNumber}
         WHERE LECTURE_NUMBER = #{lectureNumber}
     </update>
+
+    <!--eunji-->
+    <select id="lectureListselectAll" resultType="lectureVO">
+        SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, LECTURE_CONTENT, LECTURE_DATE, LECTURE_MAXIMUM_NUMBER, LECTURE_STATUS
+        FROM TBL_LECTURE
+    </select>
+
+
+
 </mapper>

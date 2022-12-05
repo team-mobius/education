@@ -53,6 +53,7 @@ td {
 }
 td.board_title {
     text-align: left;
+    width: 30px;
 }
 .board_btn {
     float: right;
@@ -97,4 +98,7 @@ button.search_b img {
     margin-bottom: 150px;
     width: 85%;
     margin-left: 100px;
+}
+.board_num, .board_view, .board_like {
+    width: 45px;
 }

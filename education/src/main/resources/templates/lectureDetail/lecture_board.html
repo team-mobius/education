@@ -18,11 +18,11 @@
               <div class="banner_img">
                 <img style="width: 440px; height: 286px" src="https://cdn.inflearn.com/public/courses/326674/cover/4657d793-56a4-42f3-9d44-dc88d125a49e" />
               </div>
-              <div class="explanation">
-                <div class="programing"><span class="box">Best</span> 개발·프로그래밍 > 백엔드</div>
-                <div class="a" style="font-size: 26px; position: relative; bottom: -15px">스프링 MVC 1편 - 백엔드 웹 개발 핵심 기술</div>
+              <div class="explanation" th:object="${lecture}">
+                <div class="programing" th:text="*{lectureCategory}"><span class="box">Best</span></div>
+                <div class="a" style="font-size: 26px; position: relative; bottom: -15px" th:text="*{lectureTitle}"></div>
                 <div style="position: relative; bottom: -90px">1242개의 수강평 · 12746명의 수강생</div>
-                <a style="color: white; position: relative; bottom: -95px" href="">김영한</a>
+                <a style="color: white; position: relative; bottom: -95px" href="" th:text="*{teacherNumber}"></a>
                 <div style="font-size: 17px; color: white; position: relative; bottom: -100px">
                   #
                   <a class="a_tag" href="">MVC</a>

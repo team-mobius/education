@@ -33,4 +33,11 @@ public class LectureNoticeDAO {
         return lectureNoticeMapper.select(lectureNoticeNumber);
     }
 
+//
+    public List<LectureNoticeVO> lectureFindAll() {
+        return lectureNoticeMapper.noticeSelectAll();
+    }
+
+
+
 }

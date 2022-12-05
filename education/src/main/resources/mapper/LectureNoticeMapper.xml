@@ -37,4 +37,10 @@
         FROM TBL_LECTURE_NOTICE
         WHERE LECTURE_NOTICE_NUMBER = #{lectureNoticeNumber}
     </select>
+
+    <select id="noticeSelectAll" resultType="lectureNoticeVO">
+        SELECT LECTURE_NOTICE_NUMBER, LECTURE_NOTICE_TITLE, LECTURE_NOTICE_CONTENT, LECTURE_NOTICE_DATE
+        FROM TBL_LECTURE_NOTICE
+        ORDER BY LECTURE_NUMBER DESC
+    </select>
 </mapper>

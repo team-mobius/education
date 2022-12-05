@@ -20,4 +20,6 @@ public interface LectureNoticeMapper {
 
     //공지 보기
     public LectureNoticeVO select(Long lectureNoticeNumber);
+
+    public List<LectureNoticeVO> noticeSelectAll();
 }

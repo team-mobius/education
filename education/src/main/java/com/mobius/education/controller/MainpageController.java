@@ -1,7 +1,9 @@
 package com.mobius.education.controller;
 
+import com.mobius.education.domain.criteria.Criteria;
 import com.mobius.education.domain.vo.ReviewVO;
-import com.mobius.education.service.ReviewService;
+import com.mobius.education.mapper.MainpageRequestService;
+import com.mobius.education.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,28 +18,29 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/mainpage/*")
 public class MainpageController {
-    private final ReviewService reviewService;
-
-    @GetMapping("/index")
-    public String index(){return "/mainpage/index";}
-
-   /* @GetMapping("/review")
-    public String review(){return "/review/review";}*/
+    private final LectureService lectureService;
+    private final LectureNoticeService lectureNoticeService;
+    private final RequestBoardService requestBoardService;
+    private final MainpageRequestService mainpageRequestService;
+    private final MainpageLectureListService mainpageLectureListService;
 
 
+   /* @GetMapping("/index")
+    public String index(){return "/mainpage/index";}*/
 
-    @GetMapping("/review")
-    public void review(Model model) {
-        model.addAttribute("reviews",reviewService.showAll());
+   @GetMapping("/index")
+    public void lectureList(Model model, Criteria criteria) {
+        model.addAttribute("lectures", mainpageLectureListService.lectureShowAll());
+        model.addAttribute("requests",requestBoardService.showAll());
+        /*model.addAttribute("requests",mainpageRequestService.show(requestNumber));*/
     }
-    @GetMapping("/ask")
-    public String ask(){return "/request/ask";}
 
-    @GetMapping("/detail")
-    public String detail(){return "/request/detail";}
 
-    @GetMapping("/list")
-    public String list(){return "/request/list";}
+    @GetMapping("/lectureList")
+    public void detail(Model model, Long lectureNumber, Criteria criteria) {
+        model.addAttribute("lectures", lectureService.showAll(criteria));
+    }
+
 
 
 

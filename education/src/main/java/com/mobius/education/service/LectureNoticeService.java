@@ -2,6 +2,7 @@ package com.mobius.education.service;
 
 import com.mobius.education.domain.criteria.Criteria;
 import com.mobius.education.domain.vo.LectureNoticeVO;
+import com.mobius.education.domain.vo.LectureVO;
 import com.mobius.education.repository.LectureNoticeDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,10 @@ public class LectureNoticeService {
 //    공지 조회
     public LectureNoticeVO show(Long lectureNoticeNumber) {
         return lectureNoticeDAO.findById(lectureNoticeNumber);
+    }
+
+
+    public List<LectureNoticeVO> noticeSelectAll() {
+        return lectureNoticeDAO.lectureFindAll();
     }
 }
