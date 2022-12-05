@@ -34,7 +34,8 @@
         <!-- userId input -->
         <div class="email_input_container input_style">
           <div class="email_title">이메일</div>
-          <input type="text" placeholder="example@inflab.com" th:field="*{userEmail}"/>
+          <input type="text" placeholder="example@inflab.com" id="id" oninput ="checkId()" th:field="*{userEmail}"/>
+          <span class="id_ok" style="visibility: hidden" id="result" >사용 가능한 이메일입니다.</span>
           <span id="emailCheckResult"></span>
         </div>
 
@@ -65,7 +66,8 @@
         <!-- userNickname input -->
         <div class="nickname_input_container input_style">
           <div class="nickname_title">닉네임</div>
-          <input type="text" placeholder="닉네임" th:field="*{userNickname}"/>
+          <input type="text" placeholder="닉네임" id="id2" oninput ="checkId2()" th:field="*{userNickname}"/>
+          <span class="id_ok2" style="visibility: hidden" id="result2"></span>
           <span class="nickNamResult"></span>
         </div>
         <div class="button_container">

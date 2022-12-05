@@ -15,7 +15,8 @@ public class TeacherVO {
     private String teacherBelonging;
     private String teacherPhoneNumber;
 
-    public void create(String teacherEmail ,String teacherPassword, String teacherName, String teacherBelonging,String teacherPhoneNumber) {
+    public void create(Long teacherNumber, String teacherEmail ,String teacherPassword, String teacherName, String teacherBelonging,String teacherPhoneNumber) {
+        this.teacherNumber = teacherNumber;
         this.teacherEmail = teacherEmail;
         this.teacherPassword = teacherPassword;
         this.teacherName = teacherName;

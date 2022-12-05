@@ -50,9 +50,18 @@ public class TeacherController {
         }catch (Exception e){
             log.info("TEST= " + e.getMessage());
 
-            return new RedirectView("/join/teacherJoin");
+            return new RedirectView("/mainpage/index?check=false");
 
         }
 
     }
+
+    @PostMapping("teachermypage")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.getAttribute("teacherNumber");
+        return "redirect:/teacherMypage/mypage";
+    }
+
+
 }

@@ -172,7 +172,8 @@
             <div class="navbar_right">
               <div class="buttons" th:if="${session.userNumber == null && session.teacherNumber == null}">
                 <a href="#" class="button"><span class="open-login-modal">로그인</span></a>
-                <a href="" class="button joinBtn">회원가입</a>
+                <a href="/join/userJoin" class="button joinBtn">수강생 회원가입</a>
+                <a href="/join/teacherJoin" class="button joinBtn">강사 회원가입</a>
               </div>
               <div class="buttons" th:unless="${session.userNumber == null && session.teacherNumber == null}">
                 <a href="" class="button"><span class="">마이페이지</span></a>
