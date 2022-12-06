@@ -100,7 +100,7 @@
                                 <div class="sort_area">
                                     <ul class="sort_list">
                                         <li class="sort_content"><a th:href="@{/request/list}">• 최신순</a></li>
-                                        <li class="sort_content">• 좋아요순</li>
+<!--                                        <li class="sort_content">• 좋아요순</li>-->
                                     </ul>
                                     <button class="write_button write">
                                         <span class="write_img"></span>
@@ -135,8 +135,9 @@
                                                             <span class="reply_text">댓글</span>
                                                         </div>
                                                         <div class="like_area">
-                                                            <span class="like_img"></span>
-                                                            <span class="like_count" th:text="*{heartCount}">3</span>
+<!--                                                            <span class="like_img"></span>-->
+<!--                                                            <span class="like_count">3</span>-->
+<!--                                                            <span class="like_count" th:text="*{heartCount}">3</span>-->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -163,64 +164,7 @@
 
                             </div>
                         </div>
-                        <!-- 우측 -->
-<!--                        <div class="right_side_area">-->
-<!--                            <div class="ranking_area">-->
-<!--                                <h2 class="popular_title">주간 인기글</h2>-->
-<!--                                <ul class="ranking_contaianer">-->
-<!--                                    <li class="ranking_box">-->
-<!--                                        <a href="">-->
-<!--                                            <p class="ranking_box_title">-->
-<!--                                                웹 강의 열어주세요! 너무-->
-<!--                                                듣고싶어요!sjdfskdlfkskdklsf-->
-<!--                                            </p>-->
-<!--                                            <div class="ranking_box_writer">-->
-<!--                                                myewon-->
-<!--                                            </div>-->
-<!--                                    </li>-->
-<!--                                    <li class="ranking_box">-->
-<!--                                        <a href="">-->
-<!--                                            <p class="ranking_box_title">-->
-<!--                                                웹 강의 열어주세요!-->
-<!--                                            </p>-->
-<!--                                            <div class="ranking_box_writer">-->
-<!--                                                myewon-->
-<!--                                            </div>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                    <li class="ranking_box">-->
-<!--                                        <a href="">-->
-<!--                                            <p class="ranking_box_title">-->
-<!--                                                웹 강의 열어주세요!-->
-<!--                                            </p>-->
-<!--                                            <div class="ranking_box_writer">-->
-<!--                                                myewon-->
-<!--                                            </div>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                    <li class="ranking_box">-->
-<!--                                        <a href="">-->
-<!--                                            <p class="ranking_box_title">-->
-<!--                                                웹 강의 열어주세요!sdfsdfsllslsjksjlsljsjlkdnfskjdjfsk-->
-<!--                                            </p>-->
-<!--                                            <div class="ranking_box_writer">-->
-<!--                                                myewon-->
-<!--                                            </div>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                    <li class="ranking_box">-->
-<!--                                        <a href="">-->
-<!--                                            <p class="ranking_box_title">-->
-<!--                                                웹 강의 열어주세요!-->
-<!--                                            </p>-->
-<!--                                            <div class="ranking_box_writer">-->
-<!--                                                myewon-->
-<!--                                            </div>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
+
 
                     </div>
                 </div>
@@ -233,9 +177,14 @@
 
 <script th:inline="javascript">
 
+
     let queryString = [[${pagination.criteria.queryString}]];
     const $read = $("a.read");
     let $pages = $("a.changePage");
+    let $heart = $("span.like_img");
+
+
+
 
     $pages.on("click", function(e){
         e.preventDefault();
@@ -248,5 +197,58 @@
         location.href = "/request/detail" + queryString + "&requestNumber=" + $(this).attr("href");
         // location.href = "/review/detail" + "?" + "lectureNumber=" + $(this).attr("href");
     });
+
+
+
+    let heartService = (function () {
+        function plusHeart(requestHeart, callback, error) {
+            $.ajax({
+                url:"/comment/heart/plus",
+                type: "post",
+                data: JSON.stringify(requestHeart),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    callback(result);
+
+                }
+            })
+        }
+
+        function getCount(requestNumber, callback, error) {
+            $.ajax({
+                url:"comment/heart/"+requestNumber,
+                success: function (heartCount) {
+                }
+            })
+        };
+
+        return{getCount:getCount, plusHeart:plusHeart}
+    })();
+
+
+    // $("span.like_count").html(heartService.getCount($("a.read").attr("href")));
+
+
+
+    // function getCount() {
+    //     let $requestNumber = $("a.read").attr("href");
+    //     let count = heartService.getCount($requestNumber);
+    //     $("span.like_count").text(count);
+    // }
+    //
+    // getCount();
+
+    $heart.on("click",function () {
+        let $requestNumber = $("a.read").attr("href");
+        heartService.plusHeart({
+            requestNumber : $requestNumber,
+            userNumber : userNumber,
+        },function () {
+            window.location.reload();
+        })
+    })
+
+
+
 </script>
 </html>

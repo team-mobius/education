@@ -14,7 +14,7 @@
 <header th:replace="/fixed/header2.html" :: body></header>
 
     <section class="review">
-        <form class="review-form" method="post" th:action="@{/review/write}">
+        <form class="review-form" method="post" th:action="@{/review/write}" style="padding-bottom: 40px">
             <div class="container">
             <div class="myReview">
                 <div class="reviewTitle">
@@ -28,7 +28,7 @@
                         <h3 class="show-review-title" th:text="${lecture.lectureTitle}">[2022 기초코딩] 누구나 쉽게 배우는 자바수업!</h3>
                     </div>
                     <div class="classTeacher">
-                        <p th:text="${lecture.teacherNumber}">한동석 강사님</p>
+<!--                        <p th:text="${lecture.teacherNumber}">한동석 강사님</p>-->
                     </div>
                 </div>
                 <div class="reviewContent">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="cancel_btn">
                         <button type="button" class="back_btn">
-                            <a href="myReview.html">
+                            <a href="#">
                             <span>취소</span>
                             </a>
                         </button>
@@ -68,6 +68,8 @@
             </div>
         </div>
     </section>
+
+
 </body>
 <script src="/js/review/myReview.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -108,6 +110,11 @@
             location.href="/review/list";
         })
     })
+
+    $("button.out_btn").on("click",function(){
+
+       history.back();
+    });
 
 
 </script>

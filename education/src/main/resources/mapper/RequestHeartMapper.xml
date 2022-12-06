@@ -5,4 +5,9 @@
         SELECT COUNT(REQUEST_HEART_NUMBER) FROM TBL_REQUEST_HEART
         WHERE REQUEST_NUMBER = #{requestNumber}
     </select>
+
+    <insert id="insert">
+        INSERT INTO TBL_REQUEST_HEART(REQUEST_HEART_NUMBER, USER_NUMBER, REQUEST_NUMBER)
+        VALUES(SEQ_REQUEST_HEART.NEXTVAL, #{userNumber}, #{requestNumber})
+    </insert>
 </mapper>

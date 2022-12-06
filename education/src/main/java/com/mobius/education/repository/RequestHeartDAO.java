@@ -1,5 +1,6 @@
 package com.mobius.education.repository;
 
+import com.mobius.education.domain.vo.RequestHeartVO;
 import com.mobius.education.mapper.RequestHeartMapper;
 import com.mobius.education.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -14,4 +15,7 @@ public class RequestHeartDAO {
         return requestHeartMapper.selectHeartCount(requestNumber);
     }
 
+    public void plusHeart(RequestHeartVO requestHeartVO){
+        requestHeartMapper.insert(requestHeartVO);
+    }
 }

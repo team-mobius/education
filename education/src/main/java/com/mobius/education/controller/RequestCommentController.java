@@ -3,6 +3,7 @@ package com.mobius.education.controller;
 import com.mobius.education.domain.vo.RequestCommentDTO;
 import com.mobius.education.domain.vo.RequestCommentVO;
 import com.mobius.education.domain.vo.RequestDTO;
+import com.mobius.education.domain.vo.RequestHeartVO;
 import com.mobius.education.service.RequestBoardService;
 import com.mobius.education.service.RequestCommentService;
 import lombok.RequiredArgsConstructor;
@@ -56,6 +57,17 @@ public class RequestCommentController {
     @GetMapping("/{requestCommentNumber}")
     public RequestCommentDTO show(@PathVariable Long requestCommentNumber){
         return requestCommentService.showOne(requestCommentNumber);
+    }
+
+    @GetMapping("/heart/{requestNumber}")
+    public Integer countHeart(@PathVariable("requestNumber") Long requestNumber){
+        return requestBoardService.showRequestHeartCount(requestNumber);
+    }
+
+    @PostMapping("/heart/plus")
+    public String insertHeart(@RequestBody RequestHeartVO requestHeartVO){
+        requestBoardService.plusHeart(requestHeartVO);
+        return "success";
     }
 
 }

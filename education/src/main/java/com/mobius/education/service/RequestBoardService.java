@@ -4,6 +4,7 @@ import com.mobius.education.domain.criteria.Criteria;
 import com.mobius.education.domain.criteria.RequestDetailCounts;
 import com.mobius.education.domain.vo.RequestCommentDTO;
 import com.mobius.education.domain.vo.RequestDTO;
+import com.mobius.education.domain.vo.RequestHeartVO;
 import com.mobius.education.domain.vo.RequestVO;
 import com.mobius.education.repository.RequestCommentDAO;
 import com.mobius.education.repository.RequestDAO;
@@ -101,4 +102,7 @@ public class RequestBoardService {
         return requestDAO.findByRequestCategoryElse(criteria);
     }
 
+    public void plusHeart(RequestHeartVO requestHeartVO){
+        requestHeartDAO.plusHeart(requestHeartVO);
+    }
 }
