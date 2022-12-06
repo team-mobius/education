@@ -10,4 +10,6 @@ public interface TeacherMapper {
 
     public TeacherVO login(TeacherVO teacherVO);
 
+    public int idCheck3(String teacherEmail);
+
 }

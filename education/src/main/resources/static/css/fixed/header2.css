@@ -122,7 +122,7 @@ div.logo-container {
   box-sizing: border-box;
   text-align: center;
   font-size: 26px;
-  font-weight: 1000;
+  font-weight: 1000px;
   color: #00c471;
 }
 div.tabs {
@@ -221,6 +221,7 @@ fieldset button {
   height: 44px;
   font: 13px;
   padding: 1px 6px;
+  zIndex: zIndex;
   background-color: #fae500;
   justify-content: center;
   align-items: center;

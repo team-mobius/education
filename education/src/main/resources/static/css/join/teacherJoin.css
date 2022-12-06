@@ -69,7 +69,7 @@ div.input_style input {
     box-sizing: border-box;
     width: 100%;
     margin-top: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 10px 12px 10px 12px;
     font-size: 15px;
     line-height: 1.47;
@@ -109,7 +109,7 @@ div.button_container {
 }
 
 /* 버튼 style */
-form.join_form input[type="submit"] {
+form.join_form input[type="button"] {
     box-sizing: border-box;
     margin: 16px 0 14px 0;
     border-radius: 4px;
@@ -217,4 +217,15 @@ div.last_line {
 div.footer_mesage_container {
     text-align: center;
     font-size: 12px;
+}
+
+/*----------------------*/
+.id_ok3{
+    font-size: 5px;
+}
+#passwordResult{
+    font-size: 5px;
+}
+#passowrdCheckResult{
+    font-size: 5px;
 }
