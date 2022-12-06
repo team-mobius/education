@@ -21,7 +21,7 @@
     <!-- 기관 회원 가입 -->
     <div class="user_join_container tab-content current" id="user_join_container">
 
-      <form method="post"  th:action="@{/join/teacherJoin}" th:object="${teacher}"  class="join_form">
+      <form method="post"  th:action="@{/join/teacherJoin}" th:object="${teacher}" name="teacherForm" class="join_form">
         <div class="titles">
           <div class="join_title">
             <h1>기관 회원가입</h1>
@@ -31,7 +31,8 @@
         <!-- userId input -->
         <div class="email_input_container input_style">
           <div class="email_title">아이디(이메일)</div>
-          <input type="text" placeholder="example@email.com" th:field="*{teacherEmail}"/>
+          <input type="text" placeholder="example@email.com" id="id3" oninput ="checkId3()" th:field="*{teacherEmail}"/>
+          <span class="id_ok3" style= "visibility: hidden" id="result3">왜안나오니 ??</span>
           <span id="emailCheckResult"></span>
         </div>
 
@@ -39,9 +40,9 @@
         <div class="password_input_container input_style">
           <div class="password_title">비밀번호</div>
           <div class="password_show_wrapper">
-            <input type="password" placeholder="**********" th:field="*{teacherPassword}"/>
+            <input type="password" placeholder="**********"  id="password" oninput="chkPW(), chkPW2()" th:field="*{teacherPassword}"/>
             <span class="password_show_toogle">
-                  <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                  <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" style="visibility: hidden">
                     <path fill="#212529" d="M10.333 8c0 1.289-1.044 2.333-2.333 2.333C6.71 10.333 5.667 9.29 5.667 8 5.667 6.711 6.71 5.667 8 5.667c1.289 0 2.333 1.044 2.333 2.333z"></path>
                     <path
                             fill="#212529"
@@ -52,24 +53,17 @@
                   </svg>
                 </span>
           </div>
-          <span id="passowrdResult"></span>
+          <span id="passwordResult"></span>
         </div>
         <!-- 비밀번호 규칙 -->
-        <div class="password_rule_wrapper">
-          <ul class="rules_container">
-            <li class="rules">✔ 영문자(대소문자 구분)/숫자/특수문자 모두 사용</li>
-            <li class="rules">✔ 8자~32자(공백 제외)</li>
-            <li class="rules">✔ 3개이상 동일한 문자/숫자 사용 불가</li>
-          </ul>
-        </div>
 
         <!-- userPwCheck input -->
         <div class="password_input_check_container input_style">
           <div class="passwordCheck_title">비밀번호 확인</div>
           <div class="password_show_wrapper">
-            <input type="password" placeholder="**********" />
+            <input type="password" placeholder="**********" oninput="chkPW2()"  id="passwordCheck"/>
             <span class="password_show_toggle">
-                  <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                  <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" style="visibility: hidden">
                     <path fill="#212529" d="M10.333 8c0 1.289-1.044 2.333-2.333 2.333C6.71 10.333 5.667 9.29 5.667 8 5.667 6.711 6.71 5.667 8 5.667c1.289 0 2.333 1.044 2.333 2.333z"></path>
                     <path
                             fill="#212529"
@@ -86,7 +80,8 @@
         <!-- 담당자 이름 input -->
         <div class="manager_input_container input_style">
           <div class="manager_title">담당자</div>
-          <input type="text" placeholder="실명으로 입력" th:field="*{teacherName}"/>
+          <input type="text" placeholder="실명으로 입력" id="id4" th:field="*{teacherName}"/>
+          <span class="id_ok" style="visibility: hidden" id="result4" >사용 가능한 이름입니다.</span>
           <span class="managerNamResult"></span>
         </div>
 
@@ -106,7 +101,7 @@
 
         <!-- 이용약관 -->
         <div class="policy_container">
-          <div class="check_all">
+          <div class="check_all" style="display: none">
             <input type="checkbox" value="all" id="check_all"/><label for="check_all" class="checkbox_style"></label><label for="check_all"><span>전체</span></label>
           </div>
           <div class="line"></div>
@@ -114,13 +109,13 @@
             <div class="policy_detail">
               <input type="checkbox" id="use_agree" /><label for="use_agree" class="checkbox_style"></label><label for="use_agree"><span class="select_autonomy">[필수]</span><span class="show_policy_detail">이용약관 동의</span></label>
               <div class="arrow_container">
-                <a href=""><img src="/img/pngwing.com.png" class="arrow"></a>
+                <a href=""><img src="/img/pngwing.com.png" class="arrow" style="visibility: hidden"></a>
               </div>
             </div>
             <div class="policy_detail">
               <label><input type="checkbox" id="privacy_policy" /><label for="privacy_policy" class="checkbox_style"></label><label for="privacy_policy"><span class="select_autonomy">[필수]</span><span class="show_policy_detail">개인정보 수집 및 이용 동의</span></label>
                 <div class="arrow_container">
-                  <a href=""><img src="/img/pngwing.com.png" class="arrow"></a>
+                  <a href=""><img src="/img/pngwing.com.png" class="arrow" style="visibility: hidden"></a>
                 </div>
             </div>
             <div class="policy_detail"><input type="checkbox" id="marketing_agree" /><label for="marketing_agree" class="checkbox_style"></label><label for="marketing_agree"><span class="select_autonomy">[선택]</span><span class="show_policy_detail">마케팅 수신 동의</span></label></div>
@@ -129,7 +124,7 @@
 
         <!-- button -->
         <div class="button_container">
-          <input type="submit" value="가입하기" />
+          <input type="button" value="가입하기" onclick="checkFlag()"/>
         </div>
       </form>
     </div>
@@ -152,5 +147,5 @@
 </footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="teacherJoin].js"></script>
+<script src="/js/join/teacherJoin.js"></script>
 </html>

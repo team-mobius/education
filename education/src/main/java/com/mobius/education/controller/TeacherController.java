@@ -2,19 +2,19 @@ package com.mobius.education.controller;
 
 import com.mobius.education.domain.vo.TeacherVO;
 import com.mobius.education.domain.vo.UserVO;
+import com.mobius.education.repository.TeacherDAO;
 import com.mobius.education.service.SignTeacherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 @Controller
 @Slf4j
@@ -40,7 +40,6 @@ public class TeacherController {
     @PostMapping("/teacherlogin")
     public RedirectView teacherForm(HttpServletRequest request, TeacherVO teacherVO){
         HttpSession session = request.getSession();
-
         TeacherVO teacherNumber = null;
         try{
             teacherNumber = signTeacherService.login(teacherVO);
@@ -55,13 +54,24 @@ public class TeacherController {
         }
 
     }
+//    @GetMapping("/teachermypage")
+//    public RedirectView teacher(HttpServletRequest request, TeacherVO teacherVO){
+//        HttpSession session = request.getSession();
+//
+//        session.setAttribute("teacherNumber", teacherVO.getTeacherNumber());
+//
+//        session 
+//
+//
+//        return new RedirectView( "/teacherMypage/mypage");
+//    }
 
-    @PostMapping("teachermypage")
-    public String logout(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        session.getAttribute("teacherNumber");
-        return "redirect:/teacherMypage/mypage";
+
+    @PostMapping("/idCheck3")
+    @ResponseBody
+    public int idCheck3(@RequestParam("teacherEmail") String teacherEmail) {
+        int cnt3 = signTeacherService.idCheck3(teacherEmail);
+        return cnt3;
     }
-
 
 }

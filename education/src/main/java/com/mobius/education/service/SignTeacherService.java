@@ -19,4 +19,7 @@ public class SignTeacherService {
     // 강사 로그인
     public TeacherVO login(TeacherVO teacherVO){return teacherDAO.login(teacherVO);}
 
+    //이메일 중복검사
+    public int idCheck3(String teacherEmail){return teacherDAO.idCheck3(teacherEmail);}
+
 }

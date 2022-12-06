@@ -86,7 +86,7 @@ div.button_container {
 }
 
 /* 버튼 style */
-form.join_form input[type="submit"] {
+form.join_form input[type="button"] {
     margin: 16px 0 14px 0;
     border-radius: 4px;
     background-color: #00c471;
@@ -170,5 +170,11 @@ fieldset.other_platform_login legend {
 }
 .id_ok2{
     margin-top: 5px;
+    font-size: 5px;
+}
+#passwordResult{
+    font-size: 5px;
+}
+#passowrdCheckResult{
     font-size: 5px;
 }

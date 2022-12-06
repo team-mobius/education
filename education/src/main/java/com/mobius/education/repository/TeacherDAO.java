@@ -18,4 +18,5 @@ public class TeacherDAO {
     //    로그인
     public TeacherVO login(TeacherVO teacherVO){return teacherMapper.login(teacherVO);}
 
+    public int idCheck3(String teacherEmail){return teacherMapper.idCheck3(teacherEmail);}
 }

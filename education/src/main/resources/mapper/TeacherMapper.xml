@@ -16,5 +16,8 @@
          WHERE TEACHER_EMAIL = #{teacherEmail} AND TEACHER_PASSWORD = #{teacherPassword}
     </select>
 
+    <select id="idCheck3" parameterType="String" resultType="_int">
+		SELECT COUNT(TEACHER_NUMBER) FROM TBL_TEACHER WHERE TEACHER_EMAIL= #{teacherEmail}
+	</select>
 
 </mapper>

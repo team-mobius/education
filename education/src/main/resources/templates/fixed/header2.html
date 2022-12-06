@@ -154,7 +154,7 @@
           <div class="navbar_menu">
             <div class="navbar_left">
               <div class="headerLogo navbar_item">
-                <img src="img/logo.png" />
+                <img src="/img/fixed/logo.png" />
               </div>
               <div class="navbar_item">
                 <a href="">강의</a>
@@ -176,7 +176,7 @@
                 <a href="/join/teacherJoin" class="button joinBtn">강사 회원가입</a>
               </div>
               <div class="buttons" th:unless="${session.userNumber == null && session.teacherNumber == null}">
-                <a href="" class="button"><span class="">마이페이지</span></a>
+                <a href=""  class="button"><span class="">마이페이지</span></a>
                 <a href="/join/logout" class="button joinBtn">로그아웃</a>
               </div>
             </div>
