@@ -54,10 +54,7 @@
                             <div class="post_category">
                                 <a class="category_box" href="">
                                     <p class="category_text" th:text="${request.requestCategory}">개발·프로그래밍</p>
-                                    <p class="move_to_lecture">
-                                        모집중인 강의
-                                        보러가기&nbsp;&nbsp;&nbsp;>
-                                    </p>
+
                                 </a>
                             </div>
                         </div>
@@ -71,7 +68,7 @@
                         <!-- 댓글 헤더 -->
                         <div class="write_reply_header">
                             <span>😀</span>
-                            <span class="writer">myewon</span>
+                            <span class="writer" th:text="${request.userNickname}">myewon</span>
                             <span>님, 답글을 남겨보세요!</span>
                         </div>
                         <!-- 댓글 작성 칸 -->
@@ -208,10 +205,10 @@
                 text += "<div class='reply_writer'>" +requestComment.userNickname + "</div>";
                 text += "<div class='reply_date'>"+ requestComment.requestCommentModifyDate+"</div>";
                 text += "<div class='reply_button_area'>";
-                text += "<button class='modify_button first-show' style='cursor: pointer;'>수정</button>";
-                text += "<button class='remove_button first-show' style='cursor: pointer;'>삭제</button>";
-                text += "<button class='modify-save second-show' style='cursor: pointer;'>수정 완료</button>";
-                text += "<button class='modify-cancel second-show' style='cursor: pointer;'>취소</button>";
+                text += "<button class='modify_button first-show' style='cursor: pointer;'></button>";
+                text += "<button class='remove_button first-show' style='cursor: pointer;'></button>";
+                text += "<button class='modify-save second-show' style='cursor: pointer;'> </button>";
+                text += "<button class='modify-cancel second-show' style='cursor: pointer;'></button>";
                 text += "</div>";
                 text += "</div>";
                 text += "<div class='reply_content'>";
