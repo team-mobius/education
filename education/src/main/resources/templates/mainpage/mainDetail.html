@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>lecture</title>
+    <link rel="stylesheet" href="/css/mainpage/mainDetail.css">
+    <link rel="stylesheet" href="/css/fixed/footer.css">
+</head>
+<body>
+<header th:replace="/fixed/header2.html" :: body></header>
+
+<main class="main">
+    <section class="section_start">
+        <div class="banner" >
+            <div class="container">
+            <div class="banner_img">
+                    <img class="bannerImg">
+            </div>
+            <div class="explanation" th:object="${lecture}">
+                <span class="box">Best</span>
+                <div style="display: inline-block;" class="lectureCategory" th:text="*{lectureCategory}"></div>
+                <div style="font-size: 24px;" class="lectureTitle" th:text="*{lectureTitle}" ></div>
+                <div style="display: inline-block; margin-bottom: 5px;" class="lectureContent" th:text="*{lectureContent}">
+                    <span>날짜</span>
+                    <span class="lectureDate" th:text="*{lectureDate}"></span>
+                </div>
+                <div class="program_detail2" style="margin-bottom: 5px;">
+                    <span>시간</span>
+                    <span>&nbsp;&nbsp;</span>
+                    <span ></span>
+                </div>
+                <div class="program_detail2">
+                    <span>장소</span>
+                    <span>&nbsp;&nbsp;</span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="menu">
+            <div class="container">
+                        <span class="span1">
+                            <a href="">강의소개</a>
+                        </span>
+                <span class="span3">
+                            <a href="">수강평</a>
+                        </span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+                <div class="content_main">
+                    <section class="description" >
+                        <h6>강의컨텐츠~!</h6>
+                        <!--<div>
+                            <th:block th:each="file:*{files}">
+                                <img style="width: 100%;" th:if="${file.lectureFileCheck}" th:src="@{/lectureFile/display(lectureFileName=${file.lectureFileUploadPath} + '/s_' + ${file.lectureFileUuid} + '_' + ${file.lectureFileName})}">
+                            </th:block>
+                        </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="btn_all">
+           <!-- <th:block th:object="${lecture}">-->
+            <!--<div  style="background-color: #dcdcdc; border: 1px solid #dcdcdc; cursor: none !important;" class="div_btn">
+                <label class="btn">
+                    <input type="button" class="btn_in">
+                    <a class="btn_a">수강신청 하기</a>
+                </label>
+            </div>-->
+            <div class="div_btn">
+                <label class="btn">
+                    <input type="button" class="btn_in">
+                    <a class="btn_a" href="">수강신청 하기</a>
+                </label>
+            </div>
+            <!--</th:block>-->
+            <div class="div_btn2">
+                <label class="btn2">
+                    <input type="button" class="btn2_in">
+                    <a class="btn_a lectureBoard">강좌 게시판 바로가기</a>
+                </label>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<footer th:replace="/fixed/footer.html :: #footer"></footer>
+</body>
+<script src="/js/basic/jquery.min.js"></script>
+<script src="/js/basic/jquery.dropotron.min.js"></script>
+<script src="/js/basic/browser.min.js"></script>
+<script src="/js/basic/breakpoints.min.js"></script>
+<script src="/js/basic/util.js"></script>
+<script src="/js/basic/main.js"></script>
+<script th:inline="javascript">
+    /*let lectureNumber = [[${lectureNumber}]];
+    let $pages = $("a.changePage");
+    let $btnBoard = $("a.btn_a");
+
+    $pages.on("click", function(e){
+        e.preventDefault();
+        $(document.pageForm.page).val($(this).attr("href"));
+        document.pageForm.submit();
+    });*/
+    const $read = $("a.lectureBoard");
+    /*const $reviewBtn = $("a.reviewBtn");*/
+    /* const $requestBtn = $("a.requestBtn");*/
+
+    $read.on("click", function(e){
+        e.preventDefault();
+        location.href = "/lectureBoard/board" + "?"  + $(this).attr("href");
+    });
+
+</script>
+</html>

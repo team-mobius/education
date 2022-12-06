@@ -168,4 +168,15 @@ public class LectureService {
         return lectureDAO.findInfoById(teacherNumber);
     }
 
+//    메인 강의조회
+    public List<LectureVO> mainLectureShowAll() {
+    return lectureDAO.mainLectureFindAll();
+}
+
+    public LectureDTO mainDetailSelect(Long lectureNumber) {
+        return lectureDAO.mainDetailFingById(lectureNumber);
+    }
+
+
+
 }

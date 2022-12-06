@@ -112,4 +112,14 @@ public class LectureDAO {
     public LectureVO selectLecDetailSomething(Long teacherNumber){
         return lectureMapper.selectLecDetailAndAll(teacherNumber);
     }
+
+//    메인페이지 강의리스트
+public List<LectureVO> mainLectureFindAll() {
+    return lectureMapper.mainpageLectureSelectAll();
 }
+
+    public LectureDTO mainDetailFingById(Long lectureNumber) {
+        return lectureMapper.mainDetailSelect(lectureNumber);
+    }
+}
+

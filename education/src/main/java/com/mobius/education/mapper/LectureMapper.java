@@ -76,5 +76,11 @@ public interface LectureMapper {
 //    리뷰를 위한 강의 정보
     public LectureVO selectLecDetailAndAll(Long teacherNumber);
 
+//    메인페이지 강의 리스트
+    public List<LectureVO> mainpageLectureSelectAll();
+
+//메인 강의 상세정보
+    public LectureDTO mainDetailSelect(Long lectureNumber);
+
 
 }
