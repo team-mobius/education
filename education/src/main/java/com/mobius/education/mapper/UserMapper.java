@@ -14,4 +14,6 @@ public interface UserMapper {
 
     public int idCheck2(String userNickname);
 
+    public UserVO selectUserNicknameAndDate(Long userNumber);
+
 }

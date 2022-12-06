@@ -31,37 +31,37 @@
                             <ul class="category_list">
                                 <h6 class="category_list_title">카테고리</h6>
                                 <li class="category_list_content">
-                                    <a th:href="@{/request/list}">
+                                    <a>
                                         <span>전체</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
-                                    <a class="IT" th:href="@{/request/list/IT}">
+                                    <a class="IT">
                                         <span>IT</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
-                                    <a class="언어" th:href="@{/request/list/Lang}">
+                                    <a class="언어">
                                         <span>언어</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
-                                    <a class="수학" th:href="@{/request/list/math}">
+                                    <a class="수학">
                                         <span>수학</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
-                                    <a class="과학" th:href="@{/request/list/Science}">
+                                    <a class="과학">
                                         <span>과학</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
-                                    <a class="체육" th:href="@{/request/list/PE}">
+                                    <a class="체육">
                                         <span>체육</span>
                                     </a>
                                 </li>
                                 <li class="category_list_content">
-                                    <a class="기타" th:href="@{/request/list/else}">
+                                    <a class="기타">
                                         <span>기타</span>
                                     </a>
                                 </li>
@@ -69,37 +69,37 @@
                             </ul>
                         </div>
                         <!-- 가운데 -->
-                        <div class="post_area" style="width: 100px;">
+                        <div class="post_area">
                             <!-- 검색 -->
-<!--                            <div class="search_area">-->
-<!--                                <div class="search_container">-->
-<!--                                    <div class="search_box">-->
-<!--                                        <div class="search_img"></div>-->
-<!--                                        &lt;!&ndash; 입력칸 &ndash;&gt;-->
-<!--                                        <form class="search_form">-->
-<!--                                            <input-->
-<!--                                                class="search_text"-->
-<!--                                                type="text"-->
-<!--                                                placeholder="원하는 강의를 검색해보세요!"-->
-<!--                                            />-->
-<!--                                        </form>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; 검색 버튼 &ndash;&gt;-->
-<!--                                <div class="button_area">-->
-<!--                                    <a href="">-->
-<!--                                        <button class="search_button">-->
-<!--                                            검색-->
-<!--                                        </button>-->
-<!--                                    </a>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <div class="search_area">
+                                <div class="search_container">
+                                    <div class="search_box">
+                                        <div class="search_img"></div>
+                                        <!-- 입력칸 -->
+                                        <form class="search_form">
+                                            <input
+                                                class="search_text"
+                                                type="text"
+                                                placeholder="원하는 강의를 검색해보세요!"
+                                            />
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- 검색 버튼 -->
+                                <div class="button_area">
+                                    <a href="">
+                                        <button class="search_button">
+                                            검색
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
                             <!-- 게시글 리스트 -->
                             <div class="post_list_area">
                                 <!-- 정렬 & 글쓰기 버튼 -->
                                 <div class="sort_area">
                                     <ul class="sort_list">
-                                        <li class="sort_content"><a th:href="@{/request/list}">• 최신순</a></li>
+                                        <li class="sort_content">• 최신순</li>
                                         <li class="sort_content">• 좋아요순</li>
                                     </ul>
                                     <button class="write_button write">
@@ -112,6 +112,7 @@
                                     <ul class="list_container">
 <!--                                         request list-->
                                         <th:block class="list_box" th:each="request:${requests}">
+
                                             <a href="">
                                                 <div class="list_info" th:object="${request}">
                                                     <div class="list_left_info">
@@ -141,13 +142,14 @@
                                                     </div>
                                                 </div>
                                             </a>
+
                                         </th:block>
                                     </ul>
                                 </div>
 <!--                                목록 버튼-->
                                 <!--              페이지 버튼 여지는 부분-->
                                 <div th:object="${pagination}">
-                                    <div style="text-align: center" class="about-page-wrap">
+                                    <div style="text-align: center">
                                         <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>PREV</code></a>
                                         <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
                                             <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>
@@ -164,64 +166,63 @@
                             </div>
                         </div>
                         <!-- 우측 -->
-<!--                        <div class="right_side_area">-->
-<!--                            <div class="ranking_area">-->
-<!--                                <h2 class="popular_title">주간 인기글</h2>-->
-<!--                                <ul class="ranking_contaianer">-->
-<!--                                    <li class="ranking_box">-->
-<!--                                        <a href="">-->
-<!--                                            <p class="ranking_box_title">-->
-<!--                                                웹 강의 열어주세요! 너무-->
-<!--                                                듣고싶어요!sjdfskdlfkskdklsf-->
-<!--                                            </p>-->
-<!--                                            <div class="ranking_box_writer">-->
-<!--                                                myewon-->
-<!--                                            </div>-->
-<!--                                    </li>-->
-<!--                                    <li class="ranking_box">-->
-<!--                                        <a href="">-->
-<!--                                            <p class="ranking_box_title">-->
-<!--                                                웹 강의 열어주세요!-->
-<!--                                            </p>-->
-<!--                                            <div class="ranking_box_writer">-->
-<!--                                                myewon-->
-<!--                                            </div>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                    <li class="ranking_box">-->
-<!--                                        <a href="">-->
-<!--                                            <p class="ranking_box_title">-->
-<!--                                                웹 강의 열어주세요!-->
-<!--                                            </p>-->
-<!--                                            <div class="ranking_box_writer">-->
-<!--                                                myewon-->
-<!--                                            </div>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                    <li class="ranking_box">-->
-<!--                                        <a href="">-->
-<!--                                            <p class="ranking_box_title">-->
-<!--                                                웹 강의 열어주세요!sdfsdfsllslsjksjlsljsjlkdnfskjdjfsk-->
-<!--                                            </p>-->
-<!--                                            <div class="ranking_box_writer">-->
-<!--                                                myewon-->
-<!--                                            </div>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                    <li class="ranking_box">-->
-<!--                                        <a href="">-->
-<!--                                            <p class="ranking_box_title">-->
-<!--                                                웹 강의 열어주세요!-->
-<!--                                            </p>-->
-<!--                                            <div class="ranking_box_writer">-->
-<!--                                                myewon-->
-<!--                                            </div>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
+                        <div class="right_side_area">
+                            <div class="ranking_area">
+                                <h2 class="popular_title">주간 인기글</h2>
+                                <ul class="ranking_contaianer">
+                                    <li class="ranking_box">
+                                        <a href="">
+                                            <p class="ranking_box_title">
+                                                웹 강의 열어주세요! 너무
+                                                듣고싶어요!sjdfskdlfkskdklsf
+                                            </p>
+                                            <div class="ranking_box_writer">
+                                                myewon
+                                            </div>
+                                    </li>
+                                    <li class="ranking_box">
+                                        <a href="">
+                                            <p class="ranking_box_title">
+                                                웹 강의 열어주세요!
+                                            </p>
+                                            <div class="ranking_box_writer">
+                                                myewon
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="ranking_box">
+                                        <a href="">
+                                            <p class="ranking_box_title">
+                                                웹 강의 열어주세요!
+                                            </p>
+                                            <div class="ranking_box_writer">
+                                                myewon
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="ranking_box">
+                                        <a href="">
+                                            <p class="ranking_box_title">
+                                                웹 강의 열어주세요!sdfsdfsllslsjksjlsljsjlkdnfskjdjfsk
+                                            </p>
+                                            <div class="ranking_box_writer">
+                                                myewon
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="ranking_box">
+                                        <a href="">
+                                            <p class="ranking_box_title">
+                                                웹 강의 열어주세요!
+                                            </p>
+                                            <div class="ranking_box_writer">
+                                                myewon
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

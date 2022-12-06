@@ -4,6 +4,7 @@ import com.mobius.education.domain.criteria.Criteria;
 import com.mobius.education.domain.vo.RequestDTO;
 import com.mobius.education.domain.vo.RequestVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -39,6 +40,21 @@ public interface RequestMapper {
 
     public RequestDTO selectRequestAndNickname(Long requestNumber);
 
+    public List<RequestVO> selectAllMyRequest(Long userNumber);
+
+    public List<RequestDTO> selectRequestCategoryPE(Criteria criteria);
+
+    public int getTotalCategory(String requestCategory);
+
+    public List<RequestDTO> selectRequestCategoryMath(Criteria criteria);
+
+    public List<RequestDTO> selectRequestCategoryLang(Criteria criteria);
+
+    public List<RequestDTO> selectRequestCategoryIT(Criteria criteria);
+
+    public List<RequestDTO> selectRequestCategoryScience(Criteria criteria);
+
+    public List<RequestDTO> selectRequestCategoryElse(Criteria criteria);
 
 
 }

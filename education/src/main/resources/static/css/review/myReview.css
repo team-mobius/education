@@ -116,3 +116,7 @@ button.out_btn {
     display: none;
     background-color: rgba(0, 0, 0, 0.4);
 }
+
+input.have-to-hidden{
+    display: hid;
+}

@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
-    <title>수강 중인 강의</title>
-    <link rel="stylesheet" href="/css/userMypage/onGoingLecture.css" />
+    <title>수강종료 강의</title>
+    <link rel="stylesheet" href="/css/userMypage/myRequest.css" />
   </head>
   <body style="margin: 0">
   <header th:replace="/fixed/header2.html" :: body></header>
@@ -42,8 +42,8 @@
                 </a>
               </li>
               <li class="lecture-two li">
-                <a th:href="@{/mypage/user/request}">
-                  <span class="lecture-review">나의 요청</span>
+                <a href="">
+                  <span class="lecture-request">나의 요청</span>
                 </a>
               </li>
             </ul>
@@ -65,37 +65,36 @@
         <div class="completion-lecture">
           <section class="nav">
             <ul class="nav-list">
-              <li class="review">수강 중인 강좌</li>
+              <li class="review">나의 요청</li>
             </ul>
           </section>
           <section>
             <div class="total-lecture">
               <div class="completion-total">
                 <p class="total">전체</p>
-                <p class="lecture-count" th:text="${counts.userExpectedLectureCount}">2</p>
+                <p class="lecture-count" th:text="${counts.userRequestCount}">2</p>
               </div>
               <div class="review-write">
-                <p class="">강좌 게시판</p>
+                <p class=""></p>
               </div>
             </div>
 
-            <th:block th:each="lecture:${lectures}">
-            <ul class="completion-list" th:object="${lecture}">
+            <th:block th:each="request:${requests}">
+            <ul class="completion-list" th:object="${request}">
               <li class="completion-lecture-list">
                 <div class="show-completion">
                   <div class="completion-lecture-img">
-                    <a href="">
-                      <img src="../static/img/img2.png" class="completion-img" />
-                    </a>
+
                   </div>
                   <div class="completion-lecture-name">
-                    <a href=""  th:text="*{lectureTitle}">파이썬 무료강의 (활용편1) - 추억의 오락실 게임 만들기(3시간)</a>
+                    <a class="go-to-request" th:href="*{requestNumber}"  th:text="*{requestTitle}">파이썬 무료강의 (활용편1) - 추억의 오락실 게임 만들기(3시간)</a>
                   </div>
                   <div class="completion-lecture-review">
-                    <a th:href="*{lectureNumber}">📑</a>
+                    <a th:text="*{#strings.substring(requestModifyDate,0,10)}"></a>
                   </div>
                 </div>
               </li>
+
             </ul>
             </th:block>
           </section>
@@ -104,4 +103,14 @@
     </div>
 
   </body>
+<script th:inline="javascript">
+  const $goToRequest = $("a.go-to-request");
+
+  $goToRequest.on("click",function (e) {
+    e.preventDefault()
+    location.href="/request/detail"+"?"+"requestNumber="+$(this).attr("href");
+
+  })
+
+</script>
 </html>

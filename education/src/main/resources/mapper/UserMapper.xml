@@ -30,4 +30,9 @@
 		SELECT COUNT(USER_NUMBER) FROM TBL_USER WHERE USER_NICKNAME= #{userNickname}
 	</select>
 
+    <select id="selectUserNicknameAndDate" resultType="userVO">
+        SELECT USER_NUMBER, USER_NICKNAME, USER_REGISTER_DATE FROM TBL_USER
+        WHERE USER_NUMBER =#{userNumber}
+    </select>
+
 </mapper>

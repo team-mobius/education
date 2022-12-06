@@ -9,6 +9,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/mypage/user/*")
@@ -19,34 +29,47 @@ public class UserMypageController {
 
 
 
+//    , @SessionAttribute(name="userNumber") Long userNumber
 //    사용자 마이페이지 메인
     @GetMapping("/main")
-    public String main(Model model){
-        model.addAttribute("counts",userMypageService.showCounts(0L));
-        model.addAttribute("reviews",userMypageService.showMyReviewThree(0L));
-        model.addAttribute("requests",userMypageService.showMyRequestThree(0L));
+    public String main(Model model, @SessionAttribute(name="userNumber") Long userNumber){
+        String nickname = userMypageService.showMyNicknameAndDate(userNumber).getUserNickname();
+
+        model.addAttribute("nickname",nickname);
+        model.addAttribute("counts",userMypageService.showCounts(userNumber));
+        model.addAttribute("reviews",userMypageService.showMyReviewThree(userNumber));
+        model.addAttribute("requests",userMypageService.showMyRequestThree(userNumber));
+        log.info("현재 세션 :" + userNumber);
 
         return "/userMypage/mypage";
     }
 
 //  내가 완료한 강의
     @GetMapping("/endLec")
-    public String endLec(Model model){
-        model.addAttribute("counts",userMypageService.showCounts(0L));
-        model.addAttribute("lectures",userMypageService.showMyEndedLecture(0L));
+    public String endLec(Model model, @SessionAttribute(name="userNumber") Long userNumber){
+        model.addAttribute("counts",userMypageService.showCounts(userNumber));
+        model.addAttribute("lectures",userMypageService.showMyEndedLecture(userNumber));
         return "/userMypage/completionlecture";
     }
 
     @GetMapping("/onGoing")
-    public String onGoing(Model model){
-        model.addAttribute("counts",userMypageService.showCounts(0L));
-        model.addAttribute("lectures",userMypageService.showMyOnGoingLecture(0L));
+    public String onGoing(Model model, @SessionAttribute(name="userNumber") Long userNumber){
+        model.addAttribute("counts",userMypageService.showCounts(userNumber));
+        model.addAttribute("lectures",userMypageService.showMyOnGoingLecture(userNumber));
         return "/userMypage/onGoingLecture";
     }
 
     @GetMapping("/review")
-    public String review(Model model){
-        model.addAttribute("reviews",userMypageService.showMyAllReview(0L));
+    public String review(Model model, @SessionAttribute(name="userNumber") Long userNumber){
+        model.addAttribute("reviews",userMypageService.showMyAllReview(userNumber));
+        model.addAttribute("counts",userMypageService.showCounts(userNumber));
         return "/userMypage/myReview";
+    }
+
+    @GetMapping("/request")
+    public String request(Model model,@SessionAttribute(name="userNumber") Long userNumber){
+        model.addAttribute("counts",userMypageService.showCounts(userNumber));
+        model.addAttribute("requests",userMypageService.showAllMyRequest(userNumber));
+        return "/userMypage/myRequest";
     }
 }

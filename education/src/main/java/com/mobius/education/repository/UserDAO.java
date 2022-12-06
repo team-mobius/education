@@ -20,5 +20,9 @@ public class UserDAO {
 
     public int idCheck2(String userNickname){return userMapper.idCheck2(userNickname);}
 
+    public UserVO findUserNicknameAndDate(Long userNumber){
+        return userMapper.selectUserNicknameAndDate(userNumber);
+    }
+
 
 }

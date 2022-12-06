@@ -135,6 +135,7 @@
     <script th:inline="javascript">
         HTMLCollection.prototype.forEach = Array.prototype.forEach;
         let requestNumber = [[${request.requestNumber}]];
+        let userNumber = [[${session.userNumber}]];
 
         console.log(requestNumber);
 
@@ -184,7 +185,6 @@
         //댓글 입력
         $("a.register-button-wrapper").on("click",function () {
             let requestCommentContent = $("textarea[name='requestCommentContent']").val();
-            let userNumber = 0;
             requestCommentService.add({
                 requestCommentContent : requestCommentContent,
                 userNumber : userNumber,
@@ -230,7 +230,7 @@
             $(this).next().hide();
             $(this).next().next().show();
             $(this).next().next().next().show();
-            $("div.")
+
 
         })
 

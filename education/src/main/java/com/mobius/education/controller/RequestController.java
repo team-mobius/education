@@ -10,9 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -42,7 +40,72 @@ public class RequestController {
         return "/request/list";
     }
 
+    //강의 카테고리 목록
+    @GetMapping("/list/PE")
+    public String category(Model model, Criteria criteria){
+        log.info("들어옴1");
+        log.info("들어옴2" + criteria.getPage());
+        if(criteria.getPage() == 0){
+            criteria.create(1, 10);
+        }
+        model.addAttribute("requests",requestBoardService.showRequestCategoryPE(criteria).stream().map(requestDTO -> requestDTO.create(requestBoardService.showRequestHeartCount(requestDTO.getRequestNumber()),requestBoardService.showCommentCount(requestDTO.getRequestNumber()))).collect(Collectors.toUnmodifiableList()));
+        model.addAttribute("pagination",new PageDTO().createPageDTO(criteria,requestBoardService.showRequestCategory("체육")));
+        return "request/list";
+    }
 
+//    수학
+    @GetMapping("/list/math")
+    public String categoryMath(Model model, Criteria criteria){
+
+        if(criteria.getPage() == 0){
+            criteria.create(1, 10);
+        }
+        model.addAttribute("requests",requestBoardService.showRequestCategoryMath(criteria).stream().map(requestDTO -> requestDTO.create(requestBoardService.showRequestHeartCount(requestDTO.getRequestNumber()),requestBoardService.showCommentCount(requestDTO.getRequestNumber()))).collect(Collectors.toUnmodifiableList()));
+        model.addAttribute("pagination",new PageDTO().createPageDTO(criteria,requestBoardService.showRequestCategory("수학")));
+        return "request/list"; }
+
+    @GetMapping("/list/Lang")
+    public String categoryLang(Model model, Criteria criteria){
+
+        if(criteria.getPage() == 0){
+            criteria.create(1, 10);
+        }
+        model.addAttribute("requests",requestBoardService.showRequestCategoryLang(criteria).stream().map(requestDTO -> requestDTO.create(requestBoardService.showRequestHeartCount(requestDTO.getRequestNumber()),requestBoardService.showCommentCount(requestDTO.getRequestNumber()))).collect(Collectors.toUnmodifiableList()));
+        model.addAttribute("pagination",new PageDTO().createPageDTO(criteria,requestBoardService.showRequestCategory("언어")));
+        return "request/list"; }
+
+    @GetMapping("/list/IT")
+    public String categoryIT(Model model, Criteria criteria){
+
+        if(criteria.getPage() == 0){
+            criteria.create(1, 10);
+        }
+        model.addAttribute("requests",requestBoardService.showRequestCategoryIT(criteria).stream().map(requestDTO -> requestDTO.create(requestBoardService.showRequestHeartCount(requestDTO.getRequestNumber()),requestBoardService.showCommentCount(requestDTO.getRequestNumber()))).collect(Collectors.toUnmodifiableList()));
+        model.addAttribute("pagination",new PageDTO().createPageDTO(criteria,requestBoardService.showRequestCategory("IT")));
+        return "request/list"; }
+
+    @GetMapping("/list/Science")
+    public String categoryScience(Model model, Criteria criteria){
+
+        if(criteria.getPage() == 0){
+            criteria.create(1, 10);
+        }
+        model.addAttribute("requests",requestBoardService.showRequestCategoryScience(criteria).stream().map(requestDTO -> requestDTO.create(requestBoardService.showRequestHeartCount(requestDTO.getRequestNumber()),requestBoardService.showCommentCount(requestDTO.getRequestNumber()))).collect(Collectors.toUnmodifiableList()));
+        model.addAttribute("pagination",new PageDTO().createPageDTO(criteria,requestBoardService.showRequestCategory("과학")));
+        return "request/list"; }
+
+    @GetMapping("/list/else")
+    public String categoryElse(Model model, Criteria criteria){
+
+        if(criteria.getPage() == 0){
+            criteria.create(1, 10);
+        }
+        model.addAttribute("requests",requestBoardService.showRequestCategoryElse(criteria).stream().map(requestDTO -> requestDTO.create(requestBoardService.showRequestHeartCount(requestDTO.getRequestNumber()),requestBoardService.showCommentCount(requestDTO.getRequestNumber()))).collect(Collectors.toUnmodifiableList()));
+        model.addAttribute("pagination",new PageDTO().createPageDTO(criteria,requestBoardService.showRequestCategory("기타")));
+        return "request/list"; }
+
+
+//        요청
     @GetMapping("/ask")
     public String ask(Model model) {
         model.addAttribute("request", new RequestVO());
@@ -50,9 +113,9 @@ public class RequestController {
     }
 
     @PostMapping("/ask")
-    public RedirectView ask(RequestVO requestVO, RedirectAttributes redirectAttributes) {
+    public RedirectView ask(RequestVO requestVO, RedirectAttributes redirectAttributes, @SessionAttribute(name="userNumber") Long userNumber) {
+        requestVO.setUserNumber(userNumber);
         requestBoardService.register(requestVO);
-
         return new RedirectView(("/request/list"));
     }
 

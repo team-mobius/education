@@ -42,7 +42,7 @@
                 </a>
               </li>
               <li class="lecture-two li">
-                <a href="">
+                <a th:href="@{/mypage/user/request}">
                   <span class="lecture-request">나의 요청</span>
                 </a>
               </li>
@@ -65,34 +65,32 @@
         <div class="completion-lecture">
           <section class="nav">
             <ul class="nav-list">
-              <li class="review">수강 완료</li>
+              <li class="review">나의 후기</li>
             </ul>
           </section>
           <section>
             <div class="total-lecture">
               <div class="completion-total">
                 <p class="total">전체</p>
-                <p class="lecture-count" th:text="${counts.userEndLectureCount}">2</p>
+                <p class="lecture-count" th:text="${counts.userReviewCount}">2</p>
               </div>
               <div class="review-write">
-                <p class="">후기 작성</p>
+                <p class=""></p>
               </div>
             </div>
 
-            <th:block th:each="lecture:${lectures}">
-            <ul class="completion-list" th:object="${lecture}">
+            <th:block th:each="review:${reviews}">
+            <ul class="completion-list" th:object="${review}">
               <li class="completion-lecture-list">
                 <div class="show-completion">
                   <div class="completion-lecture-img">
-                    <a href="">
-                      <img src="../static/img/img2.png" class="completion-img" />
-                    </a>
+
                   </div>
                   <div class="completion-lecture-name">
-                    <a href=""  th:text="*{lectureTitle}">파이썬 무료강의 (활용편1) - 추억의 오락실 게임 만들기(3시간)</a>
+                    <a class="go-to-review" th:href="*{lectureNumber}"  th:text="*{reviewTitle}">파이썬 무료강의 (활용편1) - 추억의 오락실 게임 만들기(3시간)</a>
                   </div>
                   <div class="completion-lecture-review">
-                    <a th:href="*{lectureNumber}">📑</a>
+                    <a th:text="*{#strings.substring(reviewModifyDate,0,10)}"></a>
                   </div>
                 </div>
               </li>
@@ -105,4 +103,14 @@
     </div>
 
   </body>
+<script th:inline="javascript">
+  const $goToReview = $("a.go-to-review");
+
+  $goToReview.on("click",function (e) {
+    e.preventDefault()
+    location.href="/review/detail"+"?"+"lectureNumber="+$(this).attr("href");
+
+  })
+
+</script>
 </html>
