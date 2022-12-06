@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.SplittableRandom;
 
 @Repository
 @RequiredArgsConstructor
@@ -66,5 +67,37 @@ public class RequestDAO {
 
     public RequestDTO showReviewDetail(Long requestNumber){
         return requestMapper.selectRequestAndNickname(requestNumber);
+    }
+
+    public List<RequestVO> showAllMyRequest(Long userNumber){
+        return requestMapper.selectAllMyRequest(userNumber);
+    }
+
+    public List<RequestDTO> findByRequestCategoryPE( Criteria criteria){
+        return requestMapper.selectRequestCategoryPE(criteria);
+    }
+
+    public int getTotalCategory(String requestCategory){
+        return requestMapper.getTotalCategory(requestCategory);
+    }
+
+    public List<RequestDTO> findByRequestCategoryMath( Criteria criteria){
+        return requestMapper.selectRequestCategoryMath(criteria);
+    }
+
+    public List<RequestDTO> findByRequestCategoryLang( Criteria criteria){
+        return requestMapper.selectRequestCategoryLang(criteria);
+    }
+
+    public List<RequestDTO> findByRequestCategoryIT( Criteria criteria){
+        return requestMapper.selectRequestCategoryIT(criteria);
+    }
+
+    public List<RequestDTO> findByRequestCategoryScience( Criteria criteria){
+        return requestMapper.selectRequestCategoryScience(criteria);
+    }
+
+    public List<RequestDTO> findByRequestCategoryElse( Criteria criteria){
+        return requestMapper.selectRequestCategoryElse(criteria);
     }
 }

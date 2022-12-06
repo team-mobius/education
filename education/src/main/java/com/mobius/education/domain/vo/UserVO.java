@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 @Data
 public class UserVO {
@@ -14,6 +16,7 @@ public class UserVO {
     private String userPassword;
     private String userNickname;
     private String userPhoneNumber;
+    private String userRegisterDate;
 
     public void create(String userEmail, String userPassword ,String userNickname) {
         this.userEmail = userEmail;

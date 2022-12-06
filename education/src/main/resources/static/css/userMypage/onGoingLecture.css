@@ -50,7 +50,7 @@ li > a {
     color: black;
 }
 .li-one {
-    background-color: rgb(229, 249, 241);
+    /*background-color: rgb(229, 249, 241);*/
     color: rgb(0, 196, 113);
     border-radius: 3px;
     height: 35px;
@@ -58,8 +58,8 @@ li > a {
     align-items: center;
 }
 .dash {
-    background-color: rgb(229, 249, 241);
-    color: rgb(0, 196, 113);
+    /*background-color: rgb(229, 249, 241);*/
+    /*color: rgb(0, 196, 113);*/
     margin-left: 15px;
 }
 li > span {

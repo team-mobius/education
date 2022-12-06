@@ -50,7 +50,7 @@ li > a {
     color: black;
 }
 .li-one {
-    /*background-color: rgb(229, 249, 241);*/
+    background-color: rgb(229, 249, 241);
     color: rgb(0, 196, 113);
     border-radius: 3px;
     height: 35px;
@@ -81,19 +81,19 @@ li > span {
     margin-left: 15px;
     font-size: 13px;
 }
-.lecture-request {
-    margin-left: 15px;
-    font-size: 13px;
-}
 .lecture-review {
     margin-left: 15px;
     font-size: 13px;
 }
 .lecture-end {
     margin-left: 15px;
+    font-size: 13px;
+}
+.lecture-request {
+    margin-left: 15px;
+    font-size: 13px;
     color: green;
     font-weight: 900;
-    font-size: 13px;
 }
 .inquiry-history {
     margin-left: 15px;
@@ -153,11 +153,13 @@ li > span {
 }
 .completion-lecture-name {
     font-size: 14px;
-    width: 90%;
+    width: 80%;
 }
 
 .completion-lecture-review {
     margin-right: 15px;
+    font-weight: 300;
+    font-size: 13px;
 }
 
 .completion-img {

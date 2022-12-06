@@ -34,23 +34,23 @@
             <table>
                 <thead>
                 <tr class="tHead">
-                    <th></th>
+
                     <th class="reviewNumber">번호</th>
                     <th class="reviewTitle">제목</th>
-                    <th class="reviewWriter">작성자</th>
-                    <th class="reivewRegisterDate">작성일</th>
-                    <th class="reivewUpdateDate">수정일</th>
+                    <th class="userNickname">작성자</th>
+                    <th class="reviewRegisterDate">작성일</th>
+<!--                    <th class="reivewUpdateDate">수정일</th>-->
                 </tr>
                 </thead>
                 <tbody>
                 <th:block th:each="review:${reviews}">
                     <tr class="tBody" th:object="${review}">
-                        <td th:text="*{lectureNumber}"></td>
+
                         <td class="reviewNumber" th:text="*{reviewNumber}"></td>
                         <td class="reviewTitle"><a class="read" th:text="*{reviewTitle}" th:href="*{lectureNumber}"></a></td>
                         <td class="userNickname" th:text="*{userNickname}"></td>
                         <td class="reviewRegisterDate" th:text="*{#strings.substring(reviewRegisterDate,0,10)}"></td>
-                        <td class="reviewUpdateDate" th:text="*{#strings.substring(reviewModifyDate,0,10)}"></td>
+<!--                        <td class="reviewUpdateDate" th:text="*{#strings.substring(reviewModifyDate,0,10)}"></td>-->
                     </tr>
                 </th:block>
                 </tbody>
@@ -58,7 +58,7 @@
 
 <!--              페이지 버튼 여지는 부분-->
             <div th:object="${pagination}">
-                <div style="text-align: center">
+                <div style="text-align: center; padding-top: 20px; padding-bottom: 20px">
                     <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>PREV</code></a>
                     <th:block th:each="page:${#numbers.sequence(pagination.startPage, pagination.endPage)}">
                         <a class="changePage" th:href="${page}" th:if="${pagination.criteria.page != page}"><code th:text="${page}"></code></a>

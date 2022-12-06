@@ -317,3 +317,22 @@ footer#footer {
     height: 15px;
     margin-right: 10px;
 }
+div.table-wrapper table th{
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+}
+.reviewNumber{
+    padding-left: 5px;
+    text-align: left;
+    width: 10%;
+}
+.reviewTitle{
+    width: 60%;
+}
+.userNickname{
+    width: 10%;
+}
+.reviewRegisterDate{
+    width: 20%;
+}

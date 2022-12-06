@@ -73,4 +73,32 @@ public class RequestBoardService {
         return requestCommentDAO.showComment(requestNumber);
     }
 
+    public List<RequestDTO> showRequestCategoryPE(Criteria criteria){
+        return requestDAO.findByRequestCategoryPE(criteria);
+    }
+    
+    public int showRequestCategory(String requestCategory){
+        return requestDAO.getTotalCategory(requestCategory);
+    }
+
+    public List<RequestDTO> showRequestCategoryMath(Criteria criteria){
+        return requestDAO.findByRequestCategoryMath(criteria);
+    }
+
+    public List<RequestDTO> showRequestCategoryLang(Criteria criteria){
+        return requestDAO.findByRequestCategoryLang(criteria);
+    }
+
+    public List<RequestDTO> showRequestCategoryIT(Criteria criteria){
+        return requestDAO.findByRequestCategoryIT(criteria);
+    }
+
+    public List<RequestDTO> showRequestCategoryScience(Criteria criteria){
+        return requestDAO.findByRequestCategoryScience(criteria);
+    }
+
+    public List<RequestDTO> showRequestCategoryElse(Criteria criteria){
+        return requestDAO.findByRequestCategoryElse(criteria);
+    }
+
 }

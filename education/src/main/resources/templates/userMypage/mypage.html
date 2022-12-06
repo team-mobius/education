@@ -14,7 +14,7 @@
           <nav class="nav">
             <ul class="ul-one">
               <li class="li-one li">
-                <a href="">
+                <a th:href="@{/mypage/user/main}">
                   <span class="dash">대시보드</span>
                 </a>
               </li>
@@ -38,12 +38,12 @@
                 </a>
               </li>
               <li class="lecture-two li">
-                <a href="">
+                <a th:href="@{/mypage/user/review}">
                   <span class="lecture-end">나의 후기</span>
                 </a>
               </li>
               <li class="lecture-two li">
-                <a href="">
+                <a th:href="@{/mypage/user/request}">
                   <span class="lecture-end">나의 요청</span>
                 </a>
               </li>
@@ -75,13 +75,14 @@
                   </div>
                   <div class="text-second">
                     <a href="">
-                      <p class="second-">수정하기</p>
+                      <p class="second-"></p>
                     </a>
                     <!--<p class="">알림 설정</p>-->
                   </div>
                 </div>
                 <div class="text-third">
-                  <p>내용이 없습니다.</p>
+                  <p th:text="${nickname+'님'}">내용이 없습니다.</p>
+                  <p>반갑습니다</p>
                 </div>
               </div>
             </div>
@@ -95,7 +96,7 @@
                   </div>
                   <div class="text-second">
                     <a href="">
-                      <p class="second-">전체 보기</p>
+                      <p class="second-"></p>
                     </a>
                     <!--<p class="">알림 설정</p>-->
                   </div>
@@ -125,7 +126,7 @@
                   </div>
                   <div class="text-second">
                     <a href="">
-                      <p class="second-">작성하기</p>
+                      <p class="second-"></p>
                     </a>
                   </div>
                 </div>
@@ -173,7 +174,7 @@
                   </div>
                   <div class="text-second">
                     <a href="">
-                      <p class="second-">자세히</p>
+                      <p class="second-"></p>
                     </a>
 
                   </div>
@@ -214,46 +215,49 @@
                 </div>
               </div>
             </div>
+
             <!--    5번째   -->
-            <div class="content-md">
-              <div class="content-text">
-                <div class="text-one">
-                  <div class="text-first">
-                    <span class="">🚩</span>
-                    <p class="bow-left">수강중인 강의</p>
-                  </div>
-                  <div class="text-second">
-                    <a href="">
-                      <p class="second-">자세히</p>
-                    </a>
-                    <!--<p class="">알림 설정</p>-->
-                  </div>
-                </div>
-                <div class="text-third">
-                  <p>내용이 없습니다.</p>
-                </div>
-              </div>
-            </div>
+<!--            <div class="content-md">-->
+<!--              <div class="content-text">-->
+<!--                <div class="text-one">-->
+<!--                  <div class="text-first">-->
+<!--                    <span class="">🚩</span>-->
+<!--                    <p class="bow-left">수강중인 강의</p>-->
+<!--                  </div>-->
+<!--                  <div class="text-second">-->
+<!--                    <a href="">-->
+<!--                      <p class="second-">자세히</p>-->
+<!--                    </a>-->
+<!--                    &lt;!&ndash;<p class="">알림 설정</p>&ndash;&gt;-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="text-third">-->
+<!--                  <p>내용이 없습니다.</p>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
             <!--    6번째   -->
-            <div class="content-md">
-              <div class="content-text">
-                <div class="text-one">
-                  <div class="text-first">
-                    <span class="">🚩</span>
-                    <p class="bow-left">수강중인 강의</p>
-                  </div>
-                  <div class="text-second">
-                    <a href="">
-                      <p class="second-">자세히</p>
-                    </a>
-                    <!--<p class="">알림 설정</p>-->
-                  </div>
-                </div>
-                <div class="text-third">
-                  <p>내용이 없습니다.</p>
-                </div>
-              </div>
-            </div>
+<!--            <div class="content-md">-->
+<!--              <div class="content-text">-->
+<!--                <div class="text-one">-->
+<!--                  <div class="text-first">-->
+<!--                    <span class="">🚩</span>-->
+<!--                    <p class="bow-left">수강중인 강의</p>-->
+<!--                  </div>-->
+<!--                  <div class="text-second">-->
+<!--                    <a href="">-->
+<!--                      <p class="second-">자세히</p>-->
+<!--                    </a>-->
+<!--                    &lt;!&ndash;<p class="">알림 설정</p>&ndash;&gt;-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="text-third">-->
+<!--                  <p>내용이 없습니다.</p>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
           </div>
         </div>
       </div>

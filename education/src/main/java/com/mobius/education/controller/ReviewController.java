@@ -35,6 +35,7 @@ public class ReviewController {
     @GetMapping("/detail")
     public String myReview(Model model, Long lectureNumber, Criteria criteria) {
         model.addAttribute("reviews",reviewBoardSevice.showLectureReview(lectureNumber));
+        model.addAttribute("lecture",reviewBoardSevice.showSomething(lectureNumber));
 
         return "/review/classReview";
     }
@@ -47,9 +48,9 @@ public class ReviewController {
 
     }
 
-    @PostMapping("/write")
-    public RedirectView write(ReviewVO reviewVO, RedirectAttributes redirectAttributes){
-        reviewBoardSevice.save(reviewVO);
-        return new RedirectView("/review/list");
-    }
+//    @PostMapping("/write")
+//    public RedirectView write(ReviewVO reviewVO, RedirectAttributes redirectAttributes){
+//        reviewBoardSevice.save(reviewVO);
+//        return new RedirectView("/review/list");
+//    }
 }
