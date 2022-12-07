@@ -111,12 +111,26 @@ button.change_information {
     border: none;
 }
 
-div.secession_mesage {
+form.secession_mesage {
     margin-top: 6px;
     text-align: right;
     color: #878e98;
     font-size: 13px;
 }
+
+.withdrawalButton {
+    border:0 solid #fff;
+    background-color: #fff;
+    cursor: pointer;
+    color: #0084f4;
+    font-weight: bold;
+
+}
+
+input.go_to_secession change_style {
+
+}
+
 span.change_style {
     color: #0084f4;
 }

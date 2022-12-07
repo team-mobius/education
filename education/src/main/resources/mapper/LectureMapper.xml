@@ -36,6 +36,11 @@
         WHERE LECTURE_NUMBER = #{lectureNumber}
     </delete>
 
+    <delete id="deleteTeacherLecture">
+        DELETE FROM TBL_LECTURE
+        WHERE TEACHER_NUMBER = #{teacherNumber}
+    </delete>
+
     <update id="update">
         UPDATE TBL_LECTURE
         SET LECTURE_TITLE = #{lectureTitle}, LECTURE_CATEGORY = #{lectureCategory}, LECTURE_CONTENT = #{lectureContent}, LECTURE_DATE = #{lectureDate},  LECTURE_MAXIMUM_NUMBER = #{lectureMaximumNumber},  LECTURE_TIME = #{lectureTime},  LECTURE_PLACE = #{lecturePlace}, LECTURE_STATUS = #{lectureStatus}, PLACE_NUMBER = #{placeNumber}
@@ -178,6 +183,27 @@
         ]]>
     </select>
 
+    <select id="myReviewSelectThree" resultType="reviewDTO">
+        SELECT REVIEW_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_REGISTER_DATE, LECTURE_NUMBER, LECTURE_TITLE, TEACHER_NUMBER
+        FROM
+        (
+        SELECT ROWNUM R, REVIEW_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_REGISTER_DATE, LECTURE_NUMBER, LECTURE_TITLE, TEACHER_NUMBER
+        FROM
+        (
+        SELECT REVIEW_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_REGISTER_DATE, LECTURE_NUMBER, LECTURE_TITLE, TEACHER_NUMBER
+        FROM
+        (
+        SELECT REVIEW_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_REGISTER_DATE, TL.LECTURE_NUMBER, LECTURE_TITLE, TEACHER_NUMBER FROM TBL_REVIEW TR, TBL_LECTURE TL
+        WHERE TR.LECTURE_NUMBER = TL.LECTURE_NUMBER AND TL.TEACHER_NUMBER = #{teacherNumber}
+        ) B
+        ORDER BY REVIEW_NUMBER DESC
+        ) D2
+        <![CDATA[
+        WHERE ROWNUM <= 3
+        ) WHERE R > 0
+        ]]>
+    </select>
+
     <select id="myReviewGetTotal" resultType="_int">
         SELECT COUNT(REVIEW_NUMBER)
         FROM
@@ -203,6 +229,11 @@
         SET TEACHER_PASSWORD = #{teacherPassword}
         WHERE TEACHER_NUMBER = #{teacherNumber}
     </update>
+
+    <delete id="deleteTeacher">
+        DELETE FROM TBL_TEACHER
+        WHERE TEACHER_NUMBER = #{teacherNumber}
+    </delete>
 
     <select id="selectLecDetailAndAll" resultType="LectureVO">
         SELECT LECTURE_NUMBER, LECTURE_TITLE, LECTURE_CATEGORY, TEACHER_NUMBER FROM TBL_LECTURE

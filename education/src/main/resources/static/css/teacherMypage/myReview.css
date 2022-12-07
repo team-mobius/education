@@ -91,12 +91,12 @@ div.mypage_title {
 }
 .list-class-title,
 .list-class-place {
-    width: 25%;
+    width: 35%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .list-class-time {
-    width: 40%;
+    width: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
 }

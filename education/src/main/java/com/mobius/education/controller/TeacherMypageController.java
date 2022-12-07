@@ -25,24 +25,28 @@ import java.util.Date;
 public class TeacherMypageController {
     private final LectureService lectureService;
 
-//    마이페이지
+    //    마이페이지
     @GetMapping("/mypage")
-    public void mypage(Criteria criteria, Model model) {
+    public void mypage(Criteria criteria, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
         LectureVO lectureVO = new LectureVO();
-        lectureVO.setTeacherNumber(2L);
+        lectureVO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
 
         model.addAttribute("countExpected", lectureService.expectedGetTotal(lectureVO.getTeacherNumber()));
         model.addAttribute("countFinished", lectureService.finishedGetTotal(lectureVO.getTeacherNumber()));
         model.addAttribute("countOngoing", lectureService.ongoingGetTotal(lectureVO.getTeacherNumber()));
         model.addAttribute("countTemporary", lectureService.temporaryGetTotal());
         model.addAttribute("lectureTemporaryLast", lectureService.temporaryLast());
+        model.addAttribute("countMyReview", lectureService.myReviewGetTotal(lectureVO.getTeacherNumber()));
+        model.addAttribute("myReviews", lectureService.showMyReviewThree(lectureVO.getTeacherNumber()));
     }
 
-//    작성 중인 지원서
+    //    작성 중인 지원서
     @GetMapping("/temporary")
-    public void temporary(Criteria criteria, Model model, TeacherVO teacherVO, LectureDTO lectureDTO) {
-        teacherVO.setTeacherNumber(2L);
-        lectureDTO.setTeacherNumber(teacherVO.getTeacherNumber());
+    public void temporary(Criteria criteria, Model model, TeacherVO teacherVO, LectureDTO lectureDTO, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        lectureDTO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
 
         if(criteria.getPage() == 0){
             criteria.create(1, 10);
@@ -51,11 +55,11 @@ public class TeacherMypageController {
         model.addAttribute("countTemporary", lectureService.temporaryGetTotal());
 
     }
-    
+
     @PostMapping("/temporary")
-    public RedirectView temporaryLecture(LectureDTO lectureDTO, ReservePlaceVO reservePlaceVO, TeacherVO teacherVO,RedirectAttributes redirectAttributes){
-        teacherVO.setTeacherNumber(2L);
-        lectureDTO.setTeacherNumber(teacherVO.getTeacherNumber());
+    public RedirectView temporaryLecture(LectureDTO lectureDTO, ReservePlaceVO reservePlaceVO, TeacherVO teacherVO, HttpServletRequest request, RedirectAttributes redirectAttributes){
+        HttpSession session = request.getSession();
+        lectureDTO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
 
         lectureDTO.setLectureStatus("임시저장");
         lectureDTO.setLectureDate(LocalDate.now().toString());
@@ -87,11 +91,13 @@ public class TeacherMypageController {
         return new RedirectView("/teacherMypage/temporary");
     }
 
-//    나의 강의 현황
+    //    나의 강의 현황
     @GetMapping("/myLecture")
-    public void myLecture(Criteria criteria, Model model) {
+    public void myLecture(Criteria criteria, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
         LectureVO lectureVO = new LectureVO();
-        lectureVO.setTeacherNumber(2L);
+        lectureVO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
 
         if(criteria.getPage() == 0){
             criteria.create(1, 10);
@@ -104,28 +110,30 @@ public class TeacherMypageController {
         model.addAttribute("countOngoing", lectureService.ongoingGetTotal(lectureVO.getTeacherNumber()));
     }
 
-//    진헹 중인 강의
+    //    진헹 중인 강의
     @GetMapping("/ongoing")
-    public void ongoingLecture(Criteria criteria, Model model, TeacherVO teacherVO, LectureDTO lectureDTO) {
-        teacherVO.setTeacherNumber(2L);
-        lectureDTO.setTeacherNumber(teacherVO.getTeacherNumber());
+    public void ongoingLecture(Criteria criteria, Model model, TeacherVO teacherVO, LectureDTO lectureDTO, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
+        lectureDTO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
 
         if(criteria.getPage() == 0){
             criteria.create(1, 10);
         }
-        model.addAttribute("lectures", lectureService.showOngoingAll(criteria, teacherVO.getTeacherNumber()));
-        model.addAttribute("pagination", new PageDTO().createPageDTO(criteria, lectureService.ongoingGetTotal(teacherVO.getTeacherNumber())));
+        model.addAttribute("lectures", lectureService.showOngoingAll(criteria, lectureDTO.getTeacherNumber()));
+        model.addAttribute("pagination", new PageDTO().createPageDTO(criteria, lectureService.ongoingGetTotal(lectureDTO.getTeacherNumber())));
 
         model.addAttribute("countExpected", lectureService.expectedGetTotal(lectureDTO.getTeacherNumber()));
         model.addAttribute("countFinished", lectureService.finishedGetTotal(lectureDTO.getTeacherNumber()));
-        model.addAttribute("countOngoing", lectureService.ongoingGetTotal(teacherVO.getTeacherNumber()));
+        model.addAttribute("countOngoing", lectureService.ongoingGetTotal(lectureDTO.getTeacherNumber()));
     }
 
-//    진헹 예정 강의
+    //    진헹 예정 강의
     @GetMapping("/expected")
-    public void expectedLecture(Criteria criteria, Model model, TeacherVO teacherVO, LectureDTO lectureDTO) {
-        teacherVO.setTeacherNumber(2L);
-        lectureDTO.setTeacherNumber(teacherVO.getTeacherNumber());
+    public void expectedLecture(Criteria criteria, Model model, TeacherVO teacherVO, LectureDTO lectureDTO, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
+        lectureDTO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
 
         if(criteria.getPage() == 0){
             criteria.create(1, 10);
@@ -135,23 +143,25 @@ public class TeacherMypageController {
 
         model.addAttribute("countExpected", lectureService.expectedGetTotal(lectureDTO.getTeacherNumber()));
         model.addAttribute("countFinished", lectureService.finishedGetTotal(lectureDTO.getTeacherNumber()));
-        model.addAttribute("countOngoing", lectureService.ongoingGetTotal(teacherVO.getTeacherNumber()));
+        model.addAttribute("countOngoing", lectureService.ongoingGetTotal(lectureDTO.getTeacherNumber()));
     }
 
-//    강의 신청
+    //    강의 신청
     @GetMapping("/apply")
-    public void applyLecture(Model model, PlaceVO placeVO, TeacherVO teacherVO) {
-        teacherVO.setTeacherNumber(2L);
+    public void applyLecture(Model model, PlaceVO placeVO, LectureDTO lectureDTO, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        lectureDTO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
         model.addAttribute("apply", new LectureVO());
         model.addAttribute("places", lectureService.showPlace(placeVO));
     }
 
 
     @PostMapping("/apply")
-    public RedirectView applyLecture(TeacherVO teacherVO, LectureDTO lectureDTO, ReservePlaceVO reservePlaceVO, RedirectAttributes redirectAttributes){
-        teacherVO.setTeacherNumber(2L);
+    public RedirectView applyLecture(TeacherVO teacherVO, LectureDTO lectureDTO, ReservePlaceVO reservePlaceVO, HttpServletRequest request, RedirectAttributes redirectAttributes){
+        HttpSession session = request.getSession();
+        lectureDTO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
+
         lectureDTO.setLectureStatus("진행예정");
-        lectureDTO.setTeacherNumber(teacherVO.getTeacherNumber());
         reservePlaceVO.setReservePlaceDate(lectureDTO.getLectureDate());
 
         if(lectureDTO.getLectureTime().equals("Time A (9:00~12:00)")) {
@@ -216,7 +226,7 @@ public class TeacherMypageController {
         return new RedirectView("/teacherMypage/expected");
     }
 
-//    임시저장으로 다시 저장
+    //    임시저장으로 다시 저장
     @PostMapping("/update")
     public RedirectView updateLecture(LectureDTO lectureDTO, ReservePlaceVO reservePlaceVO, RedirectAttributes redirectAttributes) {
         lectureDTO.setLectureStatus("임시저장");
@@ -249,18 +259,21 @@ public class TeacherMypageController {
         return new RedirectView("/teacherMypage/temporary");
     }
 
-//    강의 삭제
+    //    강의 삭제
     @GetMapping("/delete")
     public RedirectView delete(Long lectureNumber) {
         lectureService.remove(lectureNumber);
         return new RedirectView("/teacherMypage/mypage");
     }
 
-//    나의 리뷰
+    //    나의 리뷰
     @GetMapping("/myReview")
-    public void myReview(Criteria criteria, ReviewDTO reviewDTO, Long teacherNumber, Model model) {
+    public void myReview(Criteria criteria, ReviewDTO reviewDTO, Long teacherNumber, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
+
         LectureVO lectureVO = new LectureVO();
-        lectureVO.setTeacherNumber(2L);
+        lectureVO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
         reviewDTO.setLectureVO(lectureVO);
 
         if(criteria.getPage() == 0){
@@ -271,11 +284,31 @@ public class TeacherMypageController {
         model.addAttribute("countMyReview", lectureService.myReviewGetTotal(reviewDTO.getLectureVO().getTeacherNumber()));
     }
 
-//    나의 정보
+    //    나의 정보
     @GetMapping("/myInfo")
-    public void myInformation(Model model) {
-        TeacherVO teacherVO = new TeacherVO();
-        teacherVO.setTeacherNumber(2L);
+    public void myInformation(TeacherVO teacherVO, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
+        teacherVO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
         model.addAttribute("info", lectureService.showMyInfo(teacherVO.getTeacherNumber()));
+    }
+
+    @PostMapping("/myInfo")
+    public RedirectView modifyPw(TeacherVO teacherVO, HttpServletRequest request, RedirectView redirectView) {
+        HttpSession session = request.getSession();
+
+        teacherVO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
+        lectureService.modifyPw(teacherVO);
+        return new RedirectView("/teacherMypage/myInfo");
+    }
+
+    @PostMapping("/withdrawal")
+    public RedirectView withdrawal(TeacherVO teacherVO, LectureDTO lectureDTO,HttpServletRequest request, RedirectView redirectView) {
+        HttpSession session = request.getSession();
+        teacherVO.setTeacherNumber((Long) session.getAttribute("teacherNumber"));
+//        lectureService.remove(lectureDTO.getLectureNumber());
+//        lectureService.removeTeacher(teacherVO.getTeacherNumber());
+        session.invalidate();
+        return new RedirectView("/mainpage/index");
     }
 }

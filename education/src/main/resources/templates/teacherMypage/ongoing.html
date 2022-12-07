@@ -103,6 +103,7 @@
                 </div>
                 </th:block>
 
+                <th:block th:if="${countOngoing != 0}">
                 <div th:object="${pagination}" style="margin-top: 40px; margin-right: 40px;">
                     <div style="text-align: center">
                         <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code><</code></a>
@@ -117,6 +118,7 @@
                         <input type="hidden" th:field="*{amount}">
                     </form>
                 </div>
+                </th:block>
             </div>
         </div>
     </div>

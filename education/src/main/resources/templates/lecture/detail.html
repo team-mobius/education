@@ -12,12 +12,15 @@
 <main class="main">
     <section class="section_start" th:object="${lecture}">
         <div class="banner" >
-            <div class="banner_img">
-                <th:block th:each="thumb:*{thumbs}">
-                    <img class="bannerImg" th:src="@{/lectureThumb/display(lectureThumbnailName=${thumb.lectureThumbnailUploadPath} + '/s_' + ${thumb.lectureThumbnailUuid} + '_' + ${thumb.lectureThumbnailName})}">
-<!--                    <img class="bannerImg" src="https://cdn.inflearn.com/public/courses/326674/cover/4657d793-56a4-42f3-9d44-dc88d125a49e">-->
-<!--                    <img class="bannerImg" th:src="@{/img/thumbnail.png}">-->
+            <div class="banner_img" th:each="thumb:*{thumbs}">
+                <th:block>
+                    <img class="bannerImg" th:if="${thumb.lectureNumber == lecture.lectureNumber}" th:src="@{/lectureThumb/display(lectureThumbnailName=${thumb.lectureThumbnailUploadPath} + '/s_' + ${thumb.lectureThumbnailUuid} + '_' + ${thumb.lectureThumbnailName})}">
+<!--&lt;!&ndash;                    <img class="bannerImg" src="https://cdn.inflearn.com/public/courses/326674/cover/4657d793-56a4-42f3-9d44-dc88d125a49e">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <img class="bannerImg" th:src="@{/img/thumbnail.png}">&ndash;&gt;-->
                 </th:block>
+<!--                <th:block th:if="*{thumbs == null}">-->
+<!--                    <img class="bannerImg" th:src="@{/img/thumbnail.png}">-->
+<!--                </th:block>-->
             </div>
             <div class="explanation">
                 <span class="box">Best</span>
@@ -46,7 +49,7 @@
                             <a href="">강의소개</a>
                         </span>
                 <span class="span3">
-                            <a href="">수강평</a>
+                            <a th:href="@{/review/detail(lectureNumber=*{lectureNumber})}">수강평</a>
                         </span>
             </div>
         </div>

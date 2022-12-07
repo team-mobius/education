@@ -163,9 +163,24 @@ public class LectureService {
         return lectureDAO.findMyReviewCountAll(teacherNumber);
     }
 
+//    마이 리뷰 3개
+    public List<ReviewDTO> showMyReviewThree(Long teacherNumber) {
+        return lectureDAO.findMyReviewThree(teacherNumber);
+    }
+
 //    마인 인포 조회
     public TeacherVO showMyInfo(Long teacherNumber) {
         return lectureDAO.findInfoById(teacherNumber);
+    }
+
+//    비번 변경
+    public void modifyPw(TeacherVO teacherVO) {
+        lectureDAO.modifyPw(teacherVO);
+    }
+
+//    회원 탈퇴
+    public void removeTeacher(Long teacherNumber) {
+        lectureDAO.removeTeacher(teacherNumber);
     }
 
 //    메인 강의조회

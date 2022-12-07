@@ -46,7 +46,6 @@
 
                 <div class="class-list-container">
                     <div class="list-class-title title-part">강의명</div>
-                    <div class="list-class-place title-part">제목</div>
                     <div class="list-class-time title-part">내용</div>
                     <div class="list-class-start-date title-part">작성 날짜</div>
                 </div>
@@ -56,7 +55,6 @@
                     <div class="list-class-title list-content">
                         <a claas="goDetail" style="cursor: pointer;" th:href="@{/review/detail(lectureNumber=*{lectureNumber})}" th:text="*{lectureTitle}"></a>
                     </div>
-                    <div class="list-class-place list-content" th:text="*{reviewTitle}"></div>
                     <div class="list-class-time list-content" th:text="*{reviewContent}"></div>
                     <div class="list-class-start-date list-content" th:text="*{#strings.substring(reviewRegisterDate, 0, 10)}"></div>
                 </div>
