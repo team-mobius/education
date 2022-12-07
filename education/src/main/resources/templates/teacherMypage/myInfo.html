@@ -11,36 +11,36 @@
 <body>
 <header th:replace="/fixed/header2.html :: body"></header>
 
-<!-- 비밀번호 변경 모달창 -->
+<!-- 비밀번호 변경 모달창  th:action="@{/teacherMypage/myInfo}" -->
 <div class="password_change_modal password_change_hidden">
     <div class="bg"></div>
     <div class="password_change_wrapper">
-        <form action="#" class="change_password">
+        <form id="pwForm" class="change_password pwForm" th:action="@{/teacherMypage/myInfo}" method="post" th:object="${info}">
             <div class="change_password_title_container">
                 <div class="password_change_title">비밀번호 변경</div>
                 <div class="close_password_modal">닫기</div>
             </div>
 
             <!-- 모달창 내의 현재 비밀번호 입력 -->
-            <div class="current_password_input_container input_form">
-                <div class="current_password_title">현재 비밀번호</div>
-                <input type="password" class="input_current_password" />
-            </div>
+<!--            <div class="current_password_input_container input_form">-->
+<!--                <div class="current_password_title">현재 비밀번호</div>-->
+<!--                <input type="password" class="input_current_password" />-->
+<!--            </div>-->
 
             <!-- 모달창 내의 변경 할 비밀번호 입력 -->
             <div class="change_password_input_container input_form">
                 <div class="change_password_title">새로운 비밀번호</div>
-                <input type="password" class="input_change_password" />
+                <input type="password" class="input_change_password change_password" id="change_password" name="change_password" th:field="*{teacherPassword}"/>
             </div>
 
             <!-- 모달창 내의 변경 할 비밀번호 입력 -->
             <div class="change_password_check_input_container input_form">
                 <div class="change_password_check_title">새로운 비밀번호 확인</div>
-                <input type="password" class="input_change_password" />
+                <input type="password" class="input_change_password change_password_check" id="change_password_check" name="change_password_check" />
             </div>
             <!-- 비밀번호 수정 button -->
             <div class="button_container">
-                <input type="button" value="변경하기" class="change_password_modal_button" />
+                <input type="submit" value="변경하기" class="change_password_modal_button"/>
             </div>
         </form>
     </div>
@@ -117,14 +117,59 @@
         </div>
         <div class="go_to_secession_wrapper">
             <div class="go_to_secession_container">
-                <div class="secession_mesage">
-                    더 이상 뫼비우스를 이용하지 않는다면 <a href="#"><span class="go_to_secession change_style">회원탈퇴 &gt;</span></a>
-                </div>
+                <form th:action="@{/teacherMypage/withdrawal}" method="post" class="secession_mesage" id="withdrawalForm">
+                    더 이상 뫼비우스를 이용하지 않는다면 <input class="withdrawalButton" type="submit" value="회원탈퇴 &gt;"></span></a>
+                </form>
             </div>
         </div>
     </div>
 </main>
 <footer th:replace="/fixed/footer.html :: #footer"></footer>
 </body>
+<script src="/js/basic/jquery.min.js"></script>
+<script src="/js/basic/jquery.dropotron.min.js"></script>
+<script src="/js/basic/browser.min.js"></script>
+<script src="/js/basic/breakpoints.min.js"></script>
+<script src="/js/basic/util.js"></script>
+<script src="/js/basic/main.js"></script>
 <script src="/js/teacherMypage/myInformation.js"></script>
+<script th:inline="javascript">
+
+    $("input[type='submit'].change_password_modal_button").on("click", function(e){
+        e.preventDefault();
+
+        let teacherPassword = [[${teacherPassword}]];
+        let $beforPassword = $("input[type=password].nput_current_password").val();
+        let $password1 = $("input[type=password].change_password").val();
+        let $password2 = $("input[type=password].change_password_check").val();
+
+        // if($beforPassword != teacherPassword) {
+        //     alert("현재 비밀번호가 틀렸습니다.");
+        //     $beforPassword.focus();
+        //     return false;
+        // } else if($beforPassword == teacherPassword) {
+            if($password1 != $password2) {
+                alert("변경 비밀번호가 일치하지 않습니다.");
+                $password2.focus();
+                console.log("변경 실패");
+                return false;
+            } else if($password1 == $password2) {
+                alert("비밀번호가 변경되었습니다.");
+                $("form#pwForm").submit();
+            }
+        // }
+    });
+
+    $("input[type='submit'].withdrawalButton").on("click", function(e) {
+        e.preventDefault();
+        if (confirm("정말 탈퇴하시겠습니까?")) {
+            alert("회원탈퇴가 완료되었습니다.");
+            $("form#withdrawalForm").submit();
+        } else {
+            alert("탈퇴를 취소했습니다.");
+            return false;
+        }
+    })
+
+</script>
 </html>

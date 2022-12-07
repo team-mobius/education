@@ -249,7 +249,6 @@
 
     $("input[type='submit']").on("click", function(e){
         e.preventDefault();
-        teacherNumber = 2;
         let text = "";
         $.each($(".uploadResult ul li"), function(i, li){
             let lectureFileName = $(li).data("file-name");
@@ -326,7 +325,6 @@
 
     $("input[type='submit']").on("click", function(e){
         e.preventDefault();
-        teacherNumber = 2;
         let text = "";
         $.each($(".thumbResult ul li"), function(i, li){
             let lectureThumbnailName = $(li).data("file-name");

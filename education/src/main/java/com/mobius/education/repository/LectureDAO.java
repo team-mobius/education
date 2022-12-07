@@ -103,10 +103,30 @@ public class LectureDAO {
         return lectureMapper.myReviewGetTotal(teacherNumber);
     }
 
+    // 마이 리뷰 3개
+    public List<ReviewDTO> findMyReviewThree(Long teacherNumber) {
+        return lectureMapper.myReviewSelectThree(teacherNumber);
+    }
+
     // 마이 인포
     public TeacherVO findInfoById (Long teacherNumber) {
         return lectureMapper.infoSelect(teacherNumber);
     }
+
+    // 비번 변경
+    public void modifyPw (TeacherVO teacherVO) {
+        lectureMapper.updatePw(teacherVO);
+    }
+
+    //회원 탈퇴
+    public void removeTeacher(Long teacherNumber) {
+        lectureMapper.deleteTeacher(teacherNumber);
+    }
+
+    public void removeTeacherLecture(Long teacherNumber) {
+        lectureMapper.deleteTeacherLecture(teacherNumber);
+    }
+
 
 //    강의 리뷰를 위한 강의 하나 조회
     public LectureVO selectLecDetailSomething(Long teacherNumber){

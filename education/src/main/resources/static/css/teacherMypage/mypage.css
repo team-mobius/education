@@ -294,43 +294,68 @@ div.comment_mesage {
     margin-top: 20px;
     font-size: 14px;
     color: #878e98;
+    position: relative;
 }
 
 span.comment_list_title {
     display: inline-block;
+    position: relative;
     text-align: left;
-    width: 450px;
+    width: 300px;
 }
 
 span.comment_list_writer {
     display: inline-block;
+    position: relative;
     text-align: left;
-    width: 200px;
+    width: 350px;
 }
 
 span.comment_list_date {
     display: inline-block;
+    position: relative;
     text-align: left;
     width: 150px;
 }
 
-span.comment_title {
+div.comment_title {
     display: inline-block;
+    position: relative;
     text-align: left;
-    width: 450px;
+    padding-right: 10px;
+    width: 300px;
     color: #1e1e1e;
+    white-space: nowrap;
+    overflow: hidden !important;
+
 }
 
-span.comment_writer {
-    display: inline-block;
-    text-align: left;
-    width: 200px;
-    color: #1e1e1e;
+div.comment_title > a {
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-span.comment_date {
+div.comment_writer {
     display: inline-block;
+    position: relative;
+    text-align: left;
+    padding-right: 10px;
+    width: 350px;
+    color: #1e1e1e;
+    white-space: nowrap;
+    overflow: hidden !important;
+}
+
+div.comment_date {
+    display: inline-block;
+    position: relative;
     text-align: left;
     width: 150px;
     color: #1e1e1e;
+    white-space: nowrap;
+}
+
+.commemt_head {
+    padding-top: 15px;
 }

@@ -112,33 +112,23 @@
                 </div>
                 <div class="mypage_part3_detail_container">
                     <div class="mypage_part3_detail">
+                        <th:block  th:if="@{countMyReview == 0}" >
                         <div class="no_comment_mesage">현재 나의 후기가 없어요</div>
-                        <div class="comment_mesage">
+                        </th:block>
+                        <th:block th:unless="@{countMyReview == 0}" th:object="${myReview}">
+                        <div class="comment_mesage commemt_head">
                             <span class="comment_list_title">강의제목</span>
-                            <span class="comment_list_writer">작성자</span>
+                            <span class="comment_list_writer">리뷰내용</span>
                             <span class="comment_list_date">작성 날짜</span>
                         </div>
-                        <a>
-                            <div class="comment_mesage">
-                                <span class="comment_title">[2022 코딩 입문] 누구나 쉽게 배우는 JAVA!</span>
-                                <span class="comment_writer">김혜원</span>
-                                <span class="comment_date">2022/11/28</span>
+                        <div class="comment_mesage" th:each="myReview:${myReviews}" th:object="${myReview}">
+                            <div class="comment_title">
+                                <a claas="goReview" style="cursor: pointer;" th:href="@{/review/detail(lectureNumber=*{lectureNumber})}" th:text="*{lectureTitle}"></a>
                             </div>
-                        </a>
-                        <a>
-                            <div class="comment_mesage">
-                                <span class="comment_title">[2022 코딩 입문] 누구나 쉽게 배우는 JAVA!</span>
-                                <span class="comment_writer">김혜원</span>
-                                <span class="comment_date">2022/11/28</span>
-                            </div>
-                        </a>
-                        <a>
-                            <div class="comment_mesage">
-                                <span class="comment_title">[2022 코딩 입문] 누구나 쉽게 배우는 JAVA!</span>
-                                <span class="comment_writer">김혜원</span>
-                                <span class="comment_date">2022/11/28</span>
-                            </div>
-                        </a>
+                            <div class="comment_writer" th:text="*{reviewContent}"></div>
+                            <div class="comment_date" th:text="*{#strings.substring(reviewRegisterDate, 0, 10)}"></div>
+                        </div>
+                        </th:block>
                     </div>
                 </div>
             </div>

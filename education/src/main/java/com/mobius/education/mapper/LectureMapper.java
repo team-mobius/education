@@ -64,6 +64,9 @@ public interface LectureMapper {
     //강사 마이 리뷰
     public List<ReviewDTO> myReviewSelect(@Param("criteria") Criteria criteria, @Param("teacherNumber") Long teacherNumber);
 
+    //강사 마이 리뷰 3개
+    public List<ReviewDTO> myReviewSelectThree(Long teacherNumber);
+
     //강사 마이 리뷰 개수
     public int myReviewGetTotal(Long teacherNumber);
 
@@ -73,7 +76,14 @@ public interface LectureMapper {
     //비번 변경
     public void updatePw(TeacherVO teacherVO);
 
-//    리뷰를 위한 강의 정보
+    //회원 탈퇴
+    public void deleteTeacher(Long teacherNumber);
+
+    //
+    public void deleteTeacherLecture(Long teacherNumber);
+
+
+    //    리뷰를 위한 강의 정보
     public LectureVO selectLecDetailAndAll(Long teacherNumber);
 
 //    메인페이지 강의 리스트
